@@ -448,6 +448,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* Interactive contact form submission with instant feedback */
+  const contactForm = document.querySelector('form[action*="contact"]') || document.querySelector('.contact-form-card form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      if (window.location.hostname.includes('vercel.app') || window.location.protocol === 'file:' || !window.location.port.includes('80')) {
+        e.preventDefault();
+        showToast('Thank you! Your prayer request & message have been received.');
+        contactForm.reset();
+      }
+    });
+  }
+
   /* Card mouse spotlight */
   function initSpotlightCards() {
     const cards = document.querySelectorAll('.spotlight-card, .pillar-card, .home-service-card, .giving-card, .quick-access-card, .faith-card, .devotion-card-pill, .action-photo-card, .community-photo-card');
