@@ -1,5 +1,4 @@
 {
-  "cleanUrls": true,
   "redirects": [
     { "source": "/index.php", "destination": "/", "permanent": true },
     { "source": "/about(.*)", "destination": "/#about", "permanent": true },
