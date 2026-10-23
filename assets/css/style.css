@@ -257,15 +257,16 @@ p:last-child { margin-bottom: 0; }
   color: var(--amber-light);
 }
 
-/* Dark Luxury Floating Navbar (Phaneroo Style - Pure Glass & Stroke-Free) */
+/* Luminous Luxury Floating Navbar (Crisp White / Jade Glass for Maximum Logo Visibility) */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(4, 18, 10, 0.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px rgba(7, 31, 17, 0.08);
+  border-bottom: 1px solid rgba(19, 88, 49, 0.08);
   transition: var(--transition);
 }
 
@@ -273,7 +274,7 @@ p:last-child { margin-bottom: 0; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.65rem 0;
+  padding: 0.7rem 0;
   gap: 1.2rem;
 }
 
@@ -284,15 +285,15 @@ p:last-child { margin-bottom: 0; }
 }
 
 .brand-logo img {
-  height: 48px;
+  height: 52px;
   width: auto;
   object-fit: contain;
   transition: transform 0.25s ease;
-  filter: drop-shadow(0 2px 10px rgba(255, 255, 255, 0.15)) brightness(1.08);
+  filter: drop-shadow(0 2px 8px rgba(7, 31, 17, 0.06));
 }
 
 .brand-logo:hover img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 /* Right-Side Navigation Area */
@@ -320,7 +321,7 @@ p:last-child { margin-bottom: 0; }
   padding: 0.5rem 1rem;
   font-size: 0.92rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
+  color: #12281b;
   border-radius: var(--radius-full);
   transition: var(--transition);
   white-space: nowrap;
@@ -328,17 +329,17 @@ p:last-child { margin-bottom: 0; }
 
 .desktop-nav-links li a.nav-tab:hover,
 .nav-links li a.nav-tab:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.12);
+  color: var(--green-primary);
+  background: rgba(19, 88, 49, 0.07);
 }
 
 /* Active Tab: Pure Soft Pill (NO STROKES) */
 .desktop-nav-links li a.nav-tab.active,
 .nav-links li a.nav-tab.active {
   background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-light) 100%);
-  color: #ffffff;
+  color: #ffffff !important;
   font-weight: 700;
-  box-shadow: 0 4px 18px rgba(31, 130, 73, 0.45);
+  box-shadow: 0 4px 16px rgba(19, 88, 49, 0.35);
 }
 
 .nav-actions {
@@ -352,8 +353,8 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   gap: 0.45rem;
   padding: 0.45rem 1rem;
-  background: rgba(234, 100, 7, 0.22);
-  color: var(--amber-light);
+  background: rgba(234, 100, 7, 0.12);
+  color: #c54e00;
   font-size: 0.82rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -366,7 +367,7 @@ p:last-child { margin-bottom: 0; }
   background: var(--amber-primary);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(234, 100, 7, 0.4);
+  box-shadow: 0 6px 18px rgba(234, 100, 7, 0.35);
 }
 
 .nav-cta-btn {
@@ -405,20 +406,32 @@ p:last-child { margin-bottom: 0; }
 /* Mobile Toggle */
 .mobile-toggle {
   display: none;
-  background: none;
+  background: var(--green-tint);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.6rem;
   flex-direction: column;
   gap: 5px;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.mobile-toggle:hover {
+  background: var(--amber-tint);
 }
 
 .hamburger-bar {
   display: block;
-  width: 24px;
+  width: 22px;
   height: 2.5px;
-  background-color: #ffffff;
+  background-color: var(--green-darkest);
   border-radius: 3px;
   transition: var(--transition);
+}
+
+.mobile-toggle:hover .hamburger-bar {
+  background-color: var(--amber-primary);
 }
 
 .drawer-close {
