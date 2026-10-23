@@ -1068,7 +1068,7 @@ require_once __DIR__ . '/includes/header.php';
             <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $church_phone); ?>" class="btn btn-primary" style="width: 100%;">
               Call Partnership Desk
             </a>
-            <a href="https://wa.me/254728838977?text=Hello%20Alive%20Faith%20Ministries,%20I%20would%20like%20to%20become%20a%20Covenant%20Partner." target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">
+            <a href="https://wa.me/254712785016?text=Hello%20Alive%20Faith%20Ministries,%20I%20would%20like%20to%20become%20a%20Covenant%20Partner." target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="width: 100%;">
               WhatsApp Partnership Desk
             </a>
           </div>
@@ -1287,7 +1287,7 @@ require_once __DIR__ . '/includes/header.php';
           <span style="font-size: 0.84rem; color: var(--text-muted);">Call for counseling or inquiries</span>
         </a>
 
-        <a href="https://wa.me/254728838977" target="_blank" rel="noopener noreferrer" class="contact-action-box spotlight-card">
+        <a href="https://wa.me/254712785016" target="_blank" rel="noopener noreferrer" class="contact-action-box spotlight-card">
           <svg class="icon" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
           <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: var(--text-subtle);">WhatsApp Desk</span>
           <strong style="color: var(--green-darkest); font-size: 1.1rem; margin: 0.2rem 0;">WhatsApp Chat</strong>
