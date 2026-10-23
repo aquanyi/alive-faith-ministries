@@ -1,0 +1,15 @@
+# Robots.txt for Alive Faith Ministries
+# https://www.livefaithministries.org
+
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /assets/images/
+Allow: /assets/css/
+Allow: /assets/js/
+
+# Disallow hidden dotfiles
+Disallow: /.*
+
+# XML Sitemap Location
+Sitemap: https://www.livefaithministries.org/sitemap.xml

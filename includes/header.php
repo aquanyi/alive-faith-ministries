@@ -7,15 +7,47 @@ if (!isset($active_tab)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- Universal Non-pinch Zoomable & Fitted to All Devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
   <meta name="HandheldFriendly" content="true">
   <meta name="MobileOptimized" content="width">
+  <meta name="format-detection" content="telephone=no">
   <title><?php echo htmlspecialchars($page_title); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($about_summary); ?>">
+  <meta name="keywords" content="Alive Faith Ministries, AFM, Church Nairobi Kenya, Experience Faith Grace and Intimacy with God, Friday Service, Sunday Celebration Service, Christian Fellowship, Prayer and Teachings, M-Pesa Giving, Sermons Online, Live Faith Ministries">
+  <meta name="author" content="Alive Faith Ministries">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.livefaithministries.org/">
+  
+  <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.livefaithministries.org/">
+  <meta property="og:site_name" content="Alive Faith Ministries">
+  <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
+  <meta property="og:description" content="<?php echo htmlspecialchars($about_summary); ?>">
+  <meta property="og:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alive Faith Ministries - Church Worship and Word Gathering">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://www.livefaithministries.org/">
+  <meta name="twitter:title" content="<?php echo htmlspecialchars($page_title); ?>">
+  <meta name="twitter:description" content="<?php echo htmlspecialchars($about_summary); ?>">
+  <meta name="twitter:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
+
+  <!-- Mobile Theme & PWA Manifest -->
+  <meta name="theme-color" content="#071f11">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Alive Faith">
+  <link rel="manifest" href="site.webmanifest">
   
   <!-- Favicon and Brand Touch Icons -->
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -32,6 +64,44 @@ if (!isset($active_tab)) {
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Schema.org Structured Data (Rich Google Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Alive Faith Ministries",
+    "alternateName": ["AFM", "Live Faith Ministries"],
+    "url": "https://www.livefaithministries.org/",
+    "logo": "https://www.livefaithministries.org/assets/images/logo.png",
+    "image": "https://www.livefaithministries.org/assets/images/worship-hero.jpg",
+    "description": "Alive Faith Ministries is a non-denominational ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
+    "telephone": "+254712785016",
+    "email": "info@livefaithministries.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Nairobi",
+      "addressCountry": "KE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Friday",
+        "opens": "18:00",
+        "closes": "20:30"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "15:30",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.livefaithministries.org"
+    ]
+  }
+  </script>
 </head>
 <body>
 
