@@ -23,6 +23,10 @@ if (!isset($active_tab)) {
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.livefaithministries.org/">
   
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="googlee439da0fb1beeddb">
+  <meta name="google-site-verification" content="e439da0fb1beeddb">
+  
   <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.livefaithministries.org/">
