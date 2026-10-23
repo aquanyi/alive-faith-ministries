@@ -9,7 +9,7 @@ $church_name = "Alive Faith Ministries";
 $church_short = "AFM";
 $church_tagline = "Experience Faith, Grace and Intimacy with God";
 $church_motto = "FAITH | SALVATION | GRACE";
-$church_phone = "+254 712 785 016";
+$church_phone = "+254 728 838 977";
 $church_email = "info@livefaithministries.org";
 $church_website = "www.livefaithministries.org";
 $church_address = "Sanctuary Location, contact us for directions and transport assistance";
@@ -133,7 +133,7 @@ $statement_of_faith = [
 
 // Giving Information
 $giving_info = [
-    "mobile_money" => "+254 712 785 016",
+    "mobile_money" => "+254 728 838 977",
     "account_name" => "Alive Faith Ministries",
     "note" => "A prosperous and generous giving for charity, for sacrifice, and for Worship. (Acts 4:32-33, Matthew 6:21)"
 ];

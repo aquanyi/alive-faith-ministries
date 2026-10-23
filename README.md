@@ -7,7 +7,7 @@ A modern, high-end front-end church website built with PHP, custom CSS, and vani
 - **Floating Toast Notification System**: Provides instant feedback when scriptures or M-Pesa numbers are copied.
 - **Interactive Scripture Switcher**: Rotates through core doctrinal verses (*Ephesians 2:10*, *Psalm 119:105*, *Romans 8:1*, *Colossians 2:6*, *Luke 18:1*, *Galatians 2:16*) with one-click copy.
 - **Statement of Faith Theme Filters**: Category pills (*God & Christ*, *Salvation & Grace*, *Holy Spirit & Truth*, *Eternal Hope*) to filter the 10 Articles of Faith.
-- **Giving Reference Generator & M-Pesa Copy Tool**: Interactive purpose selection (*Tithe*, *Offering*, *Partnership*, *Welfare*) with auto-generated reference and one-tap clipboard copy for `+254 712 785 016`.
+- **Giving Reference Generator & M-Pesa Copy Tool**: Interactive purpose selection (*Tithe*, *Offering*, *Partnership*, *Welfare*) with auto-generated reference and one-tap clipboard copy for `+254 728 838 977`.
 - **Watch Broadcast Channel Switcher**: Toggle between Live Broadcast, Sunday Celebration Archive, and Friday Intercession.
 - **Interactive Prayer Form Chips**: Topic tags that pre-populate form intentions.
 - **Strictly Non-Pinch Zoomable & Fitted to Any Screen**: `user-scalable=no, maximum-scale=1.0` with touch action optimization.
