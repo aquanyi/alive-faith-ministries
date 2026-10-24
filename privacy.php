@@ -70,7 +70,7 @@ require_once __DIR__ . '/includes/header.php';
             <li>Standing with you in prayer and providing pastoral follow-up.</li>
             <li>Welcoming first-time sanctuary guests and assisting with transport or service directions.</li>
             <li>Acknowledging voluntary contributions and providing covenant partnership updates.</li>
-            <li>Maintaining digital platform security, mitigating automated spam, and protecting visitors against cyber threats.</li>
+            <li>Maintaining digital platform security, mitigating automated spam, and protecting visitors and ministry services.</li>
           </ul>
         </div>
 

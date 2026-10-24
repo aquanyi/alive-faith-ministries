@@ -77,8 +77,6 @@ require_once __DIR__ . '/includes/header.php';
           <h3><span class="legal-section-num">5.</span> Digital Sanctuary Protection and Prohibited Conduct</h3>
           <p>To preserve the security and availability of this platform for all believers worldwide, users agree not to:</p>
           <ul>
-            <li>Attempt SQL injection, script injection (XSS), or unauthorized network scanning.</li>
-            <li>Deploy automated bots, spiders, or scrapers to flood prayer desks or message forms.</li>
             <li>Submit defamatory, profane, fraudulent, or harassing messages.</li>
             <li>Circumvent session controls or tamper with security firewall headers.</li>
           </ul>
