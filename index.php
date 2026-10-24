@@ -341,7 +341,8 @@ require_once __DIR__ . '/includes/header.php';
           <span class="live-pulse-dot"></span>
           YouTube Live Stream
         </a>
-        <a href="#watch" class="broadcast-chip" data-tab-target="tab-watch">
+        <a href="<?php echo htmlspecialchars($church_facebook); ?>" target="_blank" rel="noopener noreferrer" class="broadcast-chip" aria-label="Watch Facebook Live Broadcast">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" fill="#1877F2" style="width: 15px; height: 15px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           Facebook Live Broadcast
         </a>
         <a href="#watch" class="broadcast-chip" data-tab-target="tab-watch">
@@ -1216,7 +1217,11 @@ require_once __DIR__ . '/includes/header.php';
             </div>
 
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <a href="<?php echo htmlspecialchars($church_facebook); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background: #1877F2; display: inline-flex; align-items: center; gap: 0.55rem; box-shadow: 0 4px 18px rgba(24, 119, 242, 0.4);">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Watch on Facebook Live
+              </a>
+              <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
                 Launch YouTube Live
               </a>
@@ -1344,6 +1349,13 @@ require_once __DIR__ . '/includes/header.php';
           <strong style="color: var(--green-darkest); font-size: 1.1rem; margin: 0.2rem 0;">Alive Faith Grounds</strong>
           <span style="font-size: 0.84rem; color: var(--text-muted);">Friday 6:00 PM &bull; Sunday 3:30 PM</span>
         </div>
+
+        <a href="<?php echo htmlspecialchars($church_facebook); ?>" target="_blank" rel="noopener noreferrer" class="contact-action-box spotlight-card">
+          <svg class="icon" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: var(--text-subtle);">Official Community</span>
+          <strong style="color: var(--green-darkest); font-size: 1.1rem; margin: 0.2rem 0;">Facebook Page</strong>
+          <span style="font-size: 0.84rem; color: var(--text-muted);">Follow AFM broadcasts &amp; updates</span>
+        </a>
       </div>
 
       <!-- Visitor Guide: What to Expect -->
