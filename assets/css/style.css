@@ -2188,15 +2188,15 @@ textarea.form-control {
 }
 
 .footer-desc {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.75);
+  color: #ffffff;
 }
 
 .footer-verse {
   font-style: italic;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.86rem;
+  color: #ffffff;
   margin-top: 1rem;
 }
 
@@ -2215,9 +2215,11 @@ textarea.form-control {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.75);
+  color: #ffffff;
   font-size: 0.92rem;
+  font-weight: 500;
   display: inline-block;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .footer-links a:hover {
@@ -2246,13 +2248,24 @@ textarea.form-control {
 }
 
 .footer-service-title {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.8rem;
+  color: #ffffff;
+  font-size: 0.82rem;
 }
 
 .footer-contact-line {
   font-size: 0.9rem;
   margin-bottom: 0.6rem;
+  color: #ffffff;
+}
+
+.footer-contact-line a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-contact-line a:hover {
+  color: var(--amber-light);
+  text-decoration: underline;
 }
 
 .footer-contact-line .label {
@@ -2264,28 +2277,30 @@ textarea.form-control {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.35rem 0.85rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-full);
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .footer-bottom {
   padding: 1.8rem 0;
-  font-size: 0.86rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.88rem;
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer-copyright {
   margin: 0;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.86rem;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
 }
 
 .motto-pill {
@@ -3661,21 +3676,22 @@ textarea.form-control {
 }
 
 .footer-legal-link {
-  color: rgba(255, 255, 255, 0.65);
-  font-size: 0.84rem;
-  font-weight: 600;
+  color: #ffffff !important;
+  font-size: 0.88rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .footer-legal-link:hover {
-  color: var(--amber-light);
+  color: var(--amber-light) !important;
   text-decoration: underline;
 }
 
 .footer-legal-dot {
-  color: rgba(255, 255, 255, 0.35);
-  font-size: 0.75rem;
+  color: #ffffff !important;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 /* Standalone Legal & Policy Pages (Privacy & Terms Dedicated Pages) */
@@ -3697,44 +3713,52 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.45rem 1rem;
+  padding: 0.5rem 1.15rem;
   border-radius: var(--radius-full);
-  background: rgba(7, 31, 17, 0.06);
-  color: var(--green-primary);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff !important;
   font-weight: 700;
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   text-decoration: none;
   margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all 0.2s ease;
 }
 
 .legal-back-btn:hover {
-  background: var(--green-primary);
-  color: #ffffff;
+  background: var(--amber-primary);
+  color: #ffffff !important;
+  border-color: var(--amber-primary);
   transform: translateX(-3px);
+  box-shadow: 0 4px 14px rgba(234, 100, 7, 0.4);
 }
 
 .legal-back-btn svg {
   width: 16px;
   height: 16px;
-  stroke: currentColor;
-  stroke-width: 2.2;
+  stroke: #ffffff;
+  stroke-width: 2.4;
   fill: none;
 }
 
 .legal-page-title {
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: var(--green-darkest);
+  color: #ffffff !important;
   line-height: 1.15;
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 .legal-page-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-muted);
+  font-size: 1.12rem;
+  color: #ffffff !important;
+  opacity: 0.95;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .legal-meta-badge {
@@ -3742,12 +3766,23 @@ textarea.form-control {
   gap: 0.65rem;
   flex-wrap: wrap;
   align-items: center;
-  padding: 0.4rem 0.95rem;
+  padding: 0.45rem 1.1rem;
   border-radius: var(--radius-full);
-  background: rgba(19, 88, 49, 0.08);
-  color: var(--green-primary);
-  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff !important;
+  font-size: 0.82rem;
   font-weight: 700;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.legal-hero-banner .section-tag {
+  color: var(--amber-light) !important;
+  background: rgba(234, 100, 7, 0.22);
+  border: 1px solid rgba(247, 141, 56, 0.4);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-full);
 }
 
 .legal-document-section {
