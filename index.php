@@ -16,18 +16,55 @@ if (isset($_GET['tab'])) {
 // Handle Contact / Prayer / Visitor Form Submission
 if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $active_tab = 'tab-contact'; // Keep user on contact tab
-    $full_name = trim($_POST['full_name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $phone = trim($_POST['phone'] ?? '');
-    $inquiry_type = trim($_POST['inquiry_type'] ?? 'General Message');
-    $message = trim($_POST['message'] ?? '');
 
-    if (empty($full_name) || empty($email) || empty($message)) {
-        $form_error = "Please fill in all required fields (Name, Email, and Message).";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $form_error = "Please enter a valid email address.";
-    } else {
-        $form_success = true;
+    // 1. Verify CSRF Token
+    $submitted_token = $_POST['csrf_token'] ?? '';
+    if (!verify_csrf_token($submitted_token)) {
+        $form_error = "Session security verification failed. Please refresh the page and try again.";
+    }
+
+    // 2. Anti-bot honeypot check
+    elseif (!empty($_POST['afm_security_check'])) {
+        // Discard bot submission
+        $form_error = "Automated submission detected.";
+    }
+
+    // 3. Submission rate limiting
+    elseif (!check_submission_rate_limit()) {
+        $form_error = "Too many messages sent recently. Please wait a few minutes before submitting again.";
+    }
+
+    // 4. Submission speed velocity check (minimum 2 seconds)
+    elseif (!verify_submission_speed()) {
+        $form_error = "Submission was unusually fast. Please review your message before submitting.";
+    }
+
+    else {
+        // Sanitize and normalize inputs
+        $full_name = sanitize_text_input($_POST['full_name'] ?? '');
+        $email = sanitize_text_input($_POST['email'] ?? '');
+        $phone = sanitize_text_input($_POST['phone'] ?? '');
+        $inquiry_type = sanitize_text_input($_POST['inquiry_type'] ?? 'General Message');
+        $message = sanitize_text_input($_POST['message'] ?? '');
+
+        // 5. Inspect for high-risk injection payloads in headers and identity fields
+        if (detect_malicious_payload($full_name) || detect_malicious_payload($email) || detect_malicious_payload($phone)) {
+            $form_error = "Potentially harmful input detected. Please enter standard text.";
+        } elseif (empty($full_name) || empty($email) || empty($message)) {
+            $form_error = "Please fill in all required fields (Name, Email, and Message).";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $form_error = "Please enter a valid email address.";
+        } elseif (mb_strlen($message) > 5000) {
+            $form_error = "Message exceeds the maximum length of 5000 characters.";
+        } else {
+            $form_success = true;
+            record_submission_event();
+            // Clear inputs on success so form fields don't retain submitted values
+            $_POST['full_name'] = '';
+            $_POST['email'] = '';
+            $_POST['phone'] = '';
+            $_POST['message'] = '';
+        }
     }
 }
 
@@ -1437,7 +1474,17 @@ require_once __DIR__ . '/includes/header.php';
             </div>
           <?php endif; ?>
 
+          <?php get_form_timestamp(); ?>
           <form action="index.php?tab=contact" method="POST">
+            <!-- CSRF Protection Token -->
+            <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(get_csrf_token()); ?>">
+
+            <!-- Anti-Bot Honeypot -->
+            <div style="position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+              <label for="afm_security_check">Leave this field blank</label>
+              <input type="text" id="afm_security_check" name="afm_security_check" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="form-group">
               <label class="form-label" for="full_name">Your Full Name *</label>
               <input type="text" id="full_name" name="full_name" class="form-control" required placeholder="Enter your full name" value="<?php echo htmlspecialchars($_POST['full_name'] ?? ''); ?>">

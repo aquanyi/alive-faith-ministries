@@ -4,6 +4,9 @@
  * All details provided by the ministry leadership.
  */
 
+// Application Security Engine
+require_once __DIR__ . '/security.php';
+
 // General Ministry Information
 $church_name = "Alive Faith Ministries";
 $church_short = "AFM";
@@ -12,6 +15,7 @@ $church_motto = "FAITH | SALVATION | GRACE";
 $church_phone = "+254 712 785 016";
 $church_email = "info@livefaithministries.org";
 $church_website = "www.livefaithministries.org";
+$church_facebook = "https://www.facebook.com/profile.php?id=61595832568680";
 $church_address = "Sanctuary Location, contact us for directions and transport assistance";
 
 // Service Gatherings

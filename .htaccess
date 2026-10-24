@@ -1,0 +1,51 @@
+# Alive Faith Ministries Apache Security Configuration
+# Protects against SQL injection, directory browsing, unauthorized includes access, and script attacks.
+
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive files and configuration data
+<FilesMatch "(^\..*|composer\.(json|lock)|package\.json|vercel\.json|README\.md|\.env.*)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Block direct browser access to files in the includes folder
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block direct requests to internal includes files
+    RewriteRule (^|/)includes/.*\.php$ - [F,L]
+
+    # Block HTTP methods commonly used in exploitation
+    RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK|DEBUG) [NC]
+    RewriteRule .* - [F,L]
+
+    # Block path traversal attempts
+    RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|%2e%2e) [NC,OR]
+
+    # Block script injection attempts in query parameters
+    RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+
+    # Block classic SQL injection patterns in query string
+    RewriteCond %{QUERY_STRING} (union(\s+all)?\s+select) [NC,OR]
+    RewriteCond %{QUERY_STRING} (insert\s+into.*values|drop\s+table|drop\s+database) [NC,OR]
+    RewriteCond %{QUERY_STRING} (information_schema|benchmark\(|pg_sleep\(|waitfor\s+delay) [NC,OR]
+    RewriteCond %{QUERY_STRING} (base64_encode|base64_decode|\bGLOBALS\b|\b_REQUEST\b) [NC]
+    RewriteRule .* - [F,L]
+</IfModule>
+
+# Security HTTP headers
+<IfModule mod_headers.c>
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Header unset X-Powered-By
+</IfModule>
