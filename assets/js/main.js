@@ -614,6 +614,203 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  /* Privacy, Terms, and Cookie Consent Engine */
+  const cookieBanner = document.getElementById('cookie-consent-banner');
+  const btnAcceptAll = document.getElementById('btn-accept-all-cookies');
+  const btnAcceptEssential = document.getElementById('btn-accept-essential-cookies');
+  const btnOpenCookiePrefs = document.getElementById('btn-open-cookie-prefs');
+  const triggerCookieSettings = document.getElementById('trigger-cookie-settings');
+  const triggerPrivacyModal = document.getElementById('trigger-privacy-modal');
+  const triggerTermsModal = document.getElementById('trigger-terms-modal');
+  const bannerPrivacyLink = document.getElementById('banner-privacy-link');
+
+  const legalModalBackdrop = document.getElementById('legal-modal-backdrop');
+  const legalModalCloseBtn = document.getElementById('legal-modal-close-btn');
+  const legalTabBtns = document.querySelectorAll('.legal-tab-btn');
+  const legalViews = document.querySelectorAll('.legal-view');
+
+  const prefFunctional = document.getElementById('pref-functional');
+  const prefAnalytics = document.getElementById('pref-analytics');
+  const btnSavePrefs = document.getElementById('btn-save-cookie-prefs');
+  const btnResetPrefs = document.getElementById('btn-reset-cookie-prefs');
+
+  function getStoredCookieConsent() {
+    try {
+      const raw = localStorage.getItem('afm_cookie_consent');
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveCookieConsent(settings) {
+    try {
+      const data = {
+        necessary: true,
+        functional: !!settings.functional,
+        analytics: !!settings.analytics,
+        timestamp: Date.now()
+      };
+      localStorage.setItem('afm_cookie_consent', JSON.stringify(data));
+      if (cookieBanner) {
+        cookieBanner.classList.remove('visible');
+      }
+    } catch (e) {
+      if (cookieBanner) {
+        cookieBanner.classList.remove('visible');
+      }
+    }
+  }
+
+  function openLegalModal(viewId) {
+    if (!legalModalBackdrop) return;
+    legalModalBackdrop.classList.add('active');
+    legalModalBackdrop.setAttribute('aria-hidden', 'false');
+
+    legalTabBtns.forEach(btn => {
+      const isTarget = btn.getAttribute('data-target') === viewId;
+      btn.classList.toggle('active', isTarget);
+      btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+    });
+
+    legalViews.forEach(view => {
+      view.classList.toggle('active', view.id === viewId);
+    });
+
+    if (viewId === 'view-cookies') {
+      const current = getStoredCookieConsent() || { functional: true, analytics: true };
+      if (prefFunctional) prefFunctional.checked = current.functional;
+      if (prefAnalytics) prefAnalytics.checked = current.analytics;
+    }
+
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLegalModal() {
+    if (!legalModalBackdrop) return;
+    legalModalBackdrop.classList.remove('active');
+    legalModalBackdrop.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  legalTabBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const targetView = this.getAttribute('data-target');
+      legalTabBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      this.classList.add('active');
+      this.setAttribute('aria-selected', 'true');
+
+      legalViews.forEach(v => {
+        v.classList.toggle('active', v.id === targetView);
+      });
+    });
+  });
+
+  if (legalModalCloseBtn) {
+    legalModalCloseBtn.addEventListener('click', closeLegalModal);
+  }
+
+  if (legalModalBackdrop) {
+    legalModalBackdrop.addEventListener('click', function (e) {
+      if (e.target === legalModalBackdrop) {
+        closeLegalModal();
+      }
+    });
+  }
+
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && legalModalBackdrop && legalModalBackdrop.classList.contains('active')) {
+      closeLegalModal();
+    }
+  });
+
+  if (triggerPrivacyModal) {
+    triggerPrivacyModal.addEventListener('click', function (e) {
+      e.preventDefault();
+      openLegalModal('view-privacy');
+    });
+  }
+
+  if (bannerPrivacyLink) {
+    bannerPrivacyLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      openLegalModal('view-privacy');
+    });
+  }
+
+  if (triggerTermsModal) {
+    triggerTermsModal.addEventListener('click', function (e) {
+      e.preventDefault();
+      openLegalModal('view-terms');
+    });
+  }
+
+  if (triggerCookieSettings) {
+    triggerCookieSettings.addEventListener('click', function (e) {
+      e.preventDefault();
+      openLegalModal('view-cookies');
+    });
+  }
+
+  if (btnOpenCookiePrefs) {
+    btnOpenCookiePrefs.addEventListener('click', function () {
+      openLegalModal('view-cookies');
+    });
+  }
+
+  if (btnAcceptAll) {
+    btnAcceptAll.addEventListener('click', function () {
+      saveCookieConsent({ functional: true, analytics: true });
+      showToast('All cookie preferences accepted. Thank you!', false);
+    });
+  }
+
+  if (btnAcceptEssential) {
+    btnAcceptEssential.addEventListener('click', function () {
+      saveCookieConsent({ functional: false, analytics: false });
+      showToast('Essential security cookies active.', true);
+    });
+  }
+
+  if (btnSavePrefs) {
+    btnSavePrefs.addEventListener('click', function () {
+      const functionalVal = prefFunctional ? prefFunctional.checked : true;
+      const analyticsVal = prefAnalytics ? prefAnalytics.checked : false;
+      saveCookieConsent({ functional: functionalVal, analytics: analyticsVal });
+      closeLegalModal();
+      showToast('Custom cookie settings saved.', false);
+    });
+  }
+
+  if (btnResetPrefs) {
+    btnResetPrefs.addEventListener('click', function () {
+      if (prefFunctional) prefFunctional.checked = true;
+      if (prefAnalytics) prefAnalytics.checked = true;
+      saveCookieConsent({ functional: true, analytics: true });
+      closeLegalModal();
+      showToast('Cookie preferences reset to defaults.', false);
+    });
+  }
+
+  const existingConsent = getStoredCookieConsent();
+  if (!existingConsent && cookieBanner) {
+    setTimeout(function () {
+      cookieBanner.classList.add('visible');
+    }, 1200);
+  }
+
+  const initialHash = window.location.hash.toLowerCase();
+  if (initialHash === '#privacy') {
+    openLegalModal('view-privacy');
+  } else if (initialHash === '#terms') {
+    openLegalModal('view-terms');
+  } else if (initialHash === '#cookies') {
+    openLegalModal('view-cookies');
+  }
+
   /* Non-pinch zoom controls */
 
   // Block Touchscreen Pinch Zoom (touchscreen laptops and phones)

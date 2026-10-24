@@ -6,7 +6,10 @@
     { "source": "/give(.*)", "destination": "/#giving", "permanent": true },
     { "source": "/sermons(.*)", "destination": "/#watch", "permanent": true },
     { "source": "/events(.*)", "destination": "/#home", "permanent": true },
-    { "source": "/ministries(.*)", "destination": "/#about", "permanent": true }
+    { "source": "/ministries(.*)", "destination": "/#about", "permanent": true },
+    { "source": "/privacy(.*)", "destination": "/#privacy", "permanent": true },
+    { "source": "/terms(.*)", "destination": "/#terms", "permanent": true },
+    { "source": "/cookies(.*)", "destination": "/#cookies", "permanent": true }
   ],
   "headers": [
     {
