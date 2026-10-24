@@ -67,8 +67,8 @@ if (!isset($active_tab)) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
+  <link rel="stylesheet" href="assets/css/style.css?v=2.5">
 
   <!-- Schema.org Structured Data (Rich Google Snippets) -->
   <script type="application/ld+json">
@@ -329,7 +329,11 @@ if (!isset($active_tab)) {
       <div class="mobile-drawer-contact">
         <div class="drawer-contact-item">
           <svg class="icon" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-          <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $church_phone); ?>"><?php echo htmlspecialchars($church_phone); ?></a>
+          <a href="tel:<?php echo preg_replace('/[^0-9+]/', '', $church_phone); ?>">Call: <?php echo htmlspecialchars($church_phone); ?></a>
+        </div>
+        <div class="drawer-contact-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="#25D366"><path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.81 1.558 5.372L2.094 22l4.75-1.442A9.97 9.97 0 0012.03 22c5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2zm0 18.25a8.21 8.21 0 01-4.225-1.168l-.304-.18-3.13.951.956-3.045-.198-.316A8.19 8.19 0 013.78 12.03c0-4.55 3.7-8.25 8.25-8.25 4.55 0 8.25 3.7 8.25 8.25 0 4.55-3.7 8.25-8.25 8.25zm4.516-6.19c-.248-.124-1.464-.722-1.691-.805-.227-.083-.393-.124-.558.124-.165.248-.64 1.054-.785 1.219-.145.165-.29.186-.538.062-.248-.124-1.047-.386-1.995-1.231-.738-.658-1.237-1.472-1.382-1.72-.145-.248-.015-.382.109-.505.111-.111.248-.29.372-.435.124-.145.165-.248.248-.413.083-.165.041-.31-.021-.435-.062-.124-.558-1.344-.765-1.841-.2-.484-.403-.418-.558-.426-.145-.008-.31-.01-.475-.01-.165 0-.434.062-.661.31-.227.248-.868.848-.868 2.068s.889 2.399 1.013 2.564c.124.165 1.748 2.669 4.234 3.743.592.256 1.054.409 1.414.523.595.189 1.136.162 1.564.098.477-.072 1.464-.599 1.671-1.178.207-.579.207-1.075.145-1.178-.062-.103-.227-.165-.475-.29z"/></svg>
+          <a href="https://wa.me/<?php echo preg_replace('/[^0-9]/', '', $church_phone); ?>?text=Hello%20Alive%20Faith%20Ministries,%20I%20would%20like%20to%20connect%20with%20you." target="_blank" rel="noopener noreferrer">WhatsApp Chat</a>
         </div>
         <div class="drawer-contact-item">
           <svg class="icon" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
