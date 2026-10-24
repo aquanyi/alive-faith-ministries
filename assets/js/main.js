@@ -179,42 +179,104 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* Live service countdown */
+  /* ==========================================================================
+     Real-Time Live Service Scheduling & Synchronized Broadcast Engine
+     - Friday: 6:00 PM - 9:00 PM (E.A.T.)
+     - Sunday: 3:30 PM - 6:30 PM (E.A.T.)
+     - Automatically activates "Live" badges, pills, and the Live Broadcast Console
+     - Supports testing with ?live=1 (or window.setLiveMode(true))
+     ========================================================================== */
+
+  // Check URL parameters or local storage for live simulation/override
+  const urlParams = new URLSearchParams(window.location.search);
+  let liveOverride = null;
+  if (urlParams.get('live') === '1' || urlParams.get('live') === 'true' || urlParams.get('preview') === 'live') {
+    liveOverride = true;
+  } else if (urlParams.get('live') === '0' || urlParams.get('live') === 'false') {
+    liveOverride = false;
+  } else if (localStorage.getItem('afm_force_live') === 'true') {
+    liveOverride = true;
+  } else if (localStorage.getItem('afm_force_live') === 'false') {
+    liveOverride = false;
+  }
+
+  // Developer / Admin console helper
+  window.setLiveMode = function (enable) {
+    if (enable === true) {
+      localStorage.setItem('afm_force_live', 'true');
+      liveOverride = true;
+      showToast("🔴 Live Service Mode Activated! All live badges and consoles are now visible.", true);
+    } else if (enable === false) {
+      localStorage.setItem('afm_force_live', 'false');
+      liveOverride = false;
+      showToast("Live Service Mode Disabled. Showing countdown schedule.", false);
+    } else {
+      localStorage.removeItem('afm_force_live');
+      liveOverride = null;
+      showToast("Live Service reset to real-time clock schedule.", false);
+    }
+    updateCountdown();
+  };
+
   function getNextServiceDate() {
+    // If manually overridden for testing/preview
+    if (liveOverride === true) {
+      return { isLive: true, serviceName: "Sunday Celebration Service" };
+    }
+
     const now = new Date();
     // Convert to East Africa Time (UTC+3)
     const eatOffset = 3 * 60; // in minutes
     const localOffset = now.getTimezoneOffset(); // in minutes
     const eatTime = new Date(now.getTime() + (eatOffset + localOffset) * 60000);
 
-    const day = eatTime.getDay(); // 0 = Sunday, 5 = Friday
+    const day = eatTime.getDay(); // 0 = Sunday, 1 = Monday, ..., 5 = Friday, 6 = Saturday
     const hour = eatTime.getHours();
     const minute = eatTime.getMinutes();
 
-    let target = new Date(eatTime);
-    let serviceName = "Friday Service";
+    // Check if within Live Broadcast Windows:
+    // Friday: 18:00 (6:00 PM) to 21:00 (9:00 PM)
+    const isFridayLive = (day === 5 && hour >= 18 && hour < 21);
+    // Sunday: 15:30 (3:30 PM) to 18:30 (6:30 PM)
+    const isSundayLive = (day === 0 && ((hour === 15 && minute >= 30) || (hour >= 16 && hour < 18) || (hour === 18 && minute <= 30)));
 
-    // Friday is day 5, service at 18:00
-    // Sunday is day 0, service at 15:30
-    if (day < 5 || (day === 5 && (hour < 18 || (hour === 18 && minute === 0)))) {
-      // Next is this Friday 18:00
+    if (liveOverride !== false && isFridayLive) {
+      return { isLive: true, serviceName: "Friday Hour of Prayer & Illumination" };
+    }
+    if (liveOverride !== false && isSundayLive) {
+      return { isLive: true, serviceName: "Sunday Celebration Service" };
+    }
+
+    // Otherwise calculate next service target date
+    let target = new Date(eatTime);
+    let serviceName = "";
+
+    if (day >= 1 && day < 5) {
+      // Monday to Thursday -> upcoming Friday 18:00
       target.setDate(eatTime.getDate() + (5 - day));
       target.setHours(18, 0, 0, 0);
       serviceName = "Friday Service (6:00 PM E.A.T.)";
-    } else if (day === 5 && hour >= 18 && hour < 21) {
-      return { isLive: true, serviceName: "Friday Service" };
-    } else if (day === 6 || (day === 0 && (hour < 15 || (hour === 15 && minute < 30)))) {
-      // Next is Sunday 15:30
-      const daysUntilSunday = (7 - day) % 7;
-      target.setDate(eatTime.getDate() + daysUntilSunday);
+    } else if (day === 5 && hour < 18) {
+      // Friday before 18:00 -> today Friday 18:00
+      target.setHours(18, 0, 0, 0);
+      serviceName = "Friday Service (6:00 PM E.A.T.)";
+    } else if (day === 5 && hour >= 21) {
+      // Friday after 21:00 -> this Sunday 15:30
+      target.setDate(eatTime.getDate() + 2);
       target.setHours(15, 30, 0, 0);
       serviceName = "Sunday Celebration (3:30 PM E.A.T.)";
-    } else if (day === 0 && hour >= 15 && hour < 18) {
-      return { isLive: true, serviceName: "Sunday Celebration Service" };
+    } else if (day === 6) {
+      // Saturday -> tomorrow Sunday 15:30
+      target.setDate(eatTime.getDate() + 1);
+      target.setHours(15, 30, 0, 0);
+      serviceName = "Sunday Celebration (3:30 PM E.A.T.)";
+    } else if (day === 0 && (hour < 15 || (hour === 15 && minute < 30))) {
+      // Sunday before 15:30 -> today Sunday 15:30
+      target.setHours(15, 30, 0, 0);
+      serviceName = "Sunday Celebration (3:30 PM E.A.T.)";
     } else {
-      // Next is upcoming Friday
-      const daysUntilNextFriday = (5 - day + 7) % 7 || 7;
-      target.setDate(eatTime.getDate() + daysUntilNextFriday);
+      // Sunday after 18:30 -> upcoming Friday 18:00
+      target.setDate(eatTime.getDate() + 5);
       target.setHours(18, 0, 0, 0);
       serviceName = "Friday Service (6:00 PM E.A.T.)";
     }
@@ -224,39 +286,155 @@ document.addEventListener('DOMContentLoaded', function () {
     return { isLive: false, targetDate: targetLocal, serviceName: serviceName };
   }
 
+  let previousLiveState = null;
+
   function updateCountdown() {
     const next = getNextServiceDate();
+
+    // DOM Elements across Header, Home, Drawer, and Watch Screen
+    const navLivePill = document.getElementById('nav-live-pill');
+    const bottomBarLiveDot = document.getElementById('bottom-bar-live-dot');
+    const drawerLiveDot = document.getElementById('drawer-live-pulse-dot');
+    const drawerWatchLabel = document.getElementById('drawer-watch-label');
+
+    const heroBadgeDot = document.getElementById('hero-badge-dot');
+    const heroBadgeText = document.getElementById('hero-badge-text');
+    const heroBadgeWrap = document.getElementById('hero-badge-wrap');
+    const heroLiveDot = document.getElementById('hero-live-dot');
+    const heroWatchLabel = document.getElementById('hero-watch-label');
+
+    const countdownBanner = document.getElementById('countdown-banner');
+    const countdownGrid = document.getElementById('countdown-grid');
+    const countdownLiveCta = document.getElementById('countdown-live-cta');
+    const cdPulseDot = document.getElementById('cd-pulse-dot');
+    const statusEl = document.getElementById('cd-status-text');
+    const subEl = document.getElementById('cd-sub-text');
+
     const daysEl = document.getElementById('cd-days');
     const hoursEl = document.getElementById('cd-hours');
     const minsEl = document.getElementById('cd-mins');
     const secsEl = document.getElementById('cd-secs');
-    const statusEl = document.getElementById('cd-status-text');
 
-    if (!daysEl) return;
+    const watchStagePulseDot = document.getElementById('watch-stage-pulse-dot');
+    const watchStageStatusLabel = document.getElementById('watch-stage-status-label');
+    const streamTitleDisplay = document.getElementById('stream-title-display');
+    const streamDescDisplay = document.getElementById('stream-desc-display');
+    const theaterGlowTitle = document.getElementById('theater-glow-title');
+    const theaterGlowSub = document.getElementById('theater-glow-sub');
+
+    // Notify user if service just went live during their session
+    if (previousLiveState === false && next.isLive === true) {
+      showToast(`🔴 Alive Faith Ministries is NOW LIVE: ${next.serviceName}! Tap to watch.`, true);
+    }
+    previousLiveState = next.isLive;
 
     if (next.isLive) {
-      if (statusEl) statusEl.innerHTML = `<span class="live-pulse-dot" style="margin-right: 6px;"></span> LIVE NOW: ${next.serviceName}`;
-      daysEl.innerText = "00";
-      hoursEl.innerText = "00";
-      minsEl.innerText = "00";
-      secsEl.innerText = "00";
-      return;
+      // 1. Reveal "Live" pill in Desktop Navbar
+      if (navLivePill) {
+        navLivePill.style.display = 'inline-flex';
+        navLivePill.classList.add('is-live');
+      }
+
+      // 2. Reveal pulse beacon on Mobile Bottom Bar
+      if (bottomBarLiveDot) {
+        bottomBarLiveDot.style.display = 'inline-block';
+      }
+
+      // 3. Update Mobile Drawer Watch Button
+      if (drawerLiveDot) drawerLiveDot.style.display = 'inline-block';
+      if (drawerWatchLabel) drawerWatchLabel.innerText = '🔴 Watch Live Stream Now';
+
+      // 4. Update Hero Banner Badge & CTA Button
+      if (heroBadgeDot) heroBadgeDot.style.display = 'inline-block';
+      if (heroBadgeText) heroBadgeText.innerText = `🔴 BROADCASTING LIVE NOW • ${next.serviceName}`;
+      if (heroBadgeWrap) heroBadgeWrap.classList.add('is-live');
+      if (heroLiveDot) heroLiveDot.style.display = 'inline-block';
+      if (heroWatchLabel) heroWatchLabel.innerText = 'Watch Live Now';
+
+      // 5. Transform Home Countdown Banner into Live Broadcast Console
+      if (countdownBanner) countdownBanner.classList.add('is-live-active');
+      if (countdownGrid) countdownGrid.style.display = 'none';
+      if (countdownLiveCta) countdownLiveCta.style.display = 'flex';
+      if (cdPulseDot) cdPulseDot.style.display = 'inline-block';
+      if (statusEl) {
+        statusEl.innerHTML = `<span class="live-pulse-dot" style="margin-right: 6px; background-color: #ff3333;"></span> LIVE NOW: ${next.serviceName}`;
+      }
+      if (subEl) {
+        subEl.innerText = 'Service is currently broadcasting live from the sanctuary! Click below to join:';
+      }
+
+      // 6. Update Watch Tab Cinema Stage Header & Details
+      if (watchStagePulseDot) watchStagePulseDot.style.display = 'inline-block';
+      if (watchStageStatusLabel) watchStageStatusLabel.innerText = '🔴 ON AIR: LIVE FELLOWSHIP IN PROGRESS';
+      if (streamTitleDisplay) streamTitleDisplay.innerText = `🔴 Alive Faith Ministries Live: ${next.serviceName}`;
+      if (streamDescDisplay) {
+        streamDescDisplay.innerText = 'Join our sanctuary fellowship stream in session right now! Experience worship, fervent prayer, and revelatory teaching of the Word.';
+      }
+      if (theaterGlowTitle) theaterGlowTitle.innerText = '🔴 High-Definition Live Stream Active';
+      if (theaterGlowSub) theaterGlowSub.innerText = 'Streaming live across Facebook Live & Digital Outlets';
+
+    } else {
+      // 1. Hide "Live" pill in Desktop Navbar when service has not arrived
+      if (navLivePill) {
+        navLivePill.style.display = 'none';
+        navLivePill.classList.remove('is-live');
+      }
+
+      // 2. Hide pulse beacon on Mobile Bottom Bar
+      if (bottomBarLiveDot) {
+        bottomBarLiveDot.style.display = 'none';
+      }
+
+      // 3. Reset Mobile Drawer Watch Button
+      if (drawerLiveDot) drawerLiveDot.style.display = 'none';
+      if (drawerWatchLabel) drawerWatchLabel.innerText = 'Watch Services';
+
+      // 4. Reset Hero Banner Badge & CTA Button
+      if (heroBadgeDot) heroBadgeDot.style.display = 'none';
+      if (heroBadgeText) heroBadgeText.innerText = 'Experience Faith, Grace & Intimacy with God';
+      if (heroBadgeWrap) heroBadgeWrap.classList.remove('is-live');
+      if (heroLiveDot) heroLiveDot.style.display = 'none';
+      if (heroWatchLabel) heroWatchLabel.innerText = 'Watch Services';
+
+      // 5. Restore Normal Ticking Countdown Banner
+      if (countdownBanner) countdownBanner.classList.remove('is-live-active');
+      if (countdownGrid) countdownGrid.style.display = '';
+      if (countdownLiveCta) countdownLiveCta.style.display = 'none';
+      if (cdPulseDot) cdPulseDot.style.display = 'none';
+      if (statusEl) statusEl.innerText = `Next Gathering: ${next.serviceName}`;
+      if (subEl) subEl.innerText = 'Real-Time Gathering Clock';
+
+      // 6. Reset Watch Tab Cinema Stage
+      if (watchStagePulseDot) watchStagePulseDot.style.display = 'none';
+      if (watchStageStatusLabel) watchStageStatusLabel.innerText = 'AFM Global Broadcast Feed';
+      if (streamTitleDisplay) streamTitleDisplay.innerText = 'Alive Faith Ministries Live Broadcast';
+      if (streamDescDisplay) {
+        streamDescDisplay.innerText = 'Join our live fellowship stream every Friday at 6:00 PM and Sunday at 3:30 PM (East Africa Time). Experience worship, fervent prayer, and revelatory teaching of the Word.';
+      }
+      if (theaterGlowTitle) theaterGlowTitle.innerText = 'High-Definition Broadcast Ready';
+      if (theaterGlowSub) theaterGlowSub.innerText = 'Friday: 6:00 PM (E.A.T.) • Sunday: 3:30 PM (E.A.T.)';
+
+      // Calculate Countdown Ticker Values
+      if (daysEl && hoursEl && minsEl && secsEl && next.targetDate) {
+        const diff = next.targetDate - new Date();
+        if (diff > 0) {
+          const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+          const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+          const m = Math.floor((diff / (1000 * 60)) % 60);
+          const s = Math.floor((diff / 1000) % 60);
+
+          daysEl.innerText = d < 10 ? '0' + d : d;
+          hoursEl.innerText = h < 10 ? '0' + h : h;
+          minsEl.innerText = m < 10 ? '0' + m : m;
+          secsEl.innerText = s < 10 ? '0' + s : s;
+        } else {
+          daysEl.innerText = "00";
+          hoursEl.innerText = "00";
+          minsEl.innerText = "00";
+          secsEl.innerText = "00";
+        }
+      }
     }
-
-    if (statusEl) statusEl.innerText = `Next Gathering: ${next.serviceName}`;
-
-    const diff = next.targetDate - new Date();
-    if (diff <= 0) return;
-
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-
-    daysEl.innerText = d < 10 ? '0' + d : d;
-    hoursEl.innerText = h < 10 ? '0' + h : h;
-    minsEl.innerText = m < 10 ? '0' + m : m;
-    secsEl.innerText = s < 10 ? '0' + s : s;
   }
 
   updateCountdown();

@@ -112,7 +112,7 @@
     </a>
   </aside>
 
-  <!-- Main JavaScript File -->
-  <script src="assets/js/main.js"></script>
+  <!-- Main JavaScript File (Versioned for Instant Mobile Cache Busting) -->
+  <script src="assets/js/main.js?v=2.6"></script>
 </body>
 </html>

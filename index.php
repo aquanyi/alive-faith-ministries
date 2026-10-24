@@ -93,9 +93,9 @@ require_once __DIR__ . '/includes/header.php';
       <div class="phaneroo-hero-grid">
         <!-- Left: Open Invitation & Call to Action -->
         <div>
-          <div class="hero-badge">
-            <span class="live-pulse-dot" style="margin-right: 0.35rem;"></span>
-            <?php echo htmlspecialchars($church_motto); ?>
+          <div class="hero-badge" id="hero-badge-wrap">
+            <span class="live-pulse-dot" id="hero-badge-dot" style="margin-right: 0.35rem; display: none;"></span>
+            <span id="hero-badge-text"><?php echo htmlspecialchars($church_motto); ?></span>
           </div>
 
           <h1 class="phaneroo-hero-title">
@@ -119,9 +119,9 @@ require_once __DIR__ . '/includes/header.php';
           </div>
 
           <div class="hero-buttons">
-            <a href="#watch" class="btn btn-primary" data-tab-target="tab-watch">
-              <span class="live-pulse-dot" style="background-color: #ffffff;"></span>
-              Watch Live
+            <a href="#watch" class="btn btn-primary" id="hero-watch-btn" data-tab-target="tab-watch">
+              <span class="live-pulse-dot" id="hero-live-dot" style="background-color: #ffffff; display: none;"></span>
+              <span id="hero-watch-label">Watch Services</span>
             </a>
             <a href="#contact" class="btn btn-outline-light" data-tab-target="tab-contact">Plan a Visit</a>
             <a href="#about" class="btn btn-secondary" data-tab-target="tab-about">About AFM</a>
@@ -152,16 +152,18 @@ require_once __DIR__ . '/includes/header.php';
         </div>
       </div>
 
-      <!-- Real-Time Live Gathering Countdown Ticker Engine -->
-      <div class="countdown-banner">
+      <!-- Real-Time Live Gathering Countdown Ticker & Live Broadcast Console -->
+      <div class="countdown-banner" id="countdown-banner">
         <div class="countdown-title-wrap">
-          <span class="live-pulse-dot"></span>
+          <span class="live-pulse-dot" id="cd-pulse-dot" style="display: none;"></span>
           <div>
-            <div class="countdown-title" id="cd-status-text">Next Gathering: Friday Service (6:00 PM E.A.T.)</div>
-            <div class="countdown-sub">Real-Time Gathering Clock</div>
+            <div class="countdown-title" id="cd-status-text">Next Gathering: Sunday Celebration (3:30 PM E.A.T.)</div>
+            <div class="countdown-sub" id="cd-sub-text">Real-Time Gathering Clock</div>
           </div>
         </div>
-        <div class="countdown-grid">
+
+        <!-- Normal Counting Down Grid (Visible when Waiting for Service) -->
+        <div class="countdown-grid" id="countdown-grid">
           <div class="countdown-unit">
             <div class="countdown-val" id="cd-days">00</div>
             <div class="countdown-lbl">Days</div>
@@ -181,6 +183,19 @@ require_once __DIR__ . '/includes/header.php';
             <div class="countdown-val" id="cd-secs">00</div>
             <div class="countdown-lbl">Secs</div>
           </div>
+        </div>
+
+        <!-- Active Live Stream Action Console (Revealed Dynamically Once Service Time Arrives) -->
+        <div class="countdown-live-cta" id="countdown-live-cta" style="display: none;">
+          <a href="#watch" class="btn btn-live-cta" data-tab-target="tab-watch">
+            <span class="live-pulse-dot" style="background: #ffffff;"></span>
+            <span>View Service Live</span>
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </a>
+          <a href="<?php echo htmlspecialchars($church_facebook); ?>" target="_blank" rel="noopener noreferrer" class="btn btn-facebook-live-pill" aria-label="Watch on Facebook Live">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span>Facebook Stream</span>
+          </a>
         </div>
       </div>
 
@@ -1183,8 +1198,8 @@ require_once __DIR__ . '/includes/header.php';
         <div class="cinema-stage-frame">
           <div class="cinema-stage-topbar">
             <div style="display: flex; align-items: center; gap: 0.6rem;">
-              <span class="live-pulse-dot"></span>
-              <span style="color: #ffffff; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">
+              <span class="live-pulse-dot" id="watch-stage-pulse-dot" style="display: none;"></span>
+              <span id="watch-stage-status-label" style="color: #ffffff; font-size: 0.88rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;">
                 AFM Global Broadcast Feed
               </span>
             </div>
@@ -1206,12 +1221,12 @@ require_once __DIR__ . '/includes/header.php';
               Join our live fellowship stream every Friday at 6:00 PM and Sunday at 3:30 PM (East Africa Time). Experience worship, fervent prayer, and revelatory teaching of the Word.
             </p>
 
-            <div class="theater-glow">
+            <div class="theater-glow" id="theater-glow-box">
               <div style="color: var(--amber-light); margin-bottom: 0.8rem;">
                 <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
               </div>
-              <h4 style="color: #ffffff; font-size: 1.35rem; margin-bottom: 0.4rem;">High-Definition Broadcast Ready</h4>
-              <p style="font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); margin: 0;">
+              <h4 style="color: #ffffff; font-size: 1.35rem; margin-bottom: 0.4rem;" id="theater-glow-title">High-Definition Broadcast Ready</h4>
+              <p style="font-size: 0.92rem; color: rgba(255, 255, 255, 0.85); margin: 0;" id="theater-glow-sub">
                 Friday: 6:00 PM (E.A.T.) &bull; Sunday: 3:30 PM (E.A.T.)
               </p>
             </div>

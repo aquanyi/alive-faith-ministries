@@ -68,7 +68,7 @@ if (!isset($active_tab)) {
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2.5">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.6">
 
   <!-- Schema.org Structured Data (Rich Google Snippets) -->
   <script type="application/ld+json">
@@ -198,9 +198,10 @@ if (!isset($active_tab)) {
           <a href="<?php echo htmlspecialchars($church_facebook); ?>" target="_blank" rel="noopener noreferrer" class="nav-facebook-btn" aria-label="Visit AFM on Facebook" title="Follow us on Facebook">
             <svg class="icon" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
-          <a href="#watch" class="nav-live-pill" data-tab-target="tab-watch">
+          <!-- Dynamic Live Stream Beacon (Activated Exclusively When Gathering is Live) -->
+          <a href="#watch" class="nav-live-pill" data-tab-target="tab-watch" id="nav-live-pill" style="display: none;">
             <span class="live-pulse-dot"></span>
-            <span>Live</span>
+            <span>Live Now</span>
           </a>
           <a href="#contact" class="btn btn-primary nav-cta-btn hide-on-mobile" data-tab-target="tab-contact">
             Join
@@ -316,9 +317,9 @@ if (!isset($active_tab)) {
 
       <!-- Drawer Action Buttons -->
       <div class="mobile-drawer-actions">
-        <a href="#watch" class="btn btn-primary" data-tab-target="tab-watch" style="width: 100%;">
-          <span class="live-pulse-dot" style="background-color: #ffffff;"></span>
-          Watch Live Stream
+        <a href="#watch" class="btn btn-primary" id="drawer-watch-live-btn" data-tab-target="tab-watch" style="width: 100%;">
+          <span class="live-pulse-dot" id="drawer-live-pulse-dot" style="background-color: #ffffff; display: none;"></span>
+          <span id="drawer-watch-label">Watch Services</span>
         </a>
         <a href="#contact" class="btn btn-secondary" data-tab-target="tab-contact" style="width: 100%;">
           Plan a Visit
@@ -358,7 +359,7 @@ if (!isset($active_tab)) {
       <span>Home</span>
     </a>
     <a href="#watch" class="bottom-bar-item <?php echo ($active_tab === 'tab-watch') ? 'active' : ''; ?>" data-tab="tab-watch">
-      <span class="live-pulse-dot" style="position: absolute; top: 6px; right: 22%;"></span>
+      <span class="live-pulse-dot" id="bottom-bar-live-dot" style="position: absolute; top: 6px; right: 22%; display: none;"></span>
       <svg class="icon" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       <span>Watch</span>
     </a>
