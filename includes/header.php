@@ -22,7 +22,7 @@ if (!isset($active_tab)) {
   <meta name="author" content="Alive Faith Ministries">
   <meta name="csrf-token" content="<?php echo htmlspecialchars(get_csrf_token()); ?>">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <link rel="canonical" href="https://www.livefaithministries.org/">
+  <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
   
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="googlee439da0fb1beeddb">
@@ -30,7 +30,7 @@ if (!isset($active_tab)) {
   
   <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.livefaithministries.org/">
+  <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
   <meta property="og:site_name" content="Alive Faith Ministries">
   <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
   <meta property="og:description" content="<?php echo htmlspecialchars($about_summary); ?>">
@@ -42,7 +42,7 @@ if (!isset($active_tab)) {
 
   <!-- Twitter / X Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://www.livefaithministries.org/">
+  <meta name="twitter:url" content="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
   <meta name="twitter:title" content="<?php echo htmlspecialchars($page_title); ?>">
   <meta name="twitter:description" content="<?php echo htmlspecialchars($about_summary); ?>">
   <meta name="twitter:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
