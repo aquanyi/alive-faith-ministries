@@ -83,24 +83,33 @@ document.addEventListener('DOMContentLoaded', function () {
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
   if (backdrop) backdrop.addEventListener('click', closeDrawer);
 
-  // Switch Between Independent Tabs
+  // Switch Between Independent Tabs (Rock-solid, zero redundant re-renders or flickers)
   function switchTab(targetTabId, updateHash = true) {
     if (!targetTabId) return;
 
-    tabPanes.forEach(pane => pane.classList.remove('active'));
+    const currentActivePane = document.querySelector('.tab-pane.active');
+    if (currentActivePane && currentActivePane.id === targetTabId) {
+      // Already active: smoothly scroll to top without re-triggering animations or flickering
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      closeDrawer();
+      return;
+    }
+
+    tabPanes.forEach(pane => {
+      if (pane.id !== targetTabId) {
+        pane.classList.remove('active');
+      }
+    });
 
     const activePane = document.getElementById(targetTabId);
     if (activePane) {
       activePane.classList.add('active');
-      triggerCardAnimations(activePane);
     }
 
     // Update active state across desktop tabs, mobile drawer items, and floating bottom bar
     document.querySelectorAll('.nav-tab, .mobile-nav-item, .bottom-bar-item').forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('data-tab') === targetTabId) {
-        link.classList.add('active');
-      }
+      const match = link.getAttribute('data-tab') === targetTabId || link.getAttribute('data-tab-target') === targetTabId;
+      link.classList.toggle('active', match);
     });
 
     if (updateHash) {
@@ -116,45 +125,20 @@ document.addEventListener('DOMContentLoaded', function () {
     closeDrawer();
   }
 
-  function triggerCardAnimations(container) {
-    const cards = container.querySelectorAll(
-      '.spotlight-card, .pillar-card, .home-service-card, .faith-card, .giving-card, .quick-access-card, ' +
-      '.roadmap-card, .visitor-card, .contact-action-box, .giving-impact-card, .tier-card, .mpesa-step-card, ' +
-      '.salvation-step-card, .faq-item, .cinema-stage-frame, .sermon-notes-card, .tz-converter-box, .pastoral-heart-card'
-    );
-    cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(22px)';
-      card.style.transition = 'none';
-      setTimeout(() => {
-        card.style.transition = 'opacity 0.42s cubic-bezier(0.16, 1, 0.3, 1), transform 0.42s cubic-bezier(0.16, 1, 0.3, 1)';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, 30 + Math.min(index * 35, 450));
-    });
-  }
+  // Single Unified Click Delegation (Prevents duplicate handler firing & click bouncing)
+  document.addEventListener('click', function (e) {
+    const tabLink = e.target.closest('[data-tab], [data-tab-target], a[href^="#"]');
+    if (!tabLink) return;
 
-  document.querySelectorAll('[data-tab]').forEach(el => {
-    el.addEventListener('click', function (e) {
+    const targetTab = tabLink.getAttribute('data-tab') || tabLink.getAttribute('data-tab-target');
+    const href = tabLink.getAttribute('href');
+
+    if (targetTab) {
       e.preventDefault();
-      switchTab(this.getAttribute('data-tab'), true);
-    });
-  });
-
-  document.querySelectorAll('[data-tab-target]').forEach(btn => {
-    btn.addEventListener('click', function (e) {
+      switchTab(targetTab, true);
+    } else if (href && tabMap[href]) {
       e.preventDefault();
-      switchTab(this.getAttribute('data-tab-target'), true);
-    });
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    const hash = anchor.getAttribute('href');
-    if (tabMap[hash]) {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        switchTab(tabMap[hash], true);
-      });
+      switchTab(tabMap[href], true);
     }
   });
 
@@ -166,7 +150,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const initialHash = window.location.hash;
   const initialTabId = (initialHash && tabMap[initialHash]) ? tabMap[initialHash] : 'tab-home';
   const initialPane = document.getElementById(initialTabId);
-  if (initialPane) switchTab(initialTabId, false);
+
+  if (initialTabId !== 'tab-home' && initialPane) {
+    // Only switch if user landed directly on a non-home tab (e.g. #about, #watch)
+    switchTab(initialTabId, false);
+  } else {
+    // User is on Home: ensure nav links are synced without re-animating or flickering
+    document.querySelectorAll('.nav-tab, .mobile-nav-item, .bottom-bar-item').forEach(link => {
+      const isHome = link.getAttribute('data-tab') === 'tab-home' || link.getAttribute('data-tab-target') === 'tab-home';
+      link.classList.toggle('active', isHome);
+    });
+  }
 
   /* Live service countdown */
   function getNextServiceDate() {
@@ -475,27 +469,45 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   initSpotlightCards();
 
-  /* Active hero photographic background carousel with Ken Burns drift */
+  /* Active hero photographic background carousel with Ken Burns drift (Flicker-free crossfade) */
   const heroSlides = document.querySelectorAll('.hero-slide');
   let currentHeroSlide = 0;
 
   if (heroSlides.length > 1) {
     setInterval(() => {
-      heroSlides[currentHeroSlide].classList.remove('active');
+      const prevSlide = heroSlides[currentHeroSlide];
+      prevSlide.classList.remove('active');
+      prevSlide.classList.add('prev');
+
       currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-      heroSlides[currentHeroSlide].classList.add('active');
+      const nextSlide = heroSlides[currentHeroSlide];
+      nextSlide.classList.remove('prev');
+      nextSlide.classList.add('active');
+
+      setTimeout(() => {
+        prevSlide.classList.remove('prev');
+      }, 2300);
     }, 6500);
   }
 
-  /* Continuous serene ambient background crossfader */
+  /* Continuous serene ambient background crossfader (Flicker-free crossfade) */
   const ambientSlides = document.querySelectorAll('.ambient-slide');
   let currentAmbientIndex = 0;
 
   if (ambientSlides.length > 1) {
     setInterval(() => {
-      ambientSlides[currentAmbientIndex].classList.remove('active');
+      const prevAmbient = ambientSlides[currentAmbientIndex];
+      prevAmbient.classList.remove('active');
+      prevAmbient.classList.add('prev');
+
       currentAmbientIndex = (currentAmbientIndex + 1) % ambientSlides.length;
-      ambientSlides[currentAmbientIndex].classList.add('active');
+      const nextAmbient = ambientSlides[currentAmbientIndex];
+      nextAmbient.classList.remove('prev');
+      nextAmbient.classList.add('active');
+
+      setTimeout(() => {
+        prevAmbient.classList.remove('prev');
+      }, 2700);
     }, 7500);
   }
 
