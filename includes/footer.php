@@ -81,7 +81,7 @@
 
       <!-- Footer Bottom (Clean, Well-Balanced 3-Column Baseline) -->
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; <?php echo date('Y'); ?> <?php echo htmlspecialchars($church_name); ?>. All rights reserved.</p>
+        <p class="footer-copyright">&copy; <?php echo date('Y'); ?> Live Faith Ministries (Alive Faith Ministries &bull; AFM). All rights reserved.</p>
         <div class="footer-legal-row">
           <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
           <span class="footer-legal-dot">&bull;</span>

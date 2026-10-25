@@ -68,7 +68,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
     }
 }
 
-$page_title = $church_name . " | " . $church_motto;
+$page_title = "Live Faith Ministries | Alive Faith Ministries (AFM) - Official Portal";
 require_once __DIR__ . '/includes/header.php';
 ?>
 
@@ -104,7 +104,7 @@ require_once __DIR__ . '/includes/header.php';
           </h1>
 
           <p class="lead">
-            Welcome to <?php echo htmlspecialchars($church_name); ?>. A non-denominational Ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus. Experience Faith, Grace and Intimacy with God.
+            Welcome to Live Faith Ministries (Alive Faith Ministries &bull; AFM). A vibrant, non-denominational Ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus. Experience Faith, Grace and Intimacy with God.
           </p>
 
           <div class="worship-wave-bar">
@@ -242,7 +242,7 @@ require_once __DIR__ . '/includes/header.php';
         <h2 class="who-we-are-heading">Who we are</h2>
         <div>
           <p class="who-we-are-text">
-            <strong>Alive Faith Ministries (AFM)</strong> is a dynamic, non-denominational Ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus. Experience Faith, Grace and Intimacy with God.
+            <strong>Live Faith Ministries</strong> (also known as <strong>Alive Faith Ministries &bull; AFM</strong>) is a dynamic, non-denominational Ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus. Experience Faith, Grace and Intimacy with God.
           </p>
           <div style="margin-top: 1.4rem;">
             <a href="#about" class="btn btn-secondary" data-tab-target="tab-about">

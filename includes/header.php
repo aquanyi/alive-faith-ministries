@@ -1,10 +1,11 @@
 <?php
 if (!isset($page_title)) {
-    $page_title = $church_name . " | " . $church_motto;
+    $page_title = "Live Faith Ministries | Alive Faith Ministries (AFM) - Official Portal";
 }
 if (!isset($active_tab)) {
     $active_tab = 'tab-home';
 }
+$meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Ministries - AFM) at livefaithministries.org. Experience Faith, Grace and Intimacy with God. Join our Friday & Sunday worship services in Nairobi, Kenya or stream live online. Watch revelatory sermons, give voluntary offerings via M-Pesa, and submit prayer requests.";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
@@ -17,29 +18,30 @@ if (!isset($active_tab)) {
   <meta name="MobileOptimized" content="width">
   <meta name="format-detection" content="telephone=no">
   <title><?php echo htmlspecialchars($page_title); ?></title>
-  <meta name="description" content="<?php echo htmlspecialchars($about_summary); ?>">
-  <meta name="keywords" content="Alive Faith Ministries, AFM, Church Nairobi Kenya, Experience Faith Grace and Intimacy with God, Friday Service, Sunday Celebration Service, Christian Fellowship, Prayer and Teachings, M-Pesa Giving, Sermons Online, Live Faith Ministries">
-  <meta name="author" content="Alive Faith Ministries">
+  <meta name="description" content="<?php echo htmlspecialchars($meta_description_default); ?>">
+  <meta name="keywords" content="Live Faith, LiveFaith, Live Faith Ministries, LiveFaithMinistries, livefaithministries.org, Alive Faith Ministries, AFM, Live Faith Church, Church Nairobi Kenya, Experience Faith Grace and Intimacy with God, Friday Service, Sunday Celebration Service, Christian Fellowship, Prayer and Teachings, M-Pesa Giving, Sermons Online, Church near me Nairobi">
+  <meta name="author" content="Live Faith Ministries">
   <meta name="csrf-token" content="<?php echo htmlspecialchars(get_csrf_token()); ?>">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
   
-  <!-- Google Search Console Verification -->
+  <!-- Search Engine Verification (Google & Bing) -->
   <meta name="google-site-verification" content="googlee439da0fb1beeddb">
   <meta name="google-site-verification" content="e439da0fb1beeddb">
+  <meta name="msvalidate.01" content="918D94204B716ABA93451065E721A619">
   
   <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
-  <meta property="og:site_name" content="Alive Faith Ministries">
+  <meta property="og:site_name" content="Live Faith Ministries (Alive Faith Ministries)">
   <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
-  <meta property="og:description" content="<?php echo htmlspecialchars($about_summary); ?>">
+  <meta property="og:description" content="<?php echo htmlspecialchars($meta_description_default); ?>">
   <meta property="og:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
   <meta property="og:image:secure_url" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Alive Faith Ministries - Church Worship and Word Gathering">
+  <meta property="og:image:alt" content="Live Faith Ministries - Church Worship and Word Gathering Nairobi">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="en_GB">
 
@@ -53,14 +55,14 @@ if (!isset($active_tab)) {
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="<?php echo htmlspecialchars($canonical_url ?? 'https://www.livefaithministries.org/'); ?>">
   <meta name="twitter:title" content="<?php echo htmlspecialchars($page_title); ?>">
-  <meta name="twitter:description" content="<?php echo htmlspecialchars($about_summary); ?>">
+  <meta name="twitter:description" content="<?php echo htmlspecialchars($meta_description_default); ?>">
   <meta name="twitter:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
 
   <!-- Mobile Theme & PWA Manifest -->
   <meta name="theme-color" content="#071f11">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Alive Faith">
+  <meta name="apple-mobile-web-app-title" content="Live Faith">
   <link rel="manifest" href="site.webmanifest">
   
   <!-- Favicon and Brand Touch Icons -->
@@ -79,7 +81,7 @@ if (!isset($active_tab)) {
   <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
   <link rel="stylesheet" href="assets/css/style.css?v=3.0">
 
-  <!-- Enterprise Linked Schema.org Graph (Rich Google Snippets & Knowledge Graph) -->
+  <!-- Enterprise Linked Schema.org Graph (Google Knowledge Graph & Sitelinks) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,14 +89,24 @@ if (!isset($active_tab)) {
       {
         "@type": ["Church", "PlaceOfWorship"],
         "@id": "https://www.livefaithministries.org/#church",
-        "name": "Alive Faith Ministries",
-        "alternateName": ["AFM", "Live Faith Ministries", "Alive Faith Ministries Kenya", "Alive Faith Church"],
+        "name": "Live Faith Ministries",
+        "alternateName": [
+          "Alive Faith Ministries",
+          "AFM",
+          "LiveFaith",
+          "Live Faith",
+          "LiveFaith Ministries",
+          "LiveFaithMinistries",
+          "Alive Faith Church",
+          "Live Faith Church Nairobi",
+          "Alive Faith Ministries Kenya"
+        ],
         "url": "https://www.livefaithministries.org/",
         "logo": {
           "@type": "ImageObject",
           "@id": "https://www.livefaithministries.org/#logo",
           "url": "https://www.livefaithministries.org/assets/images/logo.png",
-          "caption": "Alive Faith Ministries Official Logo"
+          "caption": "Live Faith Ministries Official Logo"
         },
         "image": {
           "@type": "ImageObject",
@@ -102,9 +114,9 @@ if (!isset($active_tab)) {
           "url": "https://www.livefaithministries.org/assets/images/worship-hero.jpg",
           "width": 1200,
           "height": 630,
-          "caption": "Alive Faith Ministries Church Worship and Word Gathering Nairobi"
+          "caption": "Live Faith Ministries Church Worship and Word Gathering Nairobi"
         },
-        "description": "Alive Faith Ministries is a non-denominational ministry in Nairobi, Kenya with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
+        "description": "Live Faith Ministries (Alive Faith Ministries - AFM) is a non-denominational ministry in Nairobi, Kenya with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
         "slogan": "FAITH | SALVATION | GRACE",
         "telephone": "+254712785016",
         "email": "info@livefaithministries.org",
@@ -147,12 +159,66 @@ if (!isset($active_tab)) {
         "@type": "WebSite",
         "@id": "https://www.livefaithministries.org/#website",
         "url": "https://www.livefaithministries.org/",
-        "name": "Alive Faith Ministries",
-        "description": "Official portal of Alive Faith Ministries Nairobi Kenya - Sermons, Livestream, M-Pesa Giving, Statement of Faith and Community.",
+        "name": "Live Faith Ministries",
+        "alternateName": [
+          "LiveFaith",
+          "LiveFaithMinistries",
+          "Alive Faith Ministries",
+          "AFM",
+          "Live Faith"
+        ],
+        "description": "Official portal of Live Faith Ministries (Alive Faith Ministries) Nairobi Kenya - Watch Live Sermons, M-Pesa Giving, Statement of Faith, and Community Gatherings.",
         "publisher": {
           "@id": "https://www.livefaithministries.org/#church"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.livefaithministries.org/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://www.livefaithministries.org/#sitelinks",
+        "name": "Live Faith Ministries Key Sections",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "About Live Faith Ministries",
+            "description": "Our mission, vision, spiritual foundation, and pastoral leadership",
+            "url": "https://www.livefaithministries.org/#about"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Watch Live Services",
+            "description": "Stream live worship, revelatory sermons, and listen to the sermon soundwave player",
+            "url": "https://www.livefaithministries.org/#watch"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Online Giving & Tithe",
+            "description": "Support the Gospel with free-will giving and covenant partnership via M-Pesa",
+            "url": "https://www.livefaithministries.org/#giving"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Statement of Faith",
+            "description": "The biblical doctrines and core beliefs of Alive Faith Ministries",
+            "url": "https://www.livefaithministries.org/#faith"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Contact & Prayer Requests",
+            "description": "Submit a prayer request, reach pastoral counseling, or get directions to the sanctuary",
+            "url": "https://www.livefaithministries.org/#contact"
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",

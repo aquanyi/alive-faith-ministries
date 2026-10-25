@@ -1,12 +1,52 @@
 {
-  "name": "Alive Faith Ministries",
-  "short_name": "Alive Faith",
-  "description": "Alive Faith Ministries (AFM) - Experience Faith, Grace and Intimacy with God.",
+  "name": "Live Faith Ministries (Alive Faith Ministries)",
+  "short_name": "Live Faith",
+  "description": "Live Faith Ministries (AFM) - Experience Faith, Grace and Intimacy with God in Nairobi, Kenya.",
   "start_url": "/",
+  "id": "https://www.livefaithministries.org/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#071f11",
   "theme_color": "#071f11",
   "orientation": "portrait-primary",
+  "categories": ["religion", "lifestyle", "community"],
+  "shortcuts": [
+    {
+      "name": "Watch Live Services",
+      "short_name": "Watch Live",
+      "description": "Stream AFM live worship and revelatory sermons",
+      "url": "/#watch",
+      "icons": [{ "src": "assets/images/favicon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "M-Pesa Giving & Tithe",
+      "short_name": "Giving",
+      "description": "Give your voluntary offering or tithe via M-Pesa",
+      "url": "/#giving",
+      "icons": [{ "src": "assets/images/favicon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "About Live Faith Ministries",
+      "short_name": "About",
+      "description": "Our mission, priestly mandate and leadership",
+      "url": "/#about",
+      "icons": [{ "src": "assets/images/favicon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Statement of Faith",
+      "short_name": "Faith",
+      "description": "Doctrinal foundations and core biblical beliefs",
+      "url": "/#faith",
+      "icons": [{ "src": "assets/images/favicon-48x48.png", "sizes": "48x48" }]
+    },
+    {
+      "name": "Contact & Prayer Requests",
+      "short_name": "Prayer",
+      "description": "Reach pastoral leadership and submit prayer requests",
+      "url": "/#contact",
+      "icons": [{ "src": "assets/images/favicon-48x48.png", "sizes": "48x48" }]
+    }
+  ],
   "icons": [
     {
       "src": "assets/images/favicon-32x32.png",
