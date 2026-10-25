@@ -179,13 +179,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ==========================================================================
-     Real-Time Live Service Scheduling & Synchronized Broadcast Engine
-     - Friday: 6:00 PM - 9:00 PM (E.A.T.)
-     - Sunday: 3:30 PM - 6:30 PM (E.A.T.)
-     - Automatically activates "Live" badges, pills, and the Live Broadcast Console
-     - Supports testing with ?live=1 (or window.setLiveMode(true))
-     ========================================================================== */
+  /* Real-Time Live Service Scheduling and Synchronized Broadcast Engine
+     Friday: 6:00 PM to 9:00 PM (E.A.T.)
+     Sunday: 3:30 PM to 6:30 PM (E.A.T.)
+     Automatically activates Live badges, pills, and the Live Broadcast Console
+     Supports testing with ?live=1 (or window.setLiveMode(true)) */
 
   // Check URL parameters or local storage for live simulation/override
   const urlParams = new URLSearchParams(window.location.search);
@@ -492,6 +490,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (verseRefEl) verseRefEl.innerText = item.ref;
       if (verseThemeEl) verseThemeEl.innerText = item.theme;
 
+      const shareLink = document.getElementById('share-scripture-whatsapp');
+      if (shareLink) {
+        const msg = encodeURIComponent(`"${item.verse}" - ${item.ref} Alive Faith Ministries https://www.livefaithministries.org`);
+        shareLink.setAttribute('href', `https://wa.me/?text=${msg}`);
+      }
+
       verseTextEl.style.opacity = '1';
       verseTextEl.style.transform = 'translateY(0)';
       verseTextEl.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -514,6 +518,23 @@ document.addEventListener('DOMContentLoaded', function () {
           showToast(`Copied ${current.ref} to clipboard!`, true);
         });
       }
+    });
+  }
+
+  /* Spiritual Meditation Focus Mode */
+  const meditateBtn = document.getElementById('toggle-meditate-mode');
+  const devotionalBox = document.querySelector('.devotional-spotlight');
+
+  if (meditateBtn && devotionalBox) {
+    meditateBtn.addEventListener('click', function () {
+      devotionalBox.classList.toggle('meditation-mode');
+      const isActive = devotionalBox.classList.contains('meditation-mode');
+      meditateBtn.classList.toggle('active', isActive);
+      const spanText = meditateBtn.querySelector('span');
+      if (spanText) {
+        spanText.innerText = isActive ? 'Exit Focus' : 'Meditate';
+      }
+      showToast(isActive ? 'Meditation focus mode active' : 'Exited meditation mode', true);
     });
   }
 
@@ -569,6 +590,194 @@ document.addEventListener('DOMContentLoaded', function () {
           setTimeout(() => {
             copyPhoneBtn.innerText = oldText;
           }, 2400);
+        });
+      }
+    });
+  }
+
+  /* Interactive Giving Seed Calculator & Tangible Impact Engine */
+  const seedChips = document.querySelectorAll('.seed-chip');
+  const seedImpactTitle = document.getElementById('seed-impact-title');
+  const seedImpactDesc = document.getElementById('seed-impact-desc');
+  const mpesaInstruction = document.getElementById('mpesa-quick-instruction');
+  const copyMpesaInstructionBtn = document.getElementById('copy-mpesa-instruction-btn');
+
+  const seedImpactMap = {
+    '500': {
+      title: 'Sanctuary Care & Fellowship Seed',
+      desc: 'Supports communion elements, sanctuary maintenance, and welcoming materials for newcomers visiting our sanctuary.'
+    },
+    '1000': {
+      title: 'Global Broadcast & Media Streaming Seed',
+      desc: 'Empowers high-definition livestream bandwidth and online word outreach to reach over 2,500 believers worldwide.'
+    },
+    '2500': {
+      title: 'Evangelism & Discipleship Mission Seed',
+      desc: 'Sponsors regional evangelism crusades, discipleship study manuals, and new convert follow-up bibles.'
+    },
+    '5000': {
+      title: 'Community Welfare & Sanctuary Sound Seed',
+      desc: 'Funds sanctuary sound equipment, multi-camera media ministry, and community welfare benevolence food hampers.'
+    },
+    '10000': {
+      title: 'Covenant Pillar & Church Planting Seed',
+      desc: 'Covenant Partner pillar supporting church planting, national mission outreaches, and pastoral training programs.'
+    }
+  };
+
+  let activeSeedAmount = '500';
+
+  seedChips.forEach(chip => {
+    chip.addEventListener('click', function () {
+      seedChips.forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+
+      const amount = this.getAttribute('data-amount');
+      activeSeedAmount = amount;
+      const data = seedImpactMap[amount];
+      if (data && seedImpactTitle && seedImpactDesc) {
+        seedImpactTitle.innerText = data.title;
+        seedImpactDesc.innerText = data.desc;
+      }
+      if (mpesaInstruction) {
+        mpesaInstruction.innerText = `Send KSh ${Number(amount).toLocaleString()} to 0728 838 977`;
+      }
+      showToast(`Selected Seed: KSh ${Number(amount).toLocaleString()}`);
+    });
+  });
+
+  if (copyMpesaInstructionBtn) {
+    copyMpesaInstructionBtn.addEventListener('click', function () {
+      const textToCopy = `M-Pesa: Send KSh ${Number(activeSeedAmount).toLocaleString()} to 0728 838 977 (Alive Faith Ministries)`;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          showToast(`Copied Giving Details: KSh ${Number(activeSeedAmount).toLocaleString()}!`, true);
+          const orig = copyMpesaInstructionBtn.innerText;
+          copyMpesaInstructionBtn.innerText = 'Copied!';
+          setTimeout(() => { copyMpesaInstructionBtn.innerText = orig; }, 2400);
+        });
+      }
+    });
+  }
+
+  /* Interactive Sermon Soundwave Audio Console */
+  const soundwaveCard = document.getElementById('sermon-soundwave-player');
+  const playToggleBtn = document.getElementById('sermon-play-toggle');
+  const playIconSvg = document.getElementById('play-icon-svg');
+  const pauseIconSvg = document.getElementById('pause-icon-svg');
+  const playStatusText = document.getElementById('sermon-play-status');
+  const scrubberFill = document.getElementById('audio-scrubber-fill');
+  const scrubberTrack = document.getElementById('audio-scrubber-track');
+  const timeCurrentEl = document.getElementById('audio-time-current');
+  const timeTotalEl = document.getElementById('audio-time-total');
+  const speedPills = document.querySelectorAll('.speed-pill-btn');
+  const playlistChips = document.querySelectorAll('.playlist-chip');
+  const downloadNotesBtn = document.getElementById('sermon-download-notes-btn');
+  const sermonTitleDisplay = document.getElementById('player-sermon-title');
+  const sermonMetaDisplay = document.getElementById('player-sermon-meta');
+
+  let isPlaying = false;
+  let playInterval = null;
+  let playbackSeconds = 0;
+  let totalDurationSeconds = 48 * 60 + 20;
+  let playbackSpeed = 1;
+
+  function formatTime(secs) {
+    const m = Math.floor(secs / 60);
+    const s = Math.floor(secs % 60);
+    return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+  }
+
+  function togglePlay() {
+    isPlaying = !isPlaying;
+    if (soundwaveCard) {
+      soundwaveCard.classList.toggle('playing', isPlaying);
+    }
+    if (playIconSvg && pauseIconSvg) {
+      playIconSvg.style.display = isPlaying ? 'none' : 'block';
+      pauseIconSvg.style.display = isPlaying ? 'block' : 'none';
+    }
+    if (playStatusText) {
+      playStatusText.innerText = isPlaying ? 'Playing Revelatory Teaching...' : 'Paused';
+    }
+
+    if (isPlaying) {
+      clearInterval(playInterval);
+      playInterval = setInterval(() => {
+        playbackSeconds += playbackSpeed;
+        if (playbackSeconds >= totalDurationSeconds) {
+          playbackSeconds = 0;
+          togglePlay();
+        }
+        if (timeCurrentEl) timeCurrentEl.innerText = formatTime(playbackSeconds);
+        if (scrubberFill) {
+          const pct = (playbackSeconds / totalDurationSeconds) * 100;
+          scrubberFill.style.width = `${pct}%`;
+        }
+      }, 1000);
+      showToast('Audio word streaming started');
+    } else {
+      clearInterval(playInterval);
+      showToast('Audio paused');
+    }
+  }
+
+  if (playToggleBtn) {
+    playToggleBtn.addEventListener('click', togglePlay);
+  }
+
+  if (scrubberTrack) {
+    scrubberTrack.addEventListener('click', function (e) {
+      const rect = scrubberTrack.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = Math.max(0, Math.min(1, clickX / rect.width));
+      playbackSeconds = pct * totalDurationSeconds;
+      if (timeCurrentEl) timeCurrentEl.innerText = formatTime(playbackSeconds);
+      if (scrubberFill) scrubberFill.style.width = `${pct * 100}%`;
+    });
+  }
+
+  speedPills.forEach(pill => {
+    pill.addEventListener('click', function () {
+      speedPills.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      playbackSpeed = parseFloat(this.getAttribute('data-speed')) || 1;
+      showToast(`Playback speed set to ${playbackSpeed}x`);
+    });
+  });
+
+  playlistChips.forEach(chip => {
+    chip.addEventListener('click', function () {
+      playlistChips.forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+
+      const title = this.getAttribute('data-title');
+      const ref = this.getAttribute('data-ref');
+      const durStr = this.getAttribute('data-duration') || '45:00';
+      const parts = durStr.split(':');
+      totalDurationSeconds = (parseInt(parts[0], 10) * 60) + (parseInt(parts[1], 10) || 0);
+
+      playbackSeconds = 0;
+      if (sermonTitleDisplay) sermonTitleDisplay.innerText = title;
+      if (sermonMetaDisplay) sermonMetaDisplay.innerHTML = `Alive Faith Ministries Pastoral Teaching &bull; Scripture: ${ref}`;
+      if (timeCurrentEl) timeCurrentEl.innerText = '00:00';
+      if (timeTotalEl) timeTotalEl.innerText = durStr;
+      if (scrubberFill) scrubberFill.style.width = '0%';
+
+      if (!isPlaying) {
+        togglePlay();
+      } else {
+        showToast(`Loaded: ${title}`);
+      }
+    });
+  });
+
+  if (downloadNotesBtn) {
+    downloadNotesBtn.addEventListener('click', function () {
+      const notesEl = document.getElementById('sermon-notes-body');
+      if (notesEl && navigator.clipboard) {
+        navigator.clipboard.writeText(notesEl.innerText).then(() => {
+          showToast('Sermon study notes copied to clipboard!', true);
         });
       }
     });

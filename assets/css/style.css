@@ -4234,3 +4234,406 @@ textarea:focus-visible,
   transform: translateZ(0);
 }
 
+/* Flagship Innovation 1: Interactive Sermon Soundwave Audio Console */
+.soundwave-player-card {
+  background: linear-gradient(135deg, #072213 0%, #0d381e 50%, #081f12 100%);
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  margin-top: 2.8rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.soundwave-player-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(234, 100, 7, 0.22) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.soundwave-top-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.soundwave-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--gold-start);
+}
+
+.soundwave-visualizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 48px;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+}
+
+.soundwave-bar {
+  width: 4px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius-full);
+  transition: height 0.2s ease, background 0.2s ease;
+}
+
+.soundwave-player-card.playing .soundwave-bar {
+  background: linear-gradient(180deg, var(--gold-start) 0%, var(--amber-primary) 100%);
+  animation: soundwaveWave 1.2s ease-in-out infinite alternate;
+}
+
+.soundwave-bar:nth-child(2) { animation-delay: 0.1s; }
+.soundwave-bar:nth-child(3) { animation-delay: 0.25s; }
+.soundwave-bar:nth-child(4) { animation-delay: 0.4s; }
+.soundwave-bar:nth-child(5) { animation-delay: 0.15s; }
+.soundwave-bar:nth-child(6) { animation-delay: 0.3s; }
+.soundwave-bar:nth-child(7) { animation-delay: 0.45s; }
+.soundwave-bar:nth-child(8) { animation-delay: 0.2s; }
+.soundwave-bar:nth-child(9) { animation-delay: 0.35s; }
+.soundwave-bar:nth-child(10) { animation-delay: 0.5s; }
+.soundwave-bar:nth-child(11) { animation-delay: 0.12s; }
+.soundwave-bar:nth-child(12) { animation-delay: 0.28s; }
+.soundwave-bar:nth-child(13) { animation-delay: 0.42s; }
+.soundwave-bar:nth-child(14) { animation-delay: 0.18s; }
+.soundwave-bar:nth-child(15) { animation-delay: 0.33s; }
+.soundwave-bar:nth-child(16) { animation-delay: 0.48s; }
+
+@keyframes soundwaveWave {
+  0% { height: 8px; }
+  50% { height: 42px; }
+  100% { height: 14px; }
+}
+
+.audio-scrubber-wrap {
+  margin: 1.2rem 0;
+}
+
+.audio-scrubber-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-full);
+  position: relative;
+  cursor: pointer;
+}
+
+.audio-scrubber-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-start) 0%, var(--amber-primary) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+.audio-time-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin-top: 0.4rem;
+  font-weight: 600;
+}
+
+.soundwave-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.soundwave-main-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--gold-start) 0%, var(--amber-primary) 100%);
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(234, 100, 7, 0.45);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.soundwave-main-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(234, 100, 7, 0.6);
+}
+
+.soundwave-main-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.speed-pills-wrap {
+  display: inline-flex;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+}
+
+.speed-pill-btn {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.speed-pill-btn.active {
+  background: var(--amber-primary);
+  color: #ffffff;
+}
+
+.playlist-chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.playlist-chip {
+  background: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.playlist-chip.active {
+  background: var(--green-light);
+  color: #ffffff;
+}
+
+.playlist-chip:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+/* Flagship Innovation 2: Interactive Giving Impact & Seed Calculator */
+.seed-calculator-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow: var(--shadow-lg);
+  margin-top: 3rem;
+  color: var(--text-primary);
+}
+
+.seed-presets-wrap {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin: 1.4rem 0;
+}
+
+.seed-chip {
+  background: var(--bg-surface);
+  color: var(--green-darkest);
+  border: none;
+  padding: 0.65rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.seed-chip:hover {
+  background: var(--green-tint);
+  transform: translateY(-2px);
+}
+
+.seed-chip.active {
+  background: linear-gradient(135deg, var(--gold-start) 0%, var(--gold-end) 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(234, 100, 7, 0.35);
+  transform: translateY(-2px);
+}
+
+.seed-impact-display {
+  background: linear-gradient(135deg, rgba(7, 31, 17, 0.03) 0%, rgba(234, 100, 7, 0.06) 100%);
+  border-radius: var(--radius-md);
+  padding: 1.6rem 1.8rem;
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.seed-impact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--green-tint);
+  color: var(--green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.seed-impact-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.seed-impact-text h4 {
+  font-size: 1.15rem;
+  color: var(--green-darkest);
+  margin: 0 0 0.35rem 0;
+}
+
+.seed-impact-text p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.mpesa-quick-action {
+  background: var(--green-darkest);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.mpesa-quick-code {
+  font-family: monospace;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--gold-start);
+  letter-spacing: 0.05em;
+}
+
+/* Flagship Innovation 3: Editorial Scripture Meditation Card */
+.scripture-editorial-card {
+  background: linear-gradient(135deg, #0c2b18 0%, #071f11 100%);
+  border-radius: var(--radius-lg);
+  padding: clamp(2.4rem, 5vw, 3.8rem);
+  box-shadow: 0 24px 60px rgba(7, 31, 17, 0.25);
+  margin: 3.5rem auto 0 auto;
+  max-width: 980px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease;
+}
+
+.scripture-editorial-card.meditation-mode {
+  box-shadow: 0 0 90px rgba(251, 191, 36, 0.35);
+  animation: meditationBreathing 4s ease-in-out infinite alternate;
+}
+
+@keyframes meditationBreathing {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.012); }
+}
+
+.scripture-quote-glyph {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-family: var(--font-serif);
+  font-size: 9rem;
+  line-height: 1;
+  color: rgba(251, 191, 36, 0.08);
+  pointer-events: none;
+  user-select: none;
+}
+
+.scripture-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  max-width: 820px;
+}
+
+.scripture-reference-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 800;
+  color: var(--gold-start);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+.scripture-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.btn-meditate-focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.btn-meditate-focus:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.btn-meditate-focus.active {
+  background: var(--amber-primary);
+  color: #ffffff;
+}
+
+

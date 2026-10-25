@@ -577,11 +577,18 @@ require_once __DIR__ . '/includes/header.php';
               <svg class="icon" viewBox="0 0 24 24"><path d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
               Copy Verse
             </button>
+            <a id="share-scripture-whatsapp" href="https://wa.me/?text=%22For%20we%20are%20his%20workmanship,%20created%20in%20Christ%20Jesus%20unto%20good%20works%22%20-%20Ephesians%202:10%20https://www.livefaithministries.org" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.45rem;">
+              <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 15px; height: 15px;"><path d="M12.031 2C6.496 2 2 6.496 2 12.031c0 1.97.57 3.81 1.558 5.372L2.094 22l4.75-1.442A9.97 9.97 0 0012.03 22c5.535 0 10.031-4.496 10.031-10.031S17.566 2 12.031 2z"/></svg>
+              Share Verse
+            </a>
             <button class="scripture-next-btn" id="next-scripture-btn" type="button">
               <svg class="icon" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
               Next Scripture
             </button>
-            <a href="#faith" class="btn btn-soft" data-tab-target="tab-faith">Statement of Faith</a>
+            <button type="button" class="btn-meditate-focus" id="toggle-meditate-mode">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+              <span>Meditate</span>
+            </button>
           </div>
         </div>
 
@@ -1098,9 +1105,43 @@ require_once __DIR__ . '/includes/header.php';
             </div>
           </div>
 
-          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin: 0;">
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 1.5rem 0;">
             Kindly include your name and purpose so pastoral leadership can stand with you in thanksgiving and agreement prayer.
           </p>
+
+          <!-- Interactive Giving Seed Calculator & Tangible Impact Meter -->
+          <div style="padding-top: 1.5rem; border-top: 1px solid rgba(7, 31, 17, 0.08);">
+            <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 800; color: var(--text-subtle); margin-bottom: 0.5rem;">Select or Calculate Seed</div>
+            <div class="seed-presets-wrap" id="seed-presets-wrap">
+              <button type="button" class="seed-chip active" data-amount="500">KSh 500</button>
+              <button type="button" class="seed-chip" data-amount="1000">KSh 1,000</button>
+              <button type="button" class="seed-chip" data-amount="2500">KSh 2,500</button>
+              <button type="button" class="seed-chip" data-amount="5000">KSh 5,000</button>
+              <button type="button" class="seed-chip" data-amount="10000">KSh 10,000</button>
+            </div>
+
+            <!-- Dynamic Impact Display Box -->
+            <div class="seed-impact-display" id="seed-impact-display">
+              <div class="seed-impact-icon">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              </div>
+              <div class="seed-impact-text">
+                <h4 id="seed-impact-title">Sanctuary Care &amp; Fellowship Seed</h4>
+                <p id="seed-impact-desc">Supports communion elements, sanctuary maintenance, and welcoming materials for newcomers visiting our sanctuary.</p>
+              </div>
+            </div>
+
+            <!-- Dynamic M-Pesa Instruction Prompt -->
+            <div class="mpesa-quick-action">
+              <div>
+                <div style="font-size: 0.78rem; text-transform: uppercase; color: #94a3b8; font-weight: 700;">M-Pesa Quick Send Instruction</div>
+                <div class="mpesa-quick-code" id="mpesa-quick-instruction">Send KSh 500 to 0728 838 977</div>
+              </div>
+              <button type="button" class="btn btn-secondary" id="copy-mpesa-instruction-btn" style="background: rgba(255,255,255,0.18); color: #ffffff; border: none; padding: 0.55rem 1.1rem; font-size: 0.85rem;">
+                Copy Giving Details
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- Covenant Partnership Desk -->
@@ -1274,7 +1315,98 @@ require_once __DIR__ . '/includes/header.php';
           </div>
         </div>
 
-        <!-- Global Timezone Schedule Converter -->
+        <!-- Flagship: Interactive Sermon Soundwave Audio Console & Word Player -->
+        <div class="soundwave-player-card spotlight-card" id="sermon-soundwave-player">
+          <div class="soundwave-top-meta">
+            <div class="soundwave-badge">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 16px; height: 16px;"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"></path></svg>
+              <span>Spiritual Word Stream &bull; Revelatory Teachings</span>
+            </div>
+            <div class="speed-pills-wrap">
+              <button type="button" class="speed-pill-btn active" data-speed="1">1.0x</button>
+              <button type="button" class="speed-pill-btn" data-speed="1.25">1.25x</button>
+              <button type="button" class="speed-pill-btn" data-speed="1.5">1.5x</button>
+            </div>
+          </div>
+
+          <div style="max-width: 680px;">
+            <h3 style="font-size: clamp(1.4rem, 2.5vw, 1.85rem); color: #ffffff; margin-bottom: 0.4rem;" id="player-sermon-title">
+              Walking in the Fullness of Christ Jesus
+            </h3>
+            <p style="color: rgba(255, 255, 255, 0.78); font-size: 0.92rem; margin: 0;" id="player-sermon-meta">
+              Alive Faith Ministries Pastoral Teaching &bull; Scripture: Ephesians 2:10 &bull; Colossians 2:6, 7
+            </p>
+          </div>
+
+          <!-- Soundwave Animation Visualizer Bars -->
+          <div class="soundwave-visualizer" aria-hidden="true" id="soundwave-visualizer">
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+            <div class="soundwave-bar"></div>
+          </div>
+
+          <!-- Audio Scrubber Timeline -->
+          <div class="audio-scrubber-wrap">
+            <div class="audio-scrubber-track" id="audio-scrubber-track">
+              <div class="audio-scrubber-fill" id="audio-scrubber-fill"></div>
+            </div>
+            <div class="audio-time-row">
+              <span id="audio-time-current">00:00</span>
+              <span id="audio-time-total">48:20</span>
+            </div>
+          </div>
+
+          <!-- Audio Action Controls Row -->
+          <div class="soundwave-controls-row">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <button type="button" class="soundwave-main-btn" id="sermon-play-toggle" aria-label="Play or pause sermon audio">
+                <svg id="play-icon-svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                <svg id="pause-icon-svg" viewBox="0 0 24 24" style="display: none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+              </button>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #ffffff;" id="sermon-play-status">Click to Listen Now</div>
+                <div style="font-size: 0.8rem; color: var(--gold-start);">High-fidelity word audio</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+              <a href="https://wa.me/?text=Listen%20to%20this%20life-transforming%20sermon%20by%20Alive%20Faith%20Ministries:%20Walking%20in%20the%20Fullness%20of%20Christ%20https://www.livefaithministries.org/%23watch" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="background: rgba(255,255,255,0.12); color: #ffffff; border: none; padding: 0.5rem 1.1rem; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <svg class="icon" viewBox="0 0 24 24" style="width: 15px; height: 15px;"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                Share Audio
+              </a>
+              <button type="button" class="btn btn-secondary" id="sermon-download-notes-btn" style="background: rgba(255,255,255,0.12); color: #ffffff; border: none; padding: 0.5rem 1.1rem; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                <svg class="icon" viewBox="0 0 24 24" style="width: 15px; height: 15px;"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Study Notes
+              </button>
+            </div>
+          </div>
+
+          <!-- Playlist Teaching Chips -->
+          <div class="playlist-chips">
+            <button type="button" class="playlist-chip active" data-title="Walking in the Fullness of Christ Jesus" data-ref="Ephesians 2:10 &bull; Colossians 2:6, 7" data-duration="48:20">
+              01: Walking in Fullness
+            </button>
+            <button type="button" class="playlist-chip" data-title="The Priestly Mandate of Persistent Intercession" data-ref="Luke 18:1 &bull; Acts 6:4 &bull; 1 Thess 5:17" data-duration="54:15">
+              02: Priestly Intercession
+            </button>
+            <button type="button" class="playlist-chip" data-title="Covenant Faith &amp; Overcoming Every Stumbling Block" data-ref="1 John 5:4 &bull; Hebrews 11:1, 6" data-duration="42:30">
+              03: Unshakeable Faith
+            </button>
+          </div>
+        </div>
         <div class="tz-converter-box">
           <span class="section-tag" style="color: var(--amber-light);">Global Schedule</span>
           <h3 style="color: #ffffff; font-size: 1.5rem; margin-bottom: 0.4rem;">Interactive Timezone Converter</h3>

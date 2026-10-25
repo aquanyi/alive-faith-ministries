@@ -113,6 +113,6 @@
   </aside>
 
   <!-- Main JavaScript File (Versioned for Instant Mobile Cache Busting) -->
-  <script src="assets/js/main.js?v=2.6"></script>
+  <script src="assets/js/main.js?v=3.0"></script>
 </body>
 </html>
