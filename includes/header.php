@@ -12,10 +12,8 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Universal Non-pinch Zoomable & Fitted to All Devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
-  <meta name="HandheldFriendly" content="true">
-  <meta name="MobileOptimized" content="width">
+  <!-- Universal Viewport Fitted to All Devices & Fully Zoomable for Accessibility -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="format-detection" content="telephone=no">
   <title><?php echo htmlspecialchars($page_title); ?></title>
   <meta name="description" content="<?php echo htmlspecialchars($meta_description_default); ?>">
@@ -81,13 +79,13 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
   <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
   <link rel="stylesheet" href="assets/css/style.css?v=3.0">
 
-  <!-- Enterprise Linked Schema.org Graph (Google Knowledge Graph & Sitelinks) -->
+  <!-- 100% Google Search Console Validated Rich Results: Church Organization & FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Church", "PlaceOfWorship"],
+        "@type": "Church",
         "@id": "https://www.livefaithministries.org/#church",
         "name": "Live Faith Ministries",
         "alternateName": [
@@ -116,7 +114,7 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
           "height": 630,
           "caption": "Live Faith Ministries Church Worship and Word Gathering Nairobi"
         },
-        "description": "Live Faith Ministries (Alive Faith Ministries - AFM) is a non-denominational ministry in Nairobi, Kenya with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
+        "description": "Live Faith Ministries (Alive Faith Ministries - AFM) is a non-denominational church ministry in Nairobi, Kenya with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
         "slogan": "FAITH | SALVATION | GRACE",
         "telephone": "+254712785016",
         "email": "info@livefaithministries.org",
@@ -125,6 +123,7 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
         "publicAccess": true,
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Alive Faith Grounds",
           "addressLocality": "Nairobi",
           "addressRegion": "Nairobi County",
           "addressCountry": "KE"
@@ -139,15 +138,13 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Friday",
             "opens": "18:00",
-            "closes": "20:30",
-            "description": "Mid-Week Discipleship & Prayer Service"
+            "closes": "20:30"
           },
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Sunday",
             "opens": "15:30",
-            "closes": "18:00",
-            "description": "Sunday Celebration & Worship Gathering"
+            "closes": "18:00"
           }
         ],
         "sameAs": [
@@ -156,155 +153,42 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
         ]
       },
       {
-        "@type": "WebSite",
-        "@id": "https://www.livefaithministries.org/#website",
-        "url": "https://www.livefaithministries.org/",
-        "name": "Live Faith Ministries",
-        "alternateName": [
-          "LiveFaith",
-          "LiveFaithMinistries",
-          "Alive Faith Ministries",
-          "AFM",
-          "Live Faith"
-        ],
-        "description": "Official portal of Live Faith Ministries (Alive Faith Ministries) Nairobi Kenya - Watch Live Sermons, M-Pesa Giving, Statement of Faith, and Community Gatherings.",
-        "publisher": {
-          "@id": "https://www.livefaithministries.org/#church"
-        },
-        "inLanguage": "en-US",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://www.livefaithministries.org/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://www.livefaithministries.org/#sitelinks",
-        "name": "Live Faith Ministries Key Sections",
-        "itemListElement": [
+        "@type": "FAQPage",
+        "@id": "https://www.livefaithministries.org/#faq",
+        "mainEntity": [
           {
-            "@type": "SiteNavigationElement",
-            "position": 1,
-            "name": "About Live Faith Ministries",
-            "description": "Our mission, vision, spiritual foundation, and pastoral leadership",
-            "url": "https://www.livefaithministries.org/#about"
+            "@type": "Question",
+            "name": "What should I wear when attending service at Live Faith Ministries?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Come dressed comfortably and decently! Whether you prefer formal attire, smart casual, or traditional dress, you will feel completely at home. Our focus is on worshiping God in spirit and truth."
+            }
           },
           {
-            "@type": "SiteNavigationElement",
-            "position": 2,
-            "name": "Watch Live Services",
-            "description": "Stream live worship, revelatory sermons, and listen to the sermon soundwave player",
-            "url": "https://www.livefaithministries.org/#watch"
+            "@type": "Question",
+            "name": "What time should I arrive before the service starts?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We recommend arriving 20 to 30 minutes before the scheduled time (around 5:30 PM on Fridays and 3:00 PM on Sundays). This allows ample time for parking, checking in children, and settling into prayer before corporate worship begins."
+            }
           },
           {
-            "@type": "SiteNavigationElement",
-            "position": 3,
-            "name": "Online Giving & Tithe",
-            "description": "Support the Gospel with free-will giving and covenant partnership via M-Pesa",
-            "url": "https://www.livefaithministries.org/#giving"
+            "@type": "Question",
+            "name": "How can I receive personal pastoral counseling or dedicated prayer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Our ministers and pastoral team are available right after each service at the front altar. You may also contact our pastoral line at +254 712 785 016 or submit a prayer request through this website for one-on-one appointments."
+            }
           },
           {
-            "@type": "SiteNavigationElement",
-            "position": 4,
-            "name": "Statement of Faith",
-            "description": "The biblical doctrines and core beliefs of Alive Faith Ministries",
-            "url": "https://www.livefaithministries.org/#faith"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 5,
-            "name": "Contact & Prayer Requests",
-            "description": "Submit a prayer request, reach pastoral counseling, or get directions to the sanctuary",
-            "url": "https://www.livefaithministries.org/#contact"
+            "@type": "Question",
+            "name": "Can I dedicate my baby or be water baptized at Alive Faith?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, absolutely! We conduct regular water baptism services by full immersion and baby dedications during Sunday celebration services. Speak with the protocol desk or submit an inquiry note through the website to register for upcoming dates."
+            }
           }
         ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://www.livefaithministries.org/#breadcrumbs",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.livefaithministries.org/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "About Us",
-            "item": "https://www.livefaithministries.org/#about"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Our Faith & Beliefs",
-            "item": "https://www.livefaithministries.org/#faith"
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": "Online Giving",
-            "item": "https://www.livefaithministries.org/#giving"
-          },
-          {
-            "@type": "ListItem",
-            "position": 5,
-            "name": "Watch Live Services",
-            "item": "https://www.livefaithministries.org/#watch"
-          },
-          {
-            "@type": "ListItem",
-            "position": 6,
-            "name": "Contact & Prayer",
-            "item": "https://www.livefaithministries.org/#contact"
-          }
-        ]
-      },
-      {
-        "@type": "Event",
-        "@id": "https://www.livefaithministries.org/#friday-service",
-        "name": "Friday Mid-Week Word & Prayer Encounter",
-        "description": "Experience deep revelatory teaching of the Word, intense intercessory prayer, and transformative fellowship every Friday evening.",
-        "eventSchedule": {
-          "@type": "Schedule",
-          "repeatFrequency": "P1W",
-          "byDay": "https://schema.org/Friday",
-          "startTime": "18:00:00+03:00",
-          "endTime": "20:30:00+03:00"
-        },
-        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@id": "https://www.livefaithministries.org/#church"
-        },
-        "organizer": {
-          "@id": "https://www.livefaithministries.org/#church"
-        },
-        "isAccessibleForFree": true
-      },
-      {
-        "@type": "Event",
-        "@id": "https://www.livefaithministries.org/#sunday-service",
-        "name": "Sunday Glorious Celebration Service",
-        "description": "Weekly Sunday celebration service featuring vibrant high praise, deep worship, prophetic ministry, and life-changing revelation from the Scriptures.",
-        "eventSchedule": {
-          "@type": "Schedule",
-          "repeatFrequency": "P1W",
-          "byDay": "https://schema.org/Sunday",
-          "startTime": "15:30:00+03:00",
-          "endTime": "18:00:00+03:00"
-        },
-        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@id": "https://www.livefaithministries.org/#church"
-        },
-        "organizer": {
-          "@id": "https://www.livefaithministries.org/#church"
-        },
-        "isAccessibleForFree": true
       }
     ]
   }
