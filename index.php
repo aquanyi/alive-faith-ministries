@@ -1109,33 +1109,24 @@ require_once __DIR__ . '/includes/header.php';
             Kindly include your name and purpose so pastoral leadership can stand with you in thanksgiving and agreement prayer.
           </p>
 
-          <!-- Interactive Giving Seed Calculator & Tangible Impact Meter -->
+          <!-- Voluntary Heart Giving & M-Pesa Instructions -->
           <div style="padding-top: 1.5rem; border-top: 1px solid rgba(7, 31, 17, 0.08);">
-            <div style="font-size: 0.82rem; text-transform: uppercase; font-weight: 800; color: var(--text-subtle); margin-bottom: 0.5rem;">Select or Calculate Seed</div>
-            <div class="seed-presets-wrap" id="seed-presets-wrap">
-              <button type="button" class="seed-chip active" data-amount="500">KSh 500</button>
-              <button type="button" class="seed-chip" data-amount="1000">KSh 1,000</button>
-              <button type="button" class="seed-chip" data-amount="2500">KSh 2,500</button>
-              <button type="button" class="seed-chip" data-amount="5000">KSh 5,000</button>
-              <button type="button" class="seed-chip" data-amount="10000">KSh 10,000</button>
-            </div>
-
-            <!-- Dynamic Impact Display Box -->
-            <div class="seed-impact-display" id="seed-impact-display">
+            <!-- Free-Will Kingdom Giving Display Box -->
+            <div class="seed-impact-display" id="seed-impact-display" style="margin-top: 0;">
               <div class="seed-impact-icon">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
               </div>
               <div class="seed-impact-text">
-                <h4 id="seed-impact-title">Sanctuary Care &amp; Fellowship Seed</h4>
-                <p id="seed-impact-desc">Supports communion elements, sanctuary maintenance, and welcoming materials for newcomers visiting our sanctuary.</p>
+                <h4 id="seed-impact-title">Free-Will Kingdom Giving</h4>
+                <p id="seed-impact-desc">Give freely as the Lord has prospered you, whether small or great. Every seed sown in faith advances the Gospel, cares for the sanctuary, supports benevolence, and touches lives. God honors every cheerful giver (2 Cor. 9:7).</p>
               </div>
             </div>
 
             <!-- Dynamic M-Pesa Instruction Prompt -->
             <div class="mpesa-quick-action">
               <div>
-                <div style="font-size: 0.78rem; text-transform: uppercase; color: #94a3b8; font-weight: 700;">M-Pesa Quick Send Instruction</div>
-                <div class="mpesa-quick-code" id="mpesa-quick-instruction">Send KSh 500 to 0728 838 977</div>
+                <div style="font-size: 0.78rem; text-transform: uppercase; color: #94a3b8; font-weight: 700;">M-Pesa Quick Send Details</div>
+                <div class="mpesa-quick-code" id="mpesa-quick-instruction">Send to 0728 838 977</div>
               </div>
               <button type="button" class="btn btn-secondary" id="copy-mpesa-instruction-btn" style="background: rgba(255,255,255,0.18); color: #ffffff; border: none; padding: 0.55rem 1.1rem; font-size: 0.85rem;">
                 Copy Giving Details
@@ -1200,7 +1191,7 @@ require_once __DIR__ . '/includes/header.php';
           <div class="mpesa-step-card">
             <div class="mpesa-step-num">Step 04</div>
             <h4 class="mpesa-step-title">Enter Amount</h4>
-            <p class="mpesa-step-desc">Specify your seed amount and purpose in reference.</p>
+            <p class="mpesa-step-desc">Enter any amount as purposed in your heart, with your name and purpose as reference.</p>
           </div>
 
           <div class="mpesa-step-card">

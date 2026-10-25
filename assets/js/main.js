@@ -565,6 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const purposePills = document.querySelectorAll('.purpose-pill');
   const refDisplay = document.getElementById('giving-ref-display');
   const copyPhoneBtn = document.getElementById('copy-phone-btn');
+  let currentGivingPurpose = 'Tithe';
 
   purposePills.forEach(pill => {
     pill.addEventListener('click', function () {
@@ -572,6 +573,7 @@ document.addEventListener('DOMContentLoaded', function () {
       this.classList.add('active');
 
       const purposeName = this.getAttribute('data-purpose');
+      currentGivingPurpose = purposeName;
       if (refDisplay) {
         refDisplay.innerText = `${purposeName}: [Your Name]`;
       }
@@ -595,63 +597,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* Interactive Giving Seed Calculator & Tangible Impact Engine */
-  const seedChips = document.querySelectorAll('.seed-chip');
-  const seedImpactTitle = document.getElementById('seed-impact-title');
-  const seedImpactDesc = document.getElementById('seed-impact-desc');
-  const mpesaInstruction = document.getElementById('mpesa-quick-instruction');
+  /* Free-Will Voluntary Giving & M-Pesa Quick Copy Support */
   const copyMpesaInstructionBtn = document.getElementById('copy-mpesa-instruction-btn');
-
-  const seedImpactMap = {
-    '500': {
-      title: 'Sanctuary Care & Fellowship Seed',
-      desc: 'Supports communion elements, sanctuary maintenance, and welcoming materials for newcomers visiting our sanctuary.'
-    },
-    '1000': {
-      title: 'Global Broadcast & Media Streaming Seed',
-      desc: 'Empowers high-definition livestream bandwidth and online word outreach to reach over 2,500 believers worldwide.'
-    },
-    '2500': {
-      title: 'Evangelism & Discipleship Mission Seed',
-      desc: 'Sponsors regional evangelism crusades, discipleship study manuals, and new convert follow-up bibles.'
-    },
-    '5000': {
-      title: 'Community Welfare & Sanctuary Sound Seed',
-      desc: 'Funds sanctuary sound equipment, multi-camera media ministry, and community welfare benevolence food hampers.'
-    },
-    '10000': {
-      title: 'Covenant Pillar & Church Planting Seed',
-      desc: 'Covenant Partner pillar supporting church planting, national mission outreaches, and pastoral training programs.'
-    }
-  };
-
-  let activeSeedAmount = '500';
-
-  seedChips.forEach(chip => {
-    chip.addEventListener('click', function () {
-      seedChips.forEach(c => c.classList.remove('active'));
-      this.classList.add('active');
-
-      const amount = this.getAttribute('data-amount');
-      activeSeedAmount = amount;
-      const data = seedImpactMap[amount];
-      if (data && seedImpactTitle && seedImpactDesc) {
-        seedImpactTitle.innerText = data.title;
-        seedImpactDesc.innerText = data.desc;
-      }
-      if (mpesaInstruction) {
-        mpesaInstruction.innerText = `Send KSh ${Number(amount).toLocaleString()} to 0728 838 977`;
-      }
-      showToast(`Selected Seed: KSh ${Number(amount).toLocaleString()}`);
-    });
-  });
 
   if (copyMpesaInstructionBtn) {
     copyMpesaInstructionBtn.addEventListener('click', function () {
-      const textToCopy = `M-Pesa: Send KSh ${Number(activeSeedAmount).toLocaleString()} to 0728 838 977 (Alive Faith Ministries)`;
+      const textToCopy = `M-Pesa: Send your voluntary offering to 0728 838 977 (Alive Faith Ministries - ${currentGivingPurpose})`;
       if (navigator.clipboard) {
         navigator.clipboard.writeText(textToCopy).then(() => {
-          showToast(`Copied Giving Details: KSh ${Number(activeSeedAmount).toLocaleString()}!`, true);
+          showToast('Copied Giving Details: 0728 838 977', true);
           const orig = copyMpesaInstructionBtn.innerText;
           copyMpesaInstructionBtn.innerText = 'Copied!';
           setTimeout(() => { copyMpesaInstructionBtn.innerText = orig; }, 2400);
