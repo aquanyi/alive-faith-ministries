@@ -35,10 +35,19 @@ if (!isset($active_tab)) {
   <meta property="og:title" content="<?php echo htmlspecialchars($page_title); ?>">
   <meta property="og:description" content="<?php echo htmlspecialchars($about_summary); ?>">
   <meta property="og:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
+  <meta property="og:image:secure_url" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Alive Faith Ministries - Church Worship and Word Gathering">
   <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="en_GB">
+
+  <!-- Local SEO & Geographic Meta Tags (Nairobi, Kenya) -->
+  <meta name="geo.region" content="KE-30">
+  <meta name="geo.placename" content="Nairobi, Kenya">
+  <meta name="geo.position" content="-1.319247;36.892543">
+  <meta name="ICBM" content="-1.319247, 36.892543">
 
   <!-- Twitter / X Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -70,41 +79,167 @@ if (!isset($active_tab)) {
   <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
   <link rel="stylesheet" href="assets/css/style.css?v=3.0">
 
-  <!-- Schema.org Structured Data (Rich Google Snippets) -->
+  <!-- Enterprise Linked Schema.org Graph (Rich Google Snippets & Knowledge Graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Church",
-    "name": "Alive Faith Ministries",
-    "alternateName": ["AFM", "Live Faith Ministries"],
-    "url": "https://www.livefaithministries.org/",
-    "logo": "https://www.livefaithministries.org/assets/images/logo.png",
-    "image": "https://www.livefaithministries.org/assets/images/worship-hero.jpg",
-    "description": "Alive Faith Ministries is a non-denominational ministry with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
-    "telephone": "+254712785016",
-    "email": "info@livefaithministries.org",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Nairobi",
-      "addressCountry": "KE"
-    },
-    "openingHoursSpecification": [
+    "@graph": [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Friday",
-        "opens": "18:00",
-        "closes": "20:30"
+        "@type": ["Church", "PlaceOfWorship"],
+        "@id": "https://www.livefaithministries.org/#church",
+        "name": "Alive Faith Ministries",
+        "alternateName": ["AFM", "Live Faith Ministries", "Alive Faith Ministries Kenya", "Alive Faith Church"],
+        "url": "https://www.livefaithministries.org/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://www.livefaithministries.org/#logo",
+          "url": "https://www.livefaithministries.org/assets/images/logo.png",
+          "caption": "Alive Faith Ministries Official Logo"
+        },
+        "image": {
+          "@type": "ImageObject",
+          "@id": "https://www.livefaithministries.org/#primaryimage",
+          "url": "https://www.livefaithministries.org/assets/images/worship-hero.jpg",
+          "width": 1200,
+          "height": 630,
+          "caption": "Alive Faith Ministries Church Worship and Word Gathering Nairobi"
+        },
+        "description": "Alive Faith Ministries is a non-denominational ministry in Nairobi, Kenya with a priestly mandate to raise believers who know and trust God for the realization of their fullness in Christ Jesus.",
+        "slogan": "FAITH | SALVATION | GRACE",
+        "telephone": "+254712785016",
+        "email": "info@livefaithministries.org",
+        "priceRange": "Free",
+        "isAccessibleForFree": true,
+        "publicAccess": true,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nairobi",
+          "addressRegion": "Nairobi County",
+          "addressCountry": "KE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -1.319247,
+          "longitude": 36.892543
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Friday",
+            "opens": "18:00",
+            "closes": "20:30",
+            "description": "Mid-Week Discipleship & Prayer Service"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "15:30",
+            "closes": "18:00",
+            "description": "Sunday Celebration & Worship Gathering"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61595832568680",
+          "https://wa.me/254712785016"
+        ]
       },
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "15:30",
-        "closes": "18:00"
+        "@type": "WebSite",
+        "@id": "https://www.livefaithministries.org/#website",
+        "url": "https://www.livefaithministries.org/",
+        "name": "Alive Faith Ministries",
+        "description": "Official portal of Alive Faith Ministries Nairobi Kenya - Sermons, Livestream, M-Pesa Giving, Statement of Faith and Community.",
+        "publisher": {
+          "@id": "https://www.livefaithministries.org/#church"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.livefaithministries.org/#breadcrumbs",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.livefaithministries.org/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Us",
+            "item": "https://www.livefaithministries.org/#about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Our Faith & Beliefs",
+            "item": "https://www.livefaithministries.org/#faith"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Online Giving",
+            "item": "https://www.livefaithministries.org/#giving"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Watch Live Services",
+            "item": "https://www.livefaithministries.org/#watch"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact & Prayer",
+            "item": "https://www.livefaithministries.org/#contact"
+          }
+        ]
+      },
+      {
+        "@type": "Event",
+        "@id": "https://www.livefaithministries.org/#friday-service",
+        "name": "Friday Mid-Week Word & Prayer Encounter",
+        "description": "Experience deep revelatory teaching of the Word, intense intercessory prayer, and transformative fellowship every Friday evening.",
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "P1W",
+          "byDay": "https://schema.org/Friday",
+          "startTime": "18:00:00+03:00",
+          "endTime": "20:30:00+03:00"
+        },
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@id": "https://www.livefaithministries.org/#church"
+        },
+        "organizer": {
+          "@id": "https://www.livefaithministries.org/#church"
+        },
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "Event",
+        "@id": "https://www.livefaithministries.org/#sunday-service",
+        "name": "Sunday Glorious Celebration Service",
+        "description": "Weekly Sunday celebration service featuring vibrant high praise, deep worship, prophetic ministry, and life-changing revelation from the Scriptures.",
+        "eventSchedule": {
+          "@type": "Schedule",
+          "repeatFrequency": "P1W",
+          "byDay": "https://schema.org/Sunday",
+          "startTime": "15:30:00+03:00",
+          "endTime": "18:00:00+03:00"
+        },
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+          "@id": "https://www.livefaithministries.org/#church"
+        },
+        "organizer": {
+          "@id": "https://www.livefaithministries.org/#church"
+        },
+        "isAccessibleForFree": true
       }
-    ],
-    "sameAs": [
-      "https://www.livefaithministries.org",
-      "https://www.facebook.com/profile.php?id=61595832568680"
     ]
   }
   </script>

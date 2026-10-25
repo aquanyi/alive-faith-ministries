@@ -305,7 +305,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="community-grid">
         <!-- Left: Gathering Gallery Photo Card -->
         <div class="community-photo-card">
-          <img src="assets/images/community-bg.jpg" alt="Alive Faith Ministries Sanctuary Community">
+          <img src="assets/images/community-bg.jpg" alt="Alive Faith Ministries Sanctuary Community" loading="lazy" width="600" height="400">
           <span class="community-photo-badge">AFM Community Gatherings</span>
         </div>
 
@@ -381,7 +381,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="tv-mockup-frame">
         <div class="tv-mockup-bezel">
           <div class="tv-mockup-screen">
-            <img src="assets/images/worship-stage.jpg" alt="Alive Faith Ministries Service Stage Broadcast">
+            <img src="assets/images/worship-stage.jpg" alt="Alive Faith Ministries Service Stage Broadcast" loading="lazy" width="700" height="394">
             <a href="#watch" class="tv-play-overlay" data-tab-target="tab-watch" aria-label="Watch Live Service Stream">
               <svg class="icon" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
             </a>
@@ -422,7 +422,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="phaneroo-action-cards-grid">
         <!-- Card 1: Prayer -->
         <a href="#contact" class="action-photo-card" data-tab-target="tab-contact">
-          <img src="assets/images/worship-hero.jpg" alt="Congregation Worship and Prayer">
+          <img src="assets/images/worship-hero.jpg" alt="Congregation Worship and Prayer" loading="lazy" width="600" height="400">
           <div class="action-card-content">
             <h3>Let's stand with you in prayer</h3>
             <span class="action-card-link">Submit your prayer request &rarr;</span>
@@ -431,7 +431,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Card 2: Salvation & Faith -->
         <a href="#faith" class="action-photo-card" data-tab-target="tab-faith">
-          <img src="assets/images/bible-bg.jpg" alt="Holy Scriptures and Salvation">
+          <img src="assets/images/bible-bg.jpg" alt="Holy Scriptures and Salvation" loading="lazy" width="600" height="400">
           <div class="action-card-content">
             <h3>Have you given your life to Christ?</h3>
             <span class="action-card-link">Learn all about your new life &rarr;</span>
@@ -440,7 +440,7 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Card 3: Testimony & Giving -->
         <a href="#giving" class="action-photo-card" data-tab-target="tab-giving">
-          <img src="assets/images/giving-bg.jpg" alt="Sanctuary Altar and Covenant Giving">
+          <img src="assets/images/giving-bg.jpg" alt="Sanctuary Altar and Covenant Giving" loading="lazy" width="600" height="400">
           <div class="action-card-content">
             <h3>Do you have a testimony or wish to partner?</h3>
             <span class="action-card-link">Partner with us &amp; share your story &rarr;</span>

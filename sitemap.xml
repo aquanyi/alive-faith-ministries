@@ -1,71 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
   
-  <!-- Main Home Page -->
+  <!-- Main Home Portal with High-Resolution Church Image Metadata -->
   <url>
     <loc>https://www.livefaithministries.org/</loc>
-    <lastmod>2026-10-23</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-
-  <!-- About AFM -->
-  <url>
-    <loc>https://www.livefaithministries.org/#about</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Statement of Faith & Doctrinal Beliefs -->
-  <url>
-    <loc>https://www.livefaithministries.org/#faith</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- Online Giving, Tithe & M-Pesa Support -->
-  <url>
-    <loc>https://www.livefaithministries.org/#giving</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- Watch Live Broadcasts, Gatherings & Sermon Archives -->
-  <url>
-    <loc>https://www.livefaithministries.org/#watch</loc>
-    <lastmod>2026-10-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Contact, Prayer Requests & Pastoral Counseling -->
-  <url>
-    <loc>https://www.livefaithministries.org/#contact</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/worship-hero.jpg</image:loc>
+      <image:title>Alive Faith Ministries Worship Gathering</image:title>
+      <image:caption>Alive Faith Ministries congregation in prayer, worship, and revelatory teaching in Nairobi Kenya</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/worship-stage.jpg</image:loc>
+      <image:title>Alive Faith Ministries Live Broadcast Stage</image:title>
+      <image:caption>Alive Faith Ministries pulpit, stage, and global livestream broadcast</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/bible-bg.jpg</image:loc>
+      <image:title>Holy Scriptures &amp; Doctrine</image:title>
+      <image:caption>Alive Faith Ministries doctrinal foundation and Bible discipleship</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/community-bg.jpg</image:loc>
+      <image:title>Alive Faith Community &amp; Fellowship</image:title>
+      <image:caption>Alive Faith Ministries church family, believers community and ministry life</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/giving-bg.jpg</image:loc>
+      <image:title>Sanctuary Care &amp; Kingdom Giving</image:title>
+      <image:caption>Covenant partnership, benevolent giving and voluntary tithes</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.livefaithministries.org/assets/images/logo.png</image:loc>
+      <image:title>Alive Faith Ministries Official Seal</image:title>
+      <image:caption>Alive Faith Ministries logo and brand identity</image:caption>
+    </image:image>
   </url>
 
   <!-- Privacy Policy -->
   <url>
     <loc>https://www.livefaithministries.org/privacy.html</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Terms of Service -->
   <url>
     <loc>https://www.livefaithministries.org/terms.html</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>
