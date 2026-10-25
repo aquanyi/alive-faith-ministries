@@ -4151,3 +4151,86 @@ textarea.form-control {
     height: 24px !important;
   }
 }
+
+/* UI and UX Pro Max Architecture Enhancements */
+
+/* 1. Accessible Skip to Content Link */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 1.5rem;
+  background: var(--amber-primary);
+  color: #ffffff;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 100000;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(234, 100, 7, 0.45);
+  transition: top 0.25s ease;
+}
+
+.skip-link:focus {
+  top: 1.5rem;
+}
+
+/* 2. Accessible Keyboard Focus Indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--gold-start) !important;
+  outline-offset: 3px !important;
+}
+
+/* 3. Respect Reduced Motion System Settings */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-slide,
+  .ambient-slide {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .floating-btn-pulse {
+    animation: none !important;
+    display: none !important;
+  }
+}
+
+/* 4. Touch Target and Safe Area Clearances */
+.btn,
+.nav-tab,
+.mobile-nav-item,
+.bottom-bar-item,
+.form-tag,
+.floating-action-btn {
+  min-height: 44px;
+}
+
+.mobile-bottom-bar {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+/* 5. Smooth Hardware Composited Layering */
+.spotlight-card,
+.home-service-card,
+.pillar-card,
+.tier-card,
+.giving-card,
+.faith-card {
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
+}
+

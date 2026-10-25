@@ -121,6 +121,9 @@ if (!isset($active_tab)) {
     <div class="ambient-overlay"></div>
   </div>
 
+  <!-- Accessible Skip to Content Link -->
+  <a href="#tab-home" class="skip-link">Skip to main content</a>
+
   <!-- Top Announcement Bar (Desktop & Wide Displays) -->
   <div class="topbar">
     <div class="container topbar-content">
