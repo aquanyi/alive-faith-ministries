@@ -713,7 +713,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-about" class="tab-pane <?php echo ($active_tab === 'tab-about') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-about">
-    <div class="banner-bg-drift" style="background-image: url('=2');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Priestly Mandate</span>
@@ -886,7 +886,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="pastoral-welcome-layout">
           <!-- Real Senior Pastor & First Lady Framed Portrait -->
           <div class="pastoral-lead-photo-frame">
-            <img src="=2" alt="Alive Faith Ministries Senior Pastor &amp; First Lady" loading="lazy" width="800" height="1000">
+            <img src="assets/images/real/pastor-couple.jpg" alt="Alive Faith Ministries Senior Pastor &amp; First Lady" loading="lazy" width="800" height="1000">
             <div class="pastoral-lead-badge">
               <h4>Senior Pastoral Leadership</h4>
               <p>Alive Faith Ministries Sanctuary</p>
@@ -956,7 +956,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 1: Senior Pastors -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Senior Pastoral Leadership - Alive Faith Ministries" loading="lazy">
+              <img src="assets/images/real/pastor-couple.jpg" alt="Senior Pastoral Leadership - Alive Faith Ministries" loading="lazy">
               <span class="leadership-dept-badge">Founders &amp; Oversight</span>
             </div>
             <div class="leadership-card-body">
@@ -969,7 +969,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 2: Pulpit Ministry -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Pulpit Word &amp; Preaching Ministry" loading="lazy">
+              <img src="assets/images/real/pastor-preaching.jpg" alt="Pulpit Word &amp; Preaching Ministry" loading="lazy">
               <span class="leadership-dept-badge">The Priestly Altar</span>
             </div>
             <div class="leadership-card-body">
@@ -982,7 +982,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 3: Pastoral Council -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Pastoral Oversight Council" loading="lazy">
+              <img src="assets/images/real/pastoral-council.jpg" alt="Pastoral Oversight Council" loading="lazy">
               <span class="leadership-dept-badge">Pastoral Council</span>
             </div>
             <div class="leadership-card-body">
@@ -995,7 +995,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 4: Associate Pastor -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Associate Pastor of the Word" loading="lazy">
+              <img src="assets/images/real/pastor-associate.jpg" alt="Associate Pastor of the Word" loading="lazy">
               <span class="leadership-dept-badge">Discipleship &amp; Word</span>
             </div>
             <div class="leadership-card-body">
@@ -1008,7 +1008,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 5: Presbytery & Elders -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Presbytery &amp; Ministry Elders" loading="lazy">
+              <img src="assets/images/real/ministry-elders.jpg" alt="Presbytery &amp; Ministry Elders" loading="lazy">
               <span class="leadership-dept-badge">Ministry Elders</span>
             </div>
             <div class="leadership-card-body">
@@ -1021,7 +1021,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 6: Women of Faith -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Women of Faith Fellowship" loading="lazy">
+              <img src="assets/images/real/women-ministry.jpg" alt="Women of Faith Fellowship" loading="lazy">
               <span class="leadership-dept-badge">Women's Fellowship</span>
             </div>
             <div class="leadership-card-body">
@@ -1034,7 +1034,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 7: Marriage & Family Life -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Marriage &amp; Family Life Ministry" loading="lazy">
+              <img src="assets/images/real/family-couples.jpg" alt="Marriage &amp; Family Life Ministry" loading="lazy">
               <span class="leadership-dept-badge">Family &amp; Marriage</span>
             </div>
             <div class="leadership-card-body">
@@ -1047,7 +1047,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 8: First Lady & Intercession -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="First Lady &amp; Intercessory Oversight" loading="lazy">
+              <img src="assets/images/real/first-lady.jpg" alt="First Lady &amp; Intercessory Oversight" loading="lazy">
               <span class="leadership-dept-badge">Pastoral Counseling</span>
             </div>
             <div class="leadership-card-body">
@@ -1060,7 +1060,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 9: Youth & Digital Media -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Youth, Media &amp; Creative Outreach" loading="lazy">
+              <img src="assets/images/real/youth-media.jpg" alt="Youth, Media &amp; Creative Outreach" loading="lazy">
               <span class="leadership-dept-badge">Youth &amp; Media</span>
             </div>
             <div class="leadership-card-body">
@@ -1073,7 +1073,7 @@ require_once __DIR__ . '/includes/header.php';
           <!-- Leader 10: Covenant Partnership -->
           <div class="leadership-card">
             <div class="leadership-card-media">
-              <img src="=2" alt="Covenant Partnership &amp; Stewardship" loading="lazy">
+              <img src="assets/images/real/covenant-partnership.jpg" alt="Covenant Partnership &amp; Stewardship" loading="lazy">
               <span class="leadership-dept-badge">Stewardship</span>
             </div>
             <div class="leadership-card-body">
@@ -1325,7 +1325,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-giving" class="tab-pane <?php echo ($active_tab === 'tab-giving') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-giving">
-    <div class="banner-bg-drift" style="background-image: url('=2');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Kingdom Stewardship</span>
@@ -1340,7 +1340,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container">
       
       <!-- Scripture Foundation Box -->
-      <div class="firm-belief-box" style="max-width: 900px; margin: 0 auto 3.5rem auto; background: linear-gradient(135deg, rgba(254, 244, 236, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%), url('=2') center/cover no-repeat;">
+      <div class="firm-belief-box" style="max-width: 900px; margin: 0 auto 3.5rem auto; background: linear-gradient(135deg, rgba(254, 244, 236, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%), url('assets/images/real/covenant-partnership.jpg') center/cover no-repeat;">
         <span class="section-tag" style="margin-bottom: 0.4rem;">Scripture Foundation</span>
         <h3 style="font-size: 1.35rem; color: var(--green-darkest); margin-bottom: 0.8rem; line-height: 1.6;">
           "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
@@ -1540,7 +1540,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-watch" class="tab-pane <?php echo ($active_tab === 'tab-watch') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-watch">
-    <div class="banner-bg-drift" style="background-image: url('=2');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Broadcasting the Word</span>
@@ -1773,7 +1773,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-contact" class="tab-pane <?php echo ($active_tab === 'tab-contact') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-contact">
-    <div class="banner-bg-drift" style="background-image: url('=2');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Connect With Us</span>
