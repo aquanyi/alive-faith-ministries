@@ -669,7 +669,7 @@
 
             <div class="form-group">
               <label class="form-label">Supabase Anon Public API Key</label>
-              <input type="text" class="form-input" id="cfg-supabase-key" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." value="">
+              <input type="text" class="form-input" id="cfg-supabase-key" placeholder="sb_publishable_..." value="sb_publishable_qfBXEPprLTGGhO34OE2tRA_vfY5LO4v">
             </div>
 
             <button type="submit" class="btn-admin">Save &amp; Test Supabase Connection</button>
@@ -802,26 +802,35 @@ CREATE POLICY "Admin Upload Devotion Images" ON storage.objects
         const email = document.getElementById('auth-email').value.trim();
         const password = document.getElementById('auth-password').value.trim();
 
-        // If Supabase is connected, authenticate through Supabase Auth
+        let loggedIn = false;
+
+        // 1. Try Supabase Auth first
         if (supabaseClient) {
           try {
             const { data, error } = await supabaseClient.auth.signInWithPassword({
               email: email,
               password: password
             });
-            if (error) {
-              alert('Supabase Auth error: ' + error.message);
-              return;
+            if (!error && data && data.user) {
+              loggedIn = true;
             }
           } catch (err) {
             console.warn('Supabase auth fallback:', err);
           }
         }
 
-        // Store login session
-        sessionStorage.setItem('afm_admin_logged_in', 'true');
-        showToast('Welcome to Pastoral Devotional Desk!');
-        checkAuth();
+        // 2. Fallback to master pastoral password
+        if (!loggedIn && (password === 'alivefaith2026' || password === 'afm2026')) {
+          loggedIn = true;
+        }
+
+        if (loggedIn) {
+          sessionStorage.setItem('afm_admin_logged_in', 'true');
+          showToast('Welcome to Pastoral Devotional Desk!');
+          checkAuth();
+        } else {
+          alert('Incorrect credentials. Please enter your Supabase login password or the master pastoral password.');
+        }
       });
 
       // Logout Handler

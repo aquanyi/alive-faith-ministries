@@ -9,9 +9,9 @@
   const storedKey = localStorage.getItem('afm_supabase_key');
 
   window.AFM_SUPABASE_CONFIG = {
-    // Supabase Project URL for aquanyi's Project
+    // Supabase Project URL & Publishable Key for Alive Faith Ministries
     url: storedUrl || 'https://okgxncksfeyrpfqottgk.supabase.co',
-    anonKey: storedKey || '',
+    anonKey: storedKey || 'sb_publishable_qfBXEPprLTGGhO34OE2tRA_vfY5LO4v',
     storageBucket: 'devotion-images',
     tableName: 'devotions',
     isConfigured: function () {
