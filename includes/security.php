@@ -26,11 +26,11 @@ if (!headers_sent()) {
 
     // Content Security Policy for assets and inline layout scripts
     $csp = "default-src 'self'; " .
-           "script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " .
+           "script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; " .
            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " .
            "font-src 'self' https://fonts.gstatic.com data:; " .
            "img-src 'self' data: https: blob:; " .
-           "connect-src 'self'; " .
+           "connect-src 'self' https://*.supabase.co wss://*.supabase.co; " .
            "frame-ancestors 'self'; " .
            "base-uri 'self'; " .
            "form-action 'self';";
