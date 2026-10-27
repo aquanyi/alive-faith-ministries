@@ -78,13 +78,13 @@ require_once __DIR__ . '/includes/header.php';
   <!-- Hero Section with Preaching/Worship Atmosphere & Floating Service Times -->
   <section class="hero">
     
-    <!-- Hero Photographic Background Carousel (Sharp, Real, Active Ken Burns Drift) -->
+    <!-- Hero Photographic Background Carousel (Authentic Alive Faith Ministries Sanctuary Photos) -->
     <div class="hero-bg-slider" aria-hidden="true" id="hero-bg-slider">
-      <div class="hero-slide active" style="background-image: url('assets/images/worship-hero.jpg');"></div>
+      <div class="hero-slide active" style="background-image: url('assets/images/real/pastor-couple.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/real/ministry-elders.jpg');"></div>
       <div class="hero-slide" style="background-image: url('assets/images/worship-stage.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/images/community-bg.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/images/bible-bg.jpg');"></div>
-      <div class="hero-slide" style="background-image: url('assets/images/giving-bg.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('assets/images/worship-hero.jpg');"></div>
       <div class="hero-vignette-overlay"></div>
     </div>
 
@@ -305,8 +305,8 @@ require_once __DIR__ . '/includes/header.php';
       <div class="community-grid">
         <!-- Left: Gathering Gallery Photo Card -->
         <div class="community-photo-card">
-          <img src="assets/images/community-bg.jpg" alt="Alive Faith Ministries Sanctuary Community" loading="lazy" width="600" height="400">
-          <span class="community-photo-badge">AFM Community Gatherings</span>
+          <img src="assets/images/real/women-ministry.jpg" alt="Alive Faith Ministries Women of Faith Fellowship" loading="lazy" width="600" height="400">
+          <span class="community-photo-badge">AFM Fellowship &amp; Sisterhood</span>
         </div>
 
         <!-- Center: Partnership & M-Pesa -->
@@ -381,7 +381,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="tv-mockup-frame">
         <div class="tv-mockup-bezel">
           <div class="tv-mockup-screen">
-            <img src="assets/images/worship-stage.jpg" alt="Alive Faith Ministries Service Stage Broadcast" loading="lazy" width="700" height="394">
+            <img src="assets/images/real/pastor-preaching.jpg" alt="Alive Faith Ministries Senior Pastor Preaching Broadcast" loading="lazy" width="700" height="394">
             <a href="#watch" class="tv-play-overlay" data-tab-target="tab-watch" aria-label="Watch Live Service Stream">
               <svg class="icon" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path></svg>
             </a>
@@ -422,7 +422,7 @@ require_once __DIR__ . '/includes/header.php';
       <div class="phaneroo-action-cards-grid">
         <!-- Card 1: Prayer -->
         <a href="#contact" class="action-photo-card" data-tab-target="tab-contact">
-          <img src="assets/images/worship-hero.jpg" alt="Congregation Worship and Prayer" loading="lazy" width="600" height="400">
+          <img src="assets/images/real/pastor-associate.jpg" alt="Pastoral Prayer and Counseling" loading="lazy" width="600" height="400">
           <div class="action-card-content">
             <h3>Let's stand with you in prayer</h3>
             <span class="action-card-link">Submit your prayer request &rarr;</span>
@@ -431,19 +431,19 @@ require_once __DIR__ . '/includes/header.php';
 
         <!-- Card 2: Salvation & Faith -->
         <a href="#faith" class="action-photo-card" data-tab-target="tab-faith">
-          <img src="assets/images/bible-bg.jpg" alt="Holy Scriptures and Salvation" loading="lazy" width="600" height="400">
+          <img src="assets/images/real/pastoral-council.jpg" alt="Apostolic Teaching and Fullness in Christ" loading="lazy" width="600" height="400">
           <div class="action-card-content">
-            <h3>Have you given your life to Christ?</h3>
-            <span class="action-card-link">Learn all about your new life &rarr;</span>
+            <h3>Rooted in the Word of Grace</h3>
+            <span class="action-card-link">Explore 10 Articles of Truth &rarr;</span>
           </div>
         </a>
 
         <!-- Card 3: Testimony & Giving -->
         <a href="#giving" class="action-photo-card" data-tab-target="tab-giving">
-          <img src="assets/images/giving-bg.jpg" alt="Sanctuary Altar and Covenant Giving" loading="lazy" width="600" height="400">
+          <img src="assets/images/real/covenant-partnership.jpg" alt="Covenant Partnership and Ministry Support" loading="lazy" width="600" height="400">
           <div class="action-card-content">
-            <h3>Do you have a testimony or wish to partner?</h3>
-            <span class="action-card-link">Partner with us &amp; share your story &rarr;</span>
+            <h3>Covenant Partnership in the Kingdom</h3>
+            <span class="action-card-link">Partner with us in stewardship &rarr;</span>
           </div>
         </a>
       </div>
@@ -614,7 +614,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-about" class="tab-pane <?php echo ($active_tab === 'tab-about') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-about">
-    <div class="banner-bg-drift" style="background-image: url('assets/images/community-bg.jpg');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastoral-council.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Priestly Mandate</span>
@@ -782,49 +782,207 @@ require_once __DIR__ . '/includes/header.php';
         </div>
       </div>
 
-      <!-- Pastoral Heart & Commitment Letter -->
+      <!-- Pastoral Heart & Commitment Letter (With Real Senior Pastors Portrait) -->
       <div class="pastoral-heart-card">
-        <span class="section-tag">Pastoral Heart</span>
-        <h3 style="font-size: 1.6rem; color: var(--green-darkest); margin-bottom: 0.8rem;">A Welcome from Leadership</h3>
-        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.6rem;">
-          At Alive Faith Ministries, we do not view you as a face in the crowd. You are God's workmanship, ordained for purpose and destined for greatness in Christ. Our pastoral commitment is to shepherd you with uncompromised truth, genuine love, and continuous intercession before the throne of grace.
-        </p>
-
-        <div class="pastoral-commitments-grid">
-          <div class="commitment-item">
-            <div class="commitment-item-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            </div>
-            <div class="commitment-item-text">
-              <h4>Pure Biblical Truth</h4>
-              <p>Teaching the unfiltered gospel of grace with clarity, revelation, and scriptural integrity.</p>
+        <div class="pastoral-welcome-layout">
+          <!-- Real Senior Pastor & First Lady Framed Portrait -->
+          <div class="pastoral-lead-photo-frame">
+            <img src="assets/images/real/pastor-couple.jpg" alt="Alive Faith Ministries Senior Pastor &amp; First Lady" loading="lazy" width="800" height="1000">
+            <div class="pastoral-lead-badge">
+              <h4>Senior Pastoral Leadership</h4>
+              <p>Alive Faith Ministries Sanctuary</p>
             </div>
           </div>
 
-          <div class="commitment-item">
-            <div class="commitment-item-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            </div>
-            <div class="commitment-item-text">
-              <h4>Unconditional Love</h4>
-              <p>Creating a loving, welcoming family where everyone is embraced, healed, and valued.</p>
-            </div>
-          </div>
+          <!-- Pastoral Heart Welcome Message -->
+          <div>
+            <span class="section-tag">Pastoral Heart</span>
+            <h3 style="font-size: clamp(1.6rem, 2.8vw, 2.2rem); color: var(--green-darkest); margin-bottom: 0.8rem;">A Welcome from Our Senior Pastors</h3>
+            <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.4rem;">
+              Welcome to <strong>Alive Faith Ministries</strong>. We are a family grounded in the unshakeable love of God and the transformative power of His Word. In our sanctuary, you are not a face in the crowd — you are God's deliberate workmanship, created in Christ Jesus for good works.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1.6rem;">
+              Our apostolic commission is to shepherd you from spiritual infancy into the full stature and fullness of Christ, walking in righteousness, answered prayers, and kingdom dominion.
+            </p>
 
-          <div class="commitment-item">
-            <div class="commitment-item-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="pastoral-commitments-grid">
+              <div class="commitment-item">
+                <div class="commitment-item-icon">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <div class="commitment-item-text">
+                  <h4>Pure Apostolic Truth</h4>
+                  <p>Uncompromising revelation of grace, righteousness, and eternal redemption in Christ.</p>
+                </div>
+              </div>
+
+              <div class="commitment-item">
+                <div class="commitment-item-icon">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                </div>
+                <div class="commitment-item-text">
+                  <h4>Family Fellowship &amp; Love</h4>
+                  <p>A welcoming sanctuary where you are nurtured, empowered, and strengthened.</p>
+                </div>
+              </div>
+
+              <div class="commitment-item">
+                <div class="commitment-item-icon">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div class="commitment-item-text">
+                  <h4>Fervent Priestly Intercession</h4>
+                  <p>Continual prayer cover for your destiny, family, spiritual growth, and breakthroughs.</p>
+                </div>
+              </div>
             </div>
-            <div class="commitment-item-text">
-              <h4>Fervent Intercession</h4>
-              <p>Standing continually in prayer for your family, spiritual breakthrough, health, and destiny.</p>
+
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#contact" class="btn btn-primary" data-tab-target="tab-contact">Connect With Pastoral Team</a>
+              <a href="#watch" class="btn btn-secondary" data-tab-target="tab-watch">Watch Recent Sermons</a>
             </div>
           </div>
         </div>
+      </div>
 
-        <div style="margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#contact" class="btn btn-primary" data-tab-target="tab-contact">Connect With Pastoral Team</a>
-          <a href="#watch" class="btn btn-secondary" data-tab-target="tab-watch">Watch Recent Sermons</a>
+      <!-- Presbytery & Ministry Leadership Council Showcase (Featuring Real AFM Photos) -->
+      <div class="leadership-council-section">
+        <div class="section-header">
+          <span class="section-tag">Sanctuary Presbytery</span>
+          <h2>Ministry Leadership Council</h2>
+          <p class="lead">Dedicated shepherds, ministers, and leaders laboring in word, doctrine, prayer, and fellowship.</p>
+        </div>
+
+        <div class="leadership-grid">
+          <!-- Leader 1: Senior Pastors -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/pastor-couple.jpg" alt="Senior Pastoral Leadership - Alive Faith Ministries" loading="lazy">
+              <span class="leadership-dept-badge">Founders &amp; Oversight</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Senior Pastoral Leadership</h3>
+              <div class="leadership-card-role">Apostolic &amp; Ministry Founders</div>
+              <p class="leadership-card-desc">Shepherding Alive Faith Ministries with an apostolic burden to awaken believers to their fullness, stature, and divine mandate in Christ Jesus.</p>
+            </div>
+          </div>
+
+          <!-- Leader 2: Pulpit Ministry -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/pastor-preaching.jpg" alt="Pulpit Word &amp; Preaching Ministry" loading="lazy">
+              <span class="leadership-dept-badge">The Priestly Altar</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Pulpit &amp; Proclamation Ministry</h3>
+              <div class="leadership-card-role">Preaching of the Gospel of Grace</div>
+              <p class="leadership-card-desc">Transmitting life-transforming, revelatory teachings every Friday Hour of Illumination and Sunday Celebration Service.</p>
+            </div>
+          </div>
+
+          <!-- Leader 3: Pastoral Council -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/pastoral-council.jpg" alt="Pastoral Oversight Council" loading="lazy">
+              <span class="leadership-dept-badge">Pastoral Council</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Pastoral Oversight Council</h3>
+              <div class="leadership-card-role">Doctrine &amp; Spiritual Alignment</div>
+              <p class="leadership-card-desc">Preserving doctrinal purity, biblical counseling, and shepherd care across all fellowships, home cells, and sanctuary services.</p>
+            </div>
+          </div>
+
+          <!-- Leader 4: Associate Pastor -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/pastor-associate.jpg" alt="Associate Pastor of the Word" loading="lazy">
+              <span class="leadership-dept-badge">Discipleship &amp; Word</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Associate Pastorate</h3>
+              <div class="leadership-card-role">Discipleship &amp; Pastoral Care</div>
+              <p class="leadership-card-desc">Leading believers into experiential knowledge of God, spiritual maturity, baptism in the Holy Spirit, and walking in righteousness.</p>
+            </div>
+          </div>
+
+          <!-- Leader 5: Presbytery & Elders -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/ministry-elders.jpg" alt="Presbytery &amp; Ministry Elders" loading="lazy">
+              <span class="leadership-dept-badge">Ministry Elders</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Council of Ministry Elders</h3>
+              <div class="leadership-card-role">Governance &amp; Sanctuary Pillars</div>
+              <p class="leadership-card-desc">Providing wisdom, administrative excellence, and spiritual guidance to ensure the ministry flourishes in integrity and power.</p>
+            </div>
+          </div>
+
+          <!-- Leader 6: Women of Faith -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/women-ministry.jpg" alt="Women of Faith Fellowship" loading="lazy">
+              <span class="leadership-dept-badge">Women's Fellowship</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Daughters of Destiny</h3>
+              <div class="leadership-card-role">Women of Faith &amp; Intercession</div>
+              <p class="leadership-card-desc">Raising virtuous, prayerful women who build godly families, walk in spiritual authority, and mentor the next generation.</p>
+            </div>
+          </div>
+
+          <!-- Leader 7: Marriage & Family Life -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/family-couples.jpg" alt="Marriage &amp; Family Life Ministry" loading="lazy">
+              <span class="leadership-dept-badge">Family &amp; Marriage</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Couples &amp; Family Ministry</h3>
+              <div class="leadership-card-role">Christ-Centered Homes</div>
+              <p class="leadership-card-desc">Nurturing marital oneness, godly parenting, and solid kingdom families rooted in mutual love, honor, and covenant grace.</p>
+            </div>
+          </div>
+
+          <!-- Leader 8: First Lady & Intercession -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/first-lady.jpg" alt="First Lady &amp; Intercessory Oversight" loading="lazy">
+              <span class="leadership-dept-badge">Pastoral Counseling</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Intercession &amp; Women's Lead</h3>
+              <div class="leadership-card-role">Counseling &amp; Spiritual Motherhood</div>
+              <p class="leadership-card-desc">Standing at the altar of prevailing prayer, maternal care, and pastoral counseling for women, youths, and new converts.</p>
+            </div>
+          </div>
+
+          <!-- Leader 9: Youth & Digital Media -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/youth-media.jpg" alt="Youth, Media &amp; Creative Outreach" loading="lazy">
+              <span class="leadership-dept-badge">Youth &amp; Media</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Youth &amp; Digital Broadcast</h3>
+              <div class="leadership-card-role">Creative Media &amp; Next Generation</div>
+              <p class="leadership-card-desc">Engaging young minds with uncompromised faith, digital broadcasts, live streams, and creative expressions of worship.</p>
+            </div>
+          </div>
+
+          <!-- Leader 10: Covenant Partnership -->
+          <div class="leadership-card">
+            <div class="leadership-card-media">
+              <img src="assets/images/real/covenant-partnership.jpg" alt="Covenant Partnership &amp; Stewardship" loading="lazy">
+              <span class="leadership-dept-badge">Stewardship</span>
+            </div>
+            <div class="leadership-card-body">
+              <h3 class="leadership-card-title">Covenant Partnership Desk</h3>
+              <div class="leadership-card-role">Kingdom Expansion &amp; Giving</div>
+              <p class="leadership-card-desc">Partnering in sacrifice and generosity to advance gospel crusades, sanctuary development, and regional outreach.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1068,7 +1226,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-giving" class="tab-pane <?php echo ($active_tab === 'tab-giving') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-giving">
-    <div class="banner-bg-drift" style="background-image: url('assets/images/giving-bg.jpg');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/covenant-partnership.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Kingdom Stewardship</span>
@@ -1083,7 +1241,7 @@ require_once __DIR__ . '/includes/header.php';
     <div class="container">
       
       <!-- Scripture Foundation Box -->
-      <div class="firm-belief-box" style="max-width: 900px; margin: 0 auto 3.5rem auto; background: linear-gradient(135deg, rgba(254, 244, 236, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%), url('assets/images/giving-bg.jpg') center/cover no-repeat;">
+      <div class="firm-belief-box" style="max-width: 900px; margin: 0 auto 3.5rem auto; background: linear-gradient(135deg, rgba(254, 244, 236, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%), url('assets/images/real/covenant-partnership.jpg') center/cover no-repeat;">
         <span class="section-tag" style="margin-bottom: 0.4rem;">Scripture Foundation</span>
         <h3 style="font-size: 1.35rem; color: var(--green-darkest); margin-bottom: 0.8rem; line-height: 1.6;">
           "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
@@ -1283,7 +1441,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-watch" class="tab-pane <?php echo ($active_tab === 'tab-watch') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-watch">
-    <div class="banner-bg-drift" style="background-image: url('assets/images/worship-stage.jpg');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/pastor-preaching.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Broadcasting the Word</span>
@@ -1516,7 +1674,7 @@ require_once __DIR__ . '/includes/header.php';
 <div id="tab-contact" class="tab-pane <?php echo ($active_tab === 'tab-contact') ? 'active' : ''; ?>">
   
   <section class="page-banner page-banner-contact">
-    <div class="banner-bg-drift" style="background-image: url('assets/images/community-bg.jpg');"></div>
+    <div class="banner-bg-drift" style="background-image: url('assets/images/real/ministry-elders.jpg');"></div>
     <div class="banner-vignette"></div>
     <div class="container banner-inner">
       <span class="section-tag" style="color: var(--amber-light);">Connect With Us</span>

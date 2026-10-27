@@ -701,25 +701,30 @@ CREATE TABLE IF NOT EXISTS public.devotions (
 -- 2. Enable Row Level Security (RLS)
 ALTER TABLE public.devotions ENABLE ROW LEVEL SECURITY;
 
--- 3. Allow Public to Read Devotions
+-- 3. Devotions Security Policies (Safe Re-run)
+DROP POLICY IF EXISTS "Public Read Devotions" ON public.devotions;
 CREATE POLICY "Public Read Devotions" ON public.devotions
   FOR SELECT USING (true);
 
--- 4. Allow Authenticated Admins to Write & Edit
-CREATE POLICY "Admin Write Devotions" ON public.devotions
-  FOR ALL TO authenticated USING (true) WITH CHECK (true);
+DROP POLICY IF EXISTS "Admin Write Devotions" ON public.devotions;
+DROP POLICY IF EXISTS "Allow All Write Devotions" ON public.devotions;
+CREATE POLICY "Allow All Write Devotions" ON public.devotions
+  FOR ALL USING (true) WITH CHECK (true);
 
--- 5. Create Storage Bucket for Devotion Images
+-- 4. Create or Update Storage Bucket for Devotion Images
 INSERT INTO storage.buckets (id, name, public) 
 VALUES ('devotion-images', 'devotion-images', true)
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (id) DO UPDATE SET public = true;
 
--- 6. Storage Bucket Security Policy
+-- 5. Storage Bucket Security Policies (Safe Re-run)
+DROP POLICY IF EXISTS "Public Read Devotion Images" ON storage.objects;
 CREATE POLICY "Public Read Devotion Images" ON storage.objects
   FOR SELECT USING (bucket_id = 'devotion-images');
 
-CREATE POLICY "Admin Upload Devotion Images" ON storage.objects
-  FOR INSERT TO authenticated WITH CHECK (bucket_id = 'devotion-images');
+DROP POLICY IF EXISTS "Admin Upload Devotion Images" ON storage.objects;
+DROP POLICY IF EXISTS "Allow All Devotion Images" ON storage.objects;
+CREATE POLICY "Allow All Devotion Images" ON storage.objects
+  FOR ALL USING (bucket_id = 'devotion-images') WITH CHECK (bucket_id = 'devotion-images');
 </div>
             <button type="button" class="btn-admin-secondary" id="copy-sql-btn">Copy SQL Script</button>
           </div>
