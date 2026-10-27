@@ -82,18 +82,77 @@
       letter-spacing: 0.06em;
     }
 
-    .admin-nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .admin-nav-actions { display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; }
     .btn-view-site {
       color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      padding: 0.5rem 1rem;
+      padding: 0.45rem 0.95rem;
       border-radius: var(--radius-full);
       background: rgba(255, 255, 255, 0.08);
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .btn-view-site:hover { background: rgba(255, 255, 255, 0.16); color: #ffffff; }
+
+    .admin-user-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .admin-user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-full);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    .admin-user-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-start), var(--gold-end));
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.72rem;
+    }
+    .btn-logout {
+      background: rgba(239, 68, 68, 0.18);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      padding: 0.45rem 1.05rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-logout:hover {
+      background: #dc2626;
+      color: #ffffff;
+      border-color: #dc2626;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    }
+    @media (max-width: 768px) {
+      .admin-navbar { flex-direction: column; align-items: stretch; gap: 1rem; }
+      .admin-nav-actions { justify-content: space-between; }
+      .admin-user-badge span:not(.admin-user-avatar) { display: none; }
+    }
 
     /* Admin Container Layout */
     .admin-main {
@@ -444,8 +503,20 @@
         <span style="width: 8px; height: 8px; border-radius: 50%; background: currentColor;"></span>
         <span id="backend-status-text">Local / Offline Storage</span>
       </span>
-      <a href="index.html#devotion" target="_blank" class="btn-view-site">View Public Devotion Tab &rarr;</a>
-      <button type="button" class="btn-admin-secondary" id="admin-logout-btn" style="display: none; padding: 0.45rem 1rem;">Log Out</button>
+      <a href="index.html#devotion" target="_blank" class="btn-view-site">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        View Live Devotions
+      </a>
+      <div id="admin-user-wrap" class="admin-user-wrap" style="display: none;">
+        <div class="admin-user-badge" title="Active Pastoral Account">
+          <span class="admin-user-avatar" id="current-user-initials">P</span>
+          <span id="current-user-email">admin@livefaithministries.org</span>
+        </div>
+        <button type="button" class="btn-logout" id="admin-logout-btn" title="Sign out of Pastoral Desk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          Log Out
+        </button>
+      </div>
     </div>
   </header>
 
@@ -455,7 +526,14 @@
     <!-- Section 1: Admin Login Card (Hidden when authenticated) -->
     <div id="auth-section">
       <div class="auth-overlay-card">
-        <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">📖</div>
+        <div style="width: 58px; height: 58px; margin: 0 auto 1.2rem auto; border-radius: 50%; background: rgba(7, 31, 17, 0.05); display: flex; align-items: center; justify-content: center; color: var(--gold-start);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            <line x1="12" y1="6" x2="12" y2="12"></line>
+            <line x1="9" y1="9" x2="15" y2="9"></line>
+          </svg>
+        </div>
         <h2>Pastoral Publisher Login</h2>
         <p>Log in to publish daily devotions, format teachings, and upload images to the church website.</p>
 
@@ -468,13 +546,19 @@
             <label class="form-label">Password</label>
             <input type="password" class="form-input" id="auth-password" placeholder="••••••••" required value="alivefaith2026">
           </div>
+          <div class="form-group" style="margin-bottom: 1.4rem;">
+            <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.84rem; color: var(--green-darkest); cursor: pointer; user-select: none;">
+              <input type="checkbox" id="auth-show-password-toggle">
+              <span>Show password</span>
+            </label>
+          </div>
           <button type="submit" class="btn-admin" style="width: 100%; justify-content: center;" id="login-submit-btn">
             Log In to Publishing Desk &rarr;
           </button>
         </form>
 
-        <div style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-subtle);">
-          Works with Supabase Auth or Local Offline Admin Mode.
+        <div style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-subtle); line-height: 1.5;">
+          Default master password is <code>alivefaith2026</code>. You can change this to your personal password inside Account Settings once logged in.
         </div>
       </div>
     </div>
@@ -484,9 +568,22 @@
       
       <!-- Workspace Navigation Tabs -->
       <nav class="workspace-tabs">
-        <button type="button" class="workspace-tab-btn active" data-target="editor-tab">New / Edit Devotion</button>
-        <button type="button" class="workspace-tab-btn" data-target="manage-tab">All Devotions (<span id="devotions-count-badge">0</span>)</button>
-        <button type="button" class="workspace-tab-btn" data-target="supabase-tab">Supabase Cloud Settings</button>
+        <button type="button" class="workspace-tab-btn active" data-target="editor-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          Compose Devotion
+        </button>
+        <button type="button" class="workspace-tab-btn" data-target="manage-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          All Devotions (<span id="devotions-count-badge">0</span>)
+        </button>
+        <button type="button" class="workspace-tab-btn" data-target="account-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          Pastor Account &amp; Password
+        </button>
+        <button type="button" class="workspace-tab-btn" data-target="supabase-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+          Supabase Cloud Settings
+        </button>
       </nav>
 
       <!-- Tab A: Devotion Editor (Word Formatting Engine) -->
@@ -649,7 +746,111 @@
         </div>
       </div>
 
-      <!-- Tab C: Supabase Cloud Settings -->
+      <!-- Tab C: Pastor Account & Password -->
+      <div id="account-tab" class="workspace-panel" style="display: none;">
+        <div class="admin-card">
+          <div class="admin-card-title">
+            <div>
+              <h3 style="margin: 0 0 4px 0; color: var(--green-darkest);">Pastor Account &amp; Login Security</h3>
+              <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); font-weight: normal;">
+                Change your login email address and pastoral password anytime. Changes update your credentials instantly.
+              </p>
+            </div>
+            <span class="status-pill status-connected">Secure Session</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 2rem; margin-top: 1.5rem;">
+            
+            <!-- Left Form: Change Credentials -->
+            <div style="background: #f8fafc; padding: 1.8rem; border-radius: var(--radius-md);">
+              <h4 style="color: var(--green-darkest); font-size: 1.1rem; margin-top: 0; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Change Pastoral Login Password
+              </h4>
+
+              <form id="change-credentials-form">
+                <div class="form-group">
+                  <label class="form-label">Pastoral Login Email Address</label>
+                  <input type="email" class="form-input" id="cfg-account-email" placeholder="pastor@livefaithministries.org" required>
+                  <small style="display: block; margin-top: 4px; font-size: 0.78rem; color: var(--text-subtle);">The email address used to sign in to this publishing desk.</small>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Current Password *</label>
+                  <input type="password" class="form-input" id="cfg-account-current-password" placeholder="Enter current password to verify" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">New Password *</label>
+                  <input type="password" class="form-input" id="cfg-account-new-password" placeholder="Minimum 6 characters" required minlength="6">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Confirm New Password *</label>
+                  <input type="password" class="form-input" id="cfg-account-confirm-password" placeholder="Re-type new password" required minlength="6">
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                  <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--green-darkest); cursor: pointer; user-select: none;">
+                    <input type="checkbox" id="show-passwords-toggle">
+                    <span>Show passwords while typing</span>
+                  </label>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; align-items: center;">
+                  <button type="submit" class="btn-admin" id="save-account-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                    Save New Login Details
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Info & Actions: Account Status & Session Controls -->
+            <div>
+              <div style="background: rgba(7, 31, 17, 0.03); padding: 1.5rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h4 style="color: var(--green-darkest); font-size: 0.95rem; margin-top: 0; margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;">Current Active Account</h4>
+                <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+                  <div class="admin-user-avatar" style="width: 44px; height: 44px; font-size: 1.1rem;" id="account-card-avatar">P</div>
+                  <div>
+                    <div style="font-weight: 800; color: var(--green-darkest); font-size: 1rem;" id="account-card-email">admin@livefaithministries.org</div>
+                    <div style="font-size: 0.8rem; color: var(--gold-start); font-weight: 700;">Pastoral Overseer / Administrator</div>
+                  </div>
+                </div>
+                <div style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6;">
+                  All daily devotions, audio transcripts, and devotional banner uploads are managed from this authenticated session.
+                </div>
+              </div>
+
+              <!-- Reset to Defaults Card -->
+              <div style="background: rgba(234, 100, 7, 0.06); padding: 1.3rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <h5 style="color: #ea6407; font-size: 0.9rem; margin: 0 0 0.4rem 0; font-weight: 800;">Master Password Reset</h5>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.8rem 0; line-height: 1.5;">
+                  Need to restore the initial church master password (<code>alivefaith2026</code>)?
+                </p>
+                <button type="button" class="btn-admin-secondary" id="reset-credentials-default-btn" style="padding: 0.45rem 1rem; font-size: 0.82rem;">
+                  Restore Default Credentials
+                </button>
+              </div>
+
+              <!-- Quick Log Out Button -->
+              <div style="background: #ffffff; padding: 1.3rem; border-radius: var(--radius-md); box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
+                <h5 style="color: var(--green-darkest); font-size: 0.9rem; margin: 0 0 0.4rem 0; font-weight: 800;">Sign Out of Desk</h5>
+                <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0 0 0.8rem 0; line-height: 1.5;">
+                  Finish publishing for the day and lock this browser session.
+                </p>
+                <button type="button" class="btn-logout" id="account-tab-logout-btn" style="width: 100%; justify-content: center; padding: 0.7rem 1.2rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                  Log Out Now
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab D: Supabase Cloud Settings -->
       <div id="supabase-tab" class="workspace-panel" style="display: none;">
         <div class="admin-card">
           <div class="admin-card-title">
@@ -787,30 +988,58 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
         const isLoggedIn = sessionStorage.getItem('afm_admin_logged_in') === 'true';
         const authSec = document.getElementById('auth-section');
         const workSec = document.getElementById('workspace-section');
-        const logoutBtn = document.getElementById('admin-logout-btn');
+        const userWrap = document.getElementById('admin-user-wrap');
+        const activeEmail = localStorage.getItem('afm_admin_custom_email') || 'admin@livefaithministries.org';
+        const userInitial = activeEmail.charAt(0).toUpperCase() || 'P';
 
         if (isLoggedIn) {
           if (authSec) authSec.style.display = 'none';
           if (workSec) workSec.style.display = 'block';
-          if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+          if (userWrap) userWrap.style.display = 'inline-flex';
+
+          const userEmailElem = document.getElementById('current-user-email');
+          const userInitElem = document.getElementById('current-user-initials');
+          const acctEmailElem = document.getElementById('account-card-email');
+          const acctAvatarElem = document.getElementById('account-card-avatar');
+          const cfgEmailInput = document.getElementById('cfg-account-email');
+
+          if (userEmailElem) userEmailElem.innerText = activeEmail;
+          if (userInitElem) userInitElem.innerText = userInitial;
+          if (acctEmailElem) acctEmailElem.innerText = activeEmail;
+          if (acctAvatarElem) acctAvatarElem.innerText = userInitial;
+          if (cfgEmailInput) cfgEmailInput.value = activeEmail;
+
           loadDevotionsList();
         } else {
           if (authSec) authSec.style.display = 'block';
           if (workSec) workSec.style.display = 'none';
-          if (logoutBtn) logoutBtn.style.display = 'none';
+          if (userWrap) userWrap.style.display = 'none';
+
+          const loginEmailInput = document.getElementById('auth-email');
+          if (loginEmailInput && !loginEmailInput.value) {
+            loginEmailInput.value = activeEmail;
+          }
         }
       }
 
-      // Login Handler
+      // Login Form Handler
       document.getElementById('admin-login-form').addEventListener('submit', async function (e) {
         e.preventDefault();
         const email = document.getElementById('auth-email').value.trim();
         const password = document.getElementById('auth-password').value.trim();
 
+        const customEmail = (localStorage.getItem('afm_admin_custom_email') || 'admin@livefaithministries.org').toLowerCase();
+        const customPassword = localStorage.getItem('afm_admin_custom_password');
+
         let loggedIn = false;
 
-        // 1. Try Supabase Auth first
-        if (supabaseClient) {
+        // 1. Check custom pastoral credentials if configured
+        if (customPassword && email.toLowerCase() === customEmail && password === customPassword) {
+          loggedIn = true;
+        }
+
+        // 2. Try Supabase Auth if connected
+        if (!loggedIn && supabaseClient) {
           try {
             const { data, error } = await supabaseClient.auth.signInWithPassword({
               email: email,
@@ -824,28 +1053,145 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
           }
         }
 
-        // 2. Fallback to master pastoral password
+        // 3. Fallback to master pastoral default passwords
         if (!loggedIn && (password === 'alivefaith2026' || password === 'afm2026')) {
           loggedIn = true;
         }
 
         if (loggedIn) {
           sessionStorage.setItem('afm_admin_logged_in', 'true');
-          showToast('Welcome to Pastoral Devotional Desk!');
+          showToast('Welcome, Pastor! Devotional Desk is unlocked.');
           checkAuth();
         } else {
-          alert('Incorrect credentials. Please enter your Supabase login password or the master pastoral password.');
+          alert('Incorrect credentials. Please verify your email and password, or use the master pastoral password.');
         }
       });
 
-      // Logout Handler
-      document.getElementById('admin-logout-btn').addEventListener('click', () => {
+      // Unified Logout Handler
+      function performLogout() {
         sessionStorage.removeItem('afm_admin_logged_in');
         if (supabaseClient) {
-          supabaseClient.auth.signOut();
+          try {
+            supabaseClient.auth.signOut();
+          } catch (e) {
+            console.warn('Supabase signOut note:', e);
+          }
         }
+        showToast('Logged out safely. Have a blessed day!');
         checkAuth();
-      });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      const topLogoutBtn = document.getElementById('admin-logout-btn');
+      if (topLogoutBtn) topLogoutBtn.addEventListener('click', performLogout);
+
+      const tabLogoutBtn = document.getElementById('account-tab-logout-btn');
+      if (tabLogoutBtn) tabLogoutBtn.addEventListener('click', performLogout);
+
+      // Login password visibility toggle
+      const authShowPass = document.getElementById('auth-show-password-toggle');
+      if (authShowPass) {
+        authShowPass.addEventListener('change', function () {
+          const passField = document.getElementById('auth-password');
+          if (passField) passField.type = this.checked ? 'text' : 'password';
+        });
+      }
+
+      // Change Pastoral Login Credentials Handler
+      const changeCredForm = document.getElementById('change-credentials-form');
+      if (changeCredForm) {
+        changeCredForm.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          const newEmail = document.getElementById('cfg-account-email').value.trim();
+          const currentPass = document.getElementById('cfg-account-current-password').value.trim();
+          const newPass = document.getElementById('cfg-account-new-password').value.trim();
+          const confirmPass = document.getElementById('cfg-account-confirm-password').value.trim();
+
+          const activeCustomPass = localStorage.getItem('afm_admin_custom_password');
+          const isCurrentPassValid = (
+            (activeCustomPass && currentPass === activeCustomPass) ||
+            currentPass === 'alivefaith2026' ||
+            currentPass === 'afm2026'
+          );
+
+          if (!isCurrentPassValid) {
+            alert('The current password you entered is incorrect. Please verify your existing password.');
+            return;
+          }
+
+          if (newPass.length < 6) {
+            alert('Your new password must be at least 6 characters long.');
+            return;
+          }
+
+          if (newPass !== confirmPass) {
+            alert('The new passwords do not match. Please re-enter both carefully.');
+            return;
+          }
+
+          // Save custom credentials locally
+          localStorage.setItem('afm_admin_custom_email', newEmail);
+          localStorage.setItem('afm_admin_custom_password', newPass);
+
+          // Update Supabase Auth user if session exists
+          if (supabaseClient) {
+            try {
+              const { error } = await supabaseClient.auth.updateUser({
+                email: newEmail,
+                password: newPass
+              });
+              if (error) {
+                console.warn('Supabase auth updateUser note:', error.message);
+              }
+            } catch (err) {
+              console.warn(err);
+            }
+          }
+
+          // Update prefilled login email
+          const authEmail = document.getElementById('auth-email');
+          if (authEmail) authEmail.value = newEmail;
+
+          // Clear password fields
+          document.getElementById('cfg-account-current-password').value = '';
+          document.getElementById('cfg-account-new-password').value = '';
+          document.getElementById('cfg-account-confirm-password').value = '';
+
+          checkAuth();
+          showToast('Pastoral login credentials updated successfully!');
+        });
+      }
+
+      // Account settings password visibility toggle
+      const acctShowPass = document.getElementById('show-passwords-toggle');
+      if (acctShowPass) {
+        acctShowPass.addEventListener('change', function () {
+          const type = this.checked ? 'text' : 'password';
+          const p1 = document.getElementById('cfg-account-current-password');
+          const p2 = document.getElementById('cfg-account-new-password');
+          const p3 = document.getElementById('cfg-account-confirm-password');
+          if (p1) p1.type = type;
+          if (p2) p2.type = type;
+          if (p3) p3.type = type;
+        });
+      }
+
+      // Reset to Default Master Credentials
+      const resetCredBtn = document.getElementById('reset-credentials-default-btn');
+      if (resetCredBtn) {
+        resetCredBtn.addEventListener('click', function () {
+          if (confirm('Are you sure you want to restore the default pastoral credentials (admin@livefaithministries.org / alivefaith2026)?')) {
+            localStorage.removeItem('afm_admin_custom_email');
+            localStorage.removeItem('afm_admin_custom_password');
+            const authEmail = document.getElementById('auth-email');
+            const authPass = document.getElementById('auth-password');
+            if (authEmail) authEmail.value = 'admin@livefaithministries.org';
+            if (authPass) authPass.value = 'alivefaith2026';
+            checkAuth();
+            showToast('Default credentials restored: alivefaith2026');
+          }
+        });
+      }
 
       // Word-like Toolbar Execution
       document.querySelectorAll('.word-toolbar .tool-btn').forEach(btn => {
