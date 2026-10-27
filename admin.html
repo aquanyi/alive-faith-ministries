@@ -580,10 +580,6 @@
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
           Pastor Account &amp; Password
         </button>
-        <button type="button" class="workspace-tab-btn" data-target="supabase-tab">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-          Supabase Cloud Settings
-        </button>
       </nav>
 
       <!-- Tab A: Devotion Editor (Word Formatting Engine) -->
@@ -661,7 +657,7 @@
                 <div id="dropzone-prompt">
                   <svg style="width: 32px; height: 32px; fill: var(--gold-start); margin-bottom: 0.5rem;" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                   <div style="font-weight: 700; font-size: 0.95rem; color: var(--green-darkest);">Click to upload a devotion image or drag &amp; drop</div>
-                  <div style="font-size: 0.8rem; color: var(--text-subtle);">JPG, PNG, WebP (Uploaded to Supabase Storage)</div>
+                  <div style="font-size: 0.8rem; color: var(--text-subtle);">JPG, PNG, WebP (Cloud Storage &amp; Web Optimized)</div>
                 </div>
                 <div class="image-preview-box" id="image-preview-box">
                   <img id="image-preview-elem" src="" alt="Preview">
@@ -850,87 +846,7 @@
         </div>
       </div>
 
-      <!-- Tab D: Supabase Cloud Settings -->
-      <div id="supabase-tab" class="workspace-panel" style="display: none;">
-        <div class="admin-card">
-          <div class="admin-card-title">
-            <h3>Supabase Cloud Backend Configuration</h3>
-            <span class="status-pill status-connected" id="settings-status-pill">Active</span>
-          </div>
 
-          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
-            Connect your free project at <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" style="color: var(--gold-start); font-weight: 700;">supabase.com</a> to enable automatic real-time cloud publishing directly to Vercel without writing code.
-          </p>
-
-          <form id="supabase-settings-form">
-            <div class="form-group">
-              <label class="form-label">Supabase Project URL</label>
-              <input type="url" class="form-input" id="cfg-supabase-url" placeholder="https://okgxncksfeyrpfqottgk.supabase.co" value="https://okgxncksfeyrpfqottgk.supabase.co">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Supabase Anon Public API Key</label>
-              <input type="text" class="form-input" id="cfg-supabase-key" placeholder="sb_publishable_..." value="sb_publishable_qfBXEPprLTGGhO34OE2tRA_vfY5LO4v">
-            </div>
-
-            <button type="submit" class="btn-admin">Save &amp; Test Supabase Connection</button>
-          </form>
-
-          <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border-subtle);">
-            <h4 style="color: var(--green-darkest); margin-bottom: 0.5rem;">1-Click Database Setup SQL</h4>
-            <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.8rem;">
-              Copy this SQL script and paste it into the <strong>SQL Editor</strong> in your Supabase dashboard to create the tables, storage buckets, and security permissions:
-            </p>
-            <div class="code-box" id="sql-schema-box">-- 1. Create Devotions Table
-CREATE TABLE IF NOT EXISTS public.devotions (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  title TEXT NOT NULL,
-  slug TEXT,
-  scripture_ref TEXT NOT NULL,
-  scripture_text TEXT NOT NULL,
-  cover_image TEXT,
-  content_html TEXT NOT NULL,
-  prayer TEXT,
-  confession TEXT,
-  author TEXT DEFAULT 'Pastoral Ministry',
-  category TEXT DEFAULT 'Grace & Faith',
-  published_at DATE NOT NULL DEFAULT CURRENT_DATE,
-  is_featured BOOLEAN DEFAULT false,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
-);
-
--- 2. Enable Row Level Security (RLS)
-ALTER TABLE public.devotions ENABLE ROW LEVEL SECURITY;
-
--- 3. Devotions Security Policies (Safe Re-run)
-DROP POLICY IF EXISTS "Public Read Devotions" ON public.devotions;
-CREATE POLICY "Public Read Devotions" ON public.devotions
-  FOR SELECT USING (true);
-
-DROP POLICY IF EXISTS "Admin Write Devotions" ON public.devotions;
-DROP POLICY IF EXISTS "Allow All Write Devotions" ON public.devotions;
-CREATE POLICY "Allow All Write Devotions" ON public.devotions
-  FOR ALL USING (true) WITH CHECK (true);
-
--- 4. Create or Update Storage Bucket for Devotion Images
-INSERT INTO storage.buckets (id, name, public) 
-VALUES ('devotion-images', 'devotion-images', true)
-ON CONFLICT (id) DO UPDATE SET public = true;
-
--- 5. Storage Bucket Security Policies (Safe Re-run)
-DROP POLICY IF EXISTS "Public Read Devotion Images" ON storage.objects;
-CREATE POLICY "Public Read Devotion Images" ON storage.objects
-  FOR SELECT USING (bucket_id = 'devotion-images');
-
-DROP POLICY IF EXISTS "Admin Upload Devotion Images" ON storage.objects;
-DROP POLICY IF EXISTS "Allow All Devotion Images" ON storage.objects;
-CREATE POLICY "Allow All Devotion Images" ON storage.objects
-  FOR ALL USING (bucket_id = 'devotion-images') WITH CHECK (bucket_id = 'devotion-images');
-</div>
-            <button type="button" class="btn-admin-secondary" id="copy-sql-btn">Copy SQL Script</button>
-          </div>
-        </div>
-      </div>
 
     </div>
   </main>
@@ -975,7 +891,7 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
             const statusText = document.getElementById('backend-status-text');
             if (statusPill && statusText) {
               statusPill.className = 'status-pill status-connected';
-              statusText.innerText = 'Supabase Cloud Connected';
+              statusText.innerText = 'Live Cloud Engine Online';
             }
           } catch (e) {
             console.warn('Supabase connect error:', e);
@@ -1253,7 +1169,7 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
             if (supabaseClient) {
               const fileName = `devotion-${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
               try {
-                showToast('Uploading image to Supabase Storage...');
+                showToast('Uploading devotional cover image...');
                 const { data, error } = await supabaseClient.storage
                   .from('devotion-images')
                   .upload(fileName, file, { cacheControl: '3600', upsert: true });
@@ -1407,7 +1323,7 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
         // Save to Supabase
         if (supabaseClient) {
           try {
-            showToast('Saving to Supabase Database...');
+            showToast('Publishing devotional to cloud server...');
             const { error } = await supabaseClient.from('devotions').upsert([devObj]);
             if (error) {
               console.warn('Supabase upsert note:', error.message);
@@ -1468,35 +1384,7 @@ CREATE POLICY "Allow All Devotion Images" ON storage.objects
         document.getElementById('preview-modal').style.display = 'none';
       });
 
-      // Copy SQL Script Button
-      document.getElementById('copy-sql-btn').addEventListener('click', () => {
-        const sql = document.getElementById('sql-schema-box').innerText;
-        navigator.clipboard.writeText(sql).then(() => {
-          showToast('SQL Schema copied to clipboard!');
-        });
-      });
 
-      // Supabase Settings Save
-      document.getElementById('supabase-settings-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const url = document.getElementById('cfg-supabase-url').value.trim();
-        const key = document.getElementById('cfg-supabase-key').value.trim();
-
-        if (url && key) {
-          localStorage.setItem('afm_supabase_url', url);
-          localStorage.setItem('afm_supabase_key', key);
-          window.AFM_SUPABASE_CONFIG.url = url;
-          window.AFM_SUPABASE_CONFIG.anonKey = key;
-          initSupabase();
-          showToast('Supabase settings saved and verified!');
-        }
-      });
-
-      // Populate Settings inputs if stored
-      const curUrl = localStorage.getItem('afm_supabase_url');
-      const curKey = localStorage.getItem('afm_supabase_key');
-      if (curUrl) document.getElementById('cfg-supabase-url').value = curUrl;
-      if (curKey) document.getElementById('cfg-supabase-key').value = curKey;
 
       // Set default date to today
       document.getElementById('dev-date').value = new Date().toISOString().split('T')[0];
