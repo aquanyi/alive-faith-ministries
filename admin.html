@@ -990,12 +990,11 @@
           try {
             supabaseClient.auth.signOut();
           } catch (e) {
-            console.warn('Supabase signOut note:', e);
+            console.warn('SignOut note:', e);
           }
         }
-        showToast('Logged out safely. Have a blessed day!');
-        checkAuth();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Immediately redirect to the public church website
+        window.location.href = 'index.html#devotion';
       }
 
       const topLogoutBtn = document.getElementById('admin-logout-btn');
