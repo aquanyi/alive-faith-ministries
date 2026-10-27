@@ -10,7 +10,7 @@
   <meta name="description" content="Welcome to Live Faith Ministries (Alive Faith Ministries - AFM) at livefaithministries.org. Experience Faith, Grace and Intimacy with God. Join our Friday &amp; Sunday worship services in Nairobi, Kenya or stream live online. Watch revelatory sermons, give voluntary offerings via M-Pesa, and submit prayer requests.">
   <meta name="keywords" content="Live Faith, LiveFaith, Live Faith Ministries, LiveFaithMinistries, livefaithministries.org, Alive Faith Ministries, AFM, Live Faith Church, Church Nairobi Kenya, Experience Faith Grace and Intimacy with God, Friday Service, Sunday Celebration Service, Christian Fellowship, Prayer and Teachings, M-Pesa Giving, Sermons Online, Church near me Nairobi">
   <meta name="author" content="Live Faith Ministries">
-  <meta name="csrf-token" content="facb2c6634bfd478f2189ccf332e45d17e177a6f5fac673420366e17db0b43e1">
+  <meta name="csrf-token" content="c0f8a7152d852fd9e6bdc9102fd8a61002f3c9df3cb4809e98c081456af5124c">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.livefaithministries.org/">
   
@@ -250,6 +250,11 @@
             </a>
           </li>
           <li>
+            <a href="#devotion" class="nav-tab " data-tab="tab-devotion">
+              Devotion
+            </a>
+          </li>
+          <li>
             <a href="#faith" class="nav-tab " data-tab="tab-faith">
               Faith
             </a>
@@ -339,6 +344,18 @@
             <div class="mobile-item-text">
               <span class="mobile-item-title">About</span>
               <span class="mobile-item-sub">Our Mandate, Vision &amp; 5 Values</span>
+            </div>
+            <span class="mobile-item-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a href="#devotion" class="mobile-nav-item " data-tab="tab-devotion">
+            <div class="mobile-item-icon" style="background: rgba(234, 100, 7, 0.12); color: var(--gold-start);">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+            <div class="mobile-item-text">
+              <span class="mobile-item-title">Devotion</span>
+              <span class="mobile-item-sub">Daily Priestly Word &amp; Declaration</span>
             </div>
             <span class="mobile-item-arrow">&rarr;</span>
           </a>
@@ -1248,6 +1265,78 @@
         <div style="margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="#contact" class="btn btn-primary" data-tab-target="tab-contact">Connect With Pastoral Team</a>
           <a href="#watch" class="btn btn-secondary" data-tab-target="tab-watch">Watch Recent Sermons</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- Tab: Devotion (Daily Word & Pastoral Revelations) -->
+<div id="tab-devotion" class="tab-pane ">
+  
+  <section class="page-banner page-banner-devotion">
+    <div class="banner-bg-drift" style="background-image: url('assets/images/bible-bg.jpg');"></div>
+    <div class="banner-vignette"></div>
+    <div class="container banner-inner">
+      <span class="section-tag" style="color: var(--amber-light);">The Priestly Bread</span>
+      <h1>Daily Devotional</h1>
+      <p class="lead">
+        Spiritual nourishment, revelatory illumination of the Scriptures, and prophetic declarations to anchor your day in the fullness of Christ.
+      </p>
+    </div>
+  </section>
+
+  <!-- Devotional Main Reader & Archive Container -->
+  <section class="section section-white devotion-section">
+    <div class="container">
+      
+      <!-- Top Reader Layout: Featured Devotional -->
+      <div class="devotion-reader-wrap" id="devotion-reader-content">
+        <!-- Dynamically rendered by assets/js/devotions.js -->
+        <div class="devotion-loading-skeleton" style="padding: 3rem 0; text-align: center; color: var(--text-muted);">
+          <p>Loading today's devotional revelation...</p>
+        </div>
+      </div>
+
+      <!-- Devotional Archive & Topic Filter Section -->
+      <div class="devotion-archive-section">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-tag">Word Library</span>
+          <h2>Explore Past Devotionals</h2>
+          <p class="lead">Browse archived revelations, search by spiritual theme, or revisit foundational teachings.</p>
+        </div>
+
+        <!-- Filter Chips and Search Bar -->
+        <div class="devotion-controls-bar">
+          <div class="devotion-filter-chips">
+            <button type="button" class="devotion-filter-chip active" data-filter="all">All Topics</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Spiritual Identity">Identity in Christ</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Grace &amp; Faith">Grace &amp; Faith</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Prayer &amp; Intercession">Prayer</button>
+          </div>
+
+          <div class="devotion-search-box">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="devotion-search-input" placeholder="Search devotions by keyword or scripture..." aria-label="Search devotionals">
+          </div>
+        </div>
+
+        <!-- Archive Grid -->
+        <div class="devotion-archive-grid" id="devotion-archive-grid">
+          <!-- Dynamically populated by assets/js/devotions.js -->
+        </div>
+
+        <!-- Pastoral Publishing Desk Quick Banner -->
+        <div class="devotion-admin-prompt">
+          <div>
+            <h4>Pastoral Devotional Desk</h4>
+            <p>Are you part of pastoral leadership or the media team? Log in to compose daily devotions with full Word-style formatting.</p>
+          </div>
+          <a href="admin.html" class="btn btn-secondary" style="border: none; background: rgba(7, 31, 17, 0.08); color: var(--green-darkest); font-weight: 700;">
+            Open Pastoral Portal &rarr;
+          </a>
         </div>
       </div>
 
@@ -2191,7 +2280,7 @@
           
                     <form action="index.php?tab=contact" method="POST">
             <!-- CSRF Protection Token -->
-            <input type="hidden" name="csrf_token" value="facb2c6634bfd478f2189ccf332e45d17e177a6f5fac673420366e17db0b43e1">
+            <input type="hidden" name="csrf_token" value="c0f8a7152d852fd9e6bdc9102fd8a61002f3c9df3cb4809e98c081456af5124c">
 
             <!-- Anti-Bot Honeypot -->
             <div style="position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
@@ -2330,6 +2419,7 @@
           <ul class="footer-links">
             <li><a href="#home" data-tab="tab-home">Home</a></li>
             <li><a href="#about" data-tab="tab-about">About</a></li>
+            <li><a href="#devotion" data-tab="tab-devotion">Devotion</a></li>
             <li><a href="#faith" data-tab="tab-faith">Faith</a></li>
             <li><a href="#giving" data-tab="tab-giving">Giving</a></li>
             <li><a href="#watch" data-tab="tab-watch">Watch</a></li>
@@ -2386,6 +2476,8 @@
           <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
           <span class="footer-legal-dot">&bull;</span>
           <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+          <span class="footer-legal-dot">&bull;</span>
+          <a href="admin.html" class="footer-legal-link" title="Pastoral Devotional Desk Login">Pastoral Portal</a>
         </div>
         <p class="motto-pill">FAITH | SALVATION | GRACE</p>
       </div>
@@ -2411,6 +2503,11 @@
       </svg>
     </a>
   </aside>
+
+  <!-- Supabase Client & Devotions Engine -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/devotions.js"></script>
 
   <!-- Main JavaScript File (Versioned for Instant Mobile Cache Busting) -->
   <script src="assets/js/main.js?v=3.0"></script>

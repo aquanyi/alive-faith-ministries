@@ -33,6 +33,7 @@
           <ul class="footer-links">
             <li><a href="#home" data-tab="tab-home">Home</a></li>
             <li><a href="#about" data-tab="tab-about">About</a></li>
+            <li><a href="#devotion" data-tab="tab-devotion">Devotion</a></li>
             <li><a href="#faith" data-tab="tab-faith">Faith</a></li>
             <li><a href="#giving" data-tab="tab-giving">Giving</a></li>
             <li><a href="#watch" data-tab="tab-watch">Watch</a></li>
@@ -86,6 +87,8 @@
           <a href="privacy.html" class="footer-legal-link">Privacy Policy</a>
           <span class="footer-legal-dot">&bull;</span>
           <a href="terms.html" class="footer-legal-link">Terms of Service</a>
+          <span class="footer-legal-dot">&bull;</span>
+          <a href="admin.html" class="footer-legal-link" title="Pastoral Devotional Desk Login">Pastoral Portal</a>
         </div>
         <p class="motto-pill"><?php echo htmlspecialchars($church_motto); ?></p>
       </div>
@@ -111,6 +114,11 @@
       </svg>
     </a>
   </aside>
+
+  <!-- Supabase Client & Devotions Engine -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/js/supabase-config.js"></script>
+  <script src="assets/js/devotions.js"></script>
 
   <!-- Main JavaScript File (Versioned for Instant Mobile Cache Busting) -->
   <script src="assets/js/main.js?v=3.0"></script>

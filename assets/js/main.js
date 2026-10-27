@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const tabMap = {
     '#home': 'tab-home',
     '#about': 'tab-about',
+    '#devotion': 'tab-devotion',
+    '#devotions': 'tab-devotion',
     '#faith': 'tab-faith',
     '#giving': 'tab-giving',
     '#watch': 'tab-watch',

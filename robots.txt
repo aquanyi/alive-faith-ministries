@@ -10,9 +10,11 @@ Allow: /assets/js/
 Allow: /privacy.html
 Allow: /terms.html
 
-# Disallow backend includes and system files
+# Disallow backend includes, admin and system files
 Disallow: /includes/
 Disallow: /drafts/
+Disallow: /admin.html
+Disallow: /admin/
 Disallow: /.*
 Disallow: /*.sql$
 

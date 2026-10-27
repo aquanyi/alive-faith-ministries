@@ -833,6 +833,78 @@ require_once __DIR__ . '/includes/header.php';
 
 </div>
 
+<!-- Tab: Devotion (Daily Word & Pastoral Revelations) -->
+<div id="tab-devotion" class="tab-pane <?php echo ($active_tab === 'tab-devotion') ? 'active' : ''; ?>">
+  
+  <section class="page-banner page-banner-devotion">
+    <div class="banner-bg-drift" style="background-image: url('assets/images/bible-bg.jpg');"></div>
+    <div class="banner-vignette"></div>
+    <div class="container banner-inner">
+      <span class="section-tag" style="color: var(--amber-light);">The Priestly Bread</span>
+      <h1>Daily Devotional</h1>
+      <p class="lead">
+        Spiritual nourishment, revelatory illumination of the Scriptures, and prophetic declarations to anchor your day in the fullness of Christ.
+      </p>
+    </div>
+  </section>
+
+  <!-- Devotional Main Reader & Archive Container -->
+  <section class="section section-white devotion-section">
+    <div class="container">
+      
+      <!-- Top Reader Layout: Featured Devotional -->
+      <div class="devotion-reader-wrap" id="devotion-reader-content">
+        <!-- Dynamically rendered by assets/js/devotions.js -->
+        <div class="devotion-loading-skeleton" style="padding: 3rem 0; text-align: center; color: var(--text-muted);">
+          <p>Loading today's devotional revelation...</p>
+        </div>
+      </div>
+
+      <!-- Devotional Archive & Topic Filter Section -->
+      <div class="devotion-archive-section">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <span class="section-tag">Word Library</span>
+          <h2>Explore Past Devotionals</h2>
+          <p class="lead">Browse archived revelations, search by spiritual theme, or revisit foundational teachings.</p>
+        </div>
+
+        <!-- Filter Chips and Search Bar -->
+        <div class="devotion-controls-bar">
+          <div class="devotion-filter-chips">
+            <button type="button" class="devotion-filter-chip active" data-filter="all">All Topics</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Spiritual Identity">Identity in Christ</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Grace &amp; Faith">Grace &amp; Faith</button>
+            <button type="button" class="devotion-filter-chip" data-filter="Prayer &amp; Intercession">Prayer</button>
+          </div>
+
+          <div class="devotion-search-box">
+            <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="devotion-search-input" placeholder="Search devotions by keyword or scripture..." aria-label="Search devotionals">
+          </div>
+        </div>
+
+        <!-- Archive Grid -->
+        <div class="devotion-archive-grid" id="devotion-archive-grid">
+          <!-- Dynamically populated by assets/js/devotions.js -->
+        </div>
+
+        <!-- Pastoral Publishing Desk Quick Banner -->
+        <div class="devotion-admin-prompt">
+          <div>
+            <h4>Pastoral Devotional Desk</h4>
+            <p>Are you part of pastoral leadership or the media team? Log in to compose daily devotions with full Word-style formatting.</p>
+          </div>
+          <a href="admin.html" class="btn btn-secondary" style="border: none; background: rgba(7, 31, 17, 0.08); color: var(--green-darkest); font-weight: 700;">
+            Open Pastoral Portal &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
 <!-- Tab 3: Faith -->
 <div id="tab-faith" class="tab-pane <?php echo ($active_tab === 'tab-faith') ? 'active' : ''; ?>">
   

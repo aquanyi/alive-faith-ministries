@@ -260,6 +260,11 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
             </a>
           </li>
           <li>
+            <a href="#devotion" class="nav-tab <?php echo ($active_tab === 'tab-devotion') ? 'active' : ''; ?>" data-tab="tab-devotion">
+              Devotion
+            </a>
+          </li>
+          <li>
             <a href="#faith" class="nav-tab <?php echo ($active_tab === 'tab-faith') ? 'active' : ''; ?>" data-tab="tab-faith">
               Faith
             </a>
@@ -349,6 +354,18 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
             <div class="mobile-item-text">
               <span class="mobile-item-title">About</span>
               <span class="mobile-item-sub">Our Mandate, Vision &amp; 5 Values</span>
+            </div>
+            <span class="mobile-item-arrow">&rarr;</span>
+          </a>
+        </li>
+        <li>
+          <a href="#devotion" class="mobile-nav-item <?php echo ($active_tab === 'tab-devotion') ? 'active' : ''; ?>" data-tab="tab-devotion">
+            <div class="mobile-item-icon" style="background: rgba(234, 100, 7, 0.12); color: var(--gold-start);">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            </div>
+            <div class="mobile-item-text">
+              <span class="mobile-item-title">Devotion</span>
+              <span class="mobile-item-sub">Daily Priestly Word &amp; Declaration</span>
             </div>
             <span class="mobile-item-arrow">&rarr;</span>
           </a>
