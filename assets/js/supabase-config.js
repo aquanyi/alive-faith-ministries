@@ -9,17 +9,16 @@
   const storedKey = localStorage.getItem('afm_supabase_key');
 
   window.AFM_SUPABASE_CONFIG = {
-    // Paste your Supabase Project URL and Anon Public Key below (or configure via admin.html settings)
-    url: storedUrl || 'https://YOUR_PROJECT_ID.supabase.co',
-    anonKey: storedKey || 'YOUR_SUPABASE_ANON_PUBLIC_KEY',
+    // Supabase Project URL for aquanyi's Project
+    url: storedUrl || 'https://okgxncksfeyrpfqottgk.supabase.co',
+    anonKey: storedKey || '',
     storageBucket: 'devotion-images',
     tableName: 'devotions',
     isConfigured: function () {
       return (
         this.url &&
         this.anonKey &&
-        !this.url.includes('YOUR_PROJECT_ID') &&
-        !this.anonKey.includes('YOUR_SUPABASE_ANON')
+        this.anonKey.length > 20
       );
     }
   };
