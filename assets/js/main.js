@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Notify user if service just went live during their session
     if (previousLiveState === false && next.isLive === true) {
-      showToast(`🔴 Alive Faith Ministries is NOW LIVE: ${next.serviceName}! Tap to watch.`, true);
+      showToast(`Alive Faith Ministries is NOW LIVE: ${next.serviceName}! Tap to watch.`, true);
     }
     previousLiveState = next.isLive;
 
@@ -342,11 +342,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // 3. Update Mobile Drawer Watch Button
       if (drawerLiveDot) drawerLiveDot.style.display = 'inline-block';
-      if (drawerWatchLabel) drawerWatchLabel.innerText = '🔴 Watch Live Stream Now';
+      if (drawerWatchLabel) drawerWatchLabel.innerText = 'Watch Live Stream Now';
 
       // 4. Update Hero Banner Badge & CTA Button
       if (heroBadgeDot) heroBadgeDot.style.display = 'inline-block';
-      if (heroBadgeText) heroBadgeText.innerText = `🔴 BROADCASTING LIVE NOW • ${next.serviceName}`;
+      if (heroBadgeText) heroBadgeText.innerText = `BROADCASTING LIVE NOW • ${next.serviceName}`;
       if (heroBadgeWrap) heroBadgeWrap.classList.add('is-live');
       if (heroLiveDot) heroLiveDot.style.display = 'inline-block';
       if (heroWatchLabel) heroWatchLabel.innerText = 'Watch Live Now';
@@ -365,8 +365,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // 6. Update Watch Tab Cinema Stage Header & Details
       if (watchStagePulseDot) watchStagePulseDot.style.display = 'inline-block';
-      if (watchStageStatusLabel) watchStageStatusLabel.innerText = '🔴 ON AIR: LIVE FELLOWSHIP IN PROGRESS';
-      if (streamTitleDisplay) streamTitleDisplay.innerText = `🔴 Alive Faith Ministries Live: ${next.serviceName}`;
+      if (watchStageStatusLabel) watchStageStatusLabel.innerText = 'ON AIR: LIVE FELLOWSHIP IN PROGRESS';
+      if (streamTitleDisplay) streamTitleDisplay.innerText = `Alive Faith Ministries Live: ${next.serviceName}`;
       if (streamDescDisplay) {
         streamDescDisplay.innerText = 'Join our sanctuary fellowship stream in session right now! Experience worship, fervent prayer, and revelatory teaching of the Word.';
       }

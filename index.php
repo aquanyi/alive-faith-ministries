@@ -541,8 +541,8 @@ require_once __DIR__ . '/includes/header.php';
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 2.8rem;">
-        <a href="#about" class="btn btn-primary" data-tab-target="tab-about" style="padding: 0.95rem 2.2rem; font-weight: 800;">
+      <div style="text-align: center; margin-top: 2.8rem; padding: 0 1rem;">
+        <a href="#about" class="btn btn-primary presbytery-council-btn" data-tab-target="tab-about">
           View Complete Presbytery Council (All 10 Leaders) &rarr;
         </a>
       </div>
@@ -607,7 +607,7 @@ require_once __DIR__ . '/includes/header.php';
         <p class="lead">What you will encounter when you gather with Alive Faith Ministries:</p>
       </div>
 
-      <div class="quick-access-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <div class="quick-access-grid rhythm-services-grid">
         <div class="pillar-card">
           <div class="pillar-icon">
             <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
@@ -763,7 +763,7 @@ require_once __DIR__ . '/includes/header.php';
       </div>
 
       <!-- Twin Pillars: Mission & Vision -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.2rem; margin-top: 2rem;">
+      <div class="twin-pillars-grid">
         <div class="pillar-card spotlight-card">
           <div class="pillar-icon">
             <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -799,7 +799,7 @@ require_once __DIR__ . '/includes/header.php';
         <p class="lead">The sacred principles that govern our fellowship, preaching, prayer, and discipleship walk.</p>
       </div>
 
-      <div class="quick-access-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+      <div class="quick-access-grid ministry-values-grid">
         <?php foreach ($ministry_values as $val): ?>
           <div class="pillar-card spotlight-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
@@ -1205,7 +1205,7 @@ require_once __DIR__ . '/includes/header.php';
       </div>
 
       <!-- 10 Articles Grid with Scriptural Expanders -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; max-width: 1100px; margin: 0 auto;">
+      <div class="faith-articles-grid">
         <?php 
         $categories = ['god', 'god', 'salvation', 'salvation', 'hope', 'salvation', 'spirit', 'spirit', 'spirit', 'hope'];
         $scripture_proofs = [
@@ -1973,8 +1973,8 @@ require_once __DIR__ . '/includes/header.php';
             <!-- CSRF Protection Token -->
             <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(get_csrf_token()); ?>">
 
-            <!-- Anti-Bot Honeypot -->
-            <div style="position: absolute; left: -9999px; top: -9999px; width: 0; height: 0; overflow: hidden;" aria-hidden="true">
+            <!-- Anti-Bot Honeypot (Zero layout shift clipping) -->
+            <div style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; pointer-events: none;" aria-hidden="true">
               <label for="afm_security_check">Leave this field blank</label>
               <input type="text" id="afm_security_check" name="afm_security_check" tabindex="-1" autocomplete="off">
             </div>
