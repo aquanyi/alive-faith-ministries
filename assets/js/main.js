@@ -53,19 +53,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3200);
   }
 
-  /* Navigation and mobile drawer */
+  /* Navigation and mobile drawer (Flicker-free, zero DOM reflow or scrollbar jump) */
   function closeDrawer() {
     if (mobileDrawer) mobileDrawer.classList.remove('open');
     if (backdrop) backdrop.classList.remove('active');
     if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
   }
 
   function openDrawer() {
     if (mobileDrawer) mobileDrawer.classList.add('open');
     if (backdrop) backdrop.classList.add('active');
     if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
   }
 
   if (toggleBtn) {
@@ -83,7 +81,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (backdrop) backdrop.addEventListener('click', closeDrawer);
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+    }, { passive: false });
+  }
 
   // Switch Between Independent Tabs (Rock-solid, zero redundant re-renders or flickers)
   function switchTab(targetTabId, updateHash = true) {

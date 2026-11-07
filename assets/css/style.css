@@ -62,13 +62,13 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
-  background-color: var(--green-darkest);
+  background-color: var(--bg-body);
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--text-primary);
-  background-color: transparent;
+  background-color: var(--bg-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -346,8 +346,6 @@ p:last-child { margin-bottom: 0; }
   user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  transform: translateZ(0);
 }
 
 .desktop-nav-links li a.nav-tab:hover:not(.active),
@@ -551,17 +549,18 @@ p:last-child { margin-bottom: 0; }
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(7, 31, 17, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(7, 31, 17, 0.78);
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
   z-index: 99995;
+  will-change: opacity;
 }
 
 .drawer-backdrop.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -1541,18 +1540,17 @@ p:last-child { margin-bottom: 0; }
 .section {
   padding: clamp(4.2rem, 6.8vw, 6.2rem) 0;
   position: relative;
+  isolation: isolate;
 }
 
 .section-alt {
-  background-color: rgba(246, 248, 246, 0.95);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background-color: #f6f8f6;
+  isolation: isolate;
 }
 
 .section-white {
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background-color: #ffffff;
+  isolation: isolate;
 }
 
 .section-header {
@@ -2446,7 +2444,10 @@ textarea.form-control {
   color: #ffffff;
   z-index: 99999;
   transform: translateX(105%);
-  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  will-change: transform;
+  overscroll-behavior: contain;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s ease;
   box-shadow: -16px 0 50px rgba(0, 0, 0, 0.55);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -2456,6 +2457,7 @@ textarea.form-control {
 
 .mobile-drawer.open {
   transform: translateX(0);
+  visibility: visible;
 }
 
 .mobile-drawer-inner {
@@ -2705,9 +2707,9 @@ textarea.form-control {
     left: 14px;
     right: 14px;
     height: 58px;
-    background: rgba(7, 31, 17, 0.94);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(7, 31, 17, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: var(--radius-full);
     z-index: 99990;
     align-items: center;
@@ -2938,22 +2940,18 @@ textarea.form-control {
   background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
-  transform: scale(1.0);
-  transition: opacity 2.6s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
+  transition: opacity 1.8s ease;
+  will-change: opacity;
 }
 
 .ambient-slide.prev {
   opacity: 0.92;
   z-index: 1;
-  transform: scale(1.06);
 }
 
 .ambient-slide.active {
   opacity: 0.92;
   z-index: 2;
-  transform: scale(1.06);
-  transition: opacity 2.6s cubic-bezier(0.4, 0, 0.2, 1), transform 16s ease-out;
 }
 
 .ambient-overlay {
@@ -4169,9 +4167,6 @@ textarea.form-control {
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32), 0 2px 6px rgba(0, 0, 0, 0.2);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transform: translateZ(0);
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -4345,15 +4340,14 @@ textarea:focus-visible,
   padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
 }
 
-/* 5. Smooth Hardware Composited Layering */
+/* Smooth Card Stacking & Non-Thrashing Hover */
 .spotlight-card,
 .home-service-card,
 .pillar-card,
 .tier-card,
 .giving-card,
 .faith-card {
-  will-change: transform, box-shadow;
-  transform: translateZ(0);
+  transform: none;
 }
 
 /* Flagship Innovation 1: Interactive Sermon Soundwave Audio Console */
@@ -5337,6 +5331,16 @@ html, body {
 @media (max-width: 900px) {
   body {
     padding-bottom: calc(90px + env(safe-area-inset-bottom, 16px)) !important;
+  }
+
+  .serene-ambient-bg {
+    display: none !important;
+  }
+
+  .navbar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
   }
 
   .mobile-bottom-bar {
