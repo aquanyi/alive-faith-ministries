@@ -61,10 +61,16 @@
       }
     }
 
-    // Deduplicate by ID
+    // Deduplicate by ID and by slug (seed devotions may duplicate cloud ones by slug)
     const uniqueMap = new Map();
+    const slugSet = new Set();
     devotionsData.forEach(d => {
-      if (!uniqueMap.has(d.id)) uniqueMap.set(d.id, d);
+      const key = d.id;
+      const slug = d.slug || d.title;
+      if (!uniqueMap.has(key) && !slugSet.has(slug)) {
+        uniqueMap.set(key, d);
+        slugSet.add(slug);
+      }
     });
     devotionsData = Array.from(uniqueMap.values());
 

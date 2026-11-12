@@ -1298,8 +1298,20 @@
           return;
         }
 
-        const devObj = {
-          id: editId || 'dev-' + Date.now(),
+        // Supabase requires UUID for id column — generate one if creating new
+        function generateUUID() {
+          return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0;
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+          });
+        }
+
+        // Check if editId looks like a UUID (cloud record) or a local string id
+        const isCloudId = editId && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(editId);
+        const cloudId = isCloudId ? editId : null;
+        const localId = editId || ('dev-' + Date.now());
+
+        const devPayload = {
           title: title,
           slug: title.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-'),
           scripture_ref: scriptureRef,
@@ -1314,28 +1326,59 @@
           is_featured: document.getElementById('dev-is-featured').checked
         };
 
-        // If featured is true, un-feature other devotions
-        if (devObj.is_featured) {
+        // If featured, un-feature others first
+        if (devPayload.is_featured && supabaseClient) {
+          try {
+            await supabaseClient.from('devotions').update({ is_featured: false }).eq('is_featured', true);
+          } catch (e) { /* silent */ }
+        }
+        if (devPayload.is_featured) {
           activeDevotions.forEach(d => { d.is_featured = false; });
         }
 
-        // Save to Supabase
+        let savedCloudId = cloudId;
+
+        // Save to Supabase (cloud-first)
         if (supabaseClient) {
           try {
-            showToast('Publishing devotional to cloud server...');
-            const { error } = await supabaseClient.from('devotions').upsert([devObj]);
-            if (error) {
-              console.warn('Supabase upsert note:', error.message);
+            showToast('Publishing devotional to cloud...');
+            let cloudResult;
+            if (cloudId) {
+              // UPDATE existing cloud record
+              cloudResult = await supabaseClient
+                .from('devotions')
+                .update(devPayload)
+                .eq('id', cloudId)
+                .select('id');
+            } else {
+              // INSERT new record — let Supabase generate UUID
+              cloudResult = await supabaseClient
+                .from('devotions')
+                .insert([devPayload])
+                .select('id');
+            }
+
+            if (cloudResult.error) {
+              console.warn('Supabase save error:', cloudResult.error.message);
+              showToast('Cloud save failed — saved locally instead.');
+            } else if (cloudResult.data && cloudResult.data[0]) {
+              savedCloudId = cloudResult.data[0].id;
+              showToast('Devotion published to cloud!');
             }
           } catch (e) {
-            console.warn(e);
+            console.warn('Supabase exception:', e);
           }
         }
 
-        // Always save to localStorage as instant sync
+        // Build local record using cloud UUID if available, else local id
+        const devObj = Object.assign({}, devPayload, {
+          id: savedCloudId || localId
+        });
+
+        // Save to localStorage as local cache / offline fallback
         const saved = localStorage.getItem('afm_local_devotions');
         let list = saved ? JSON.parse(saved) : [];
-        const existingIdx = list.findIndex(d => d.id === devObj.id);
+        const existingIdx = list.findIndex(d => d.id === devObj.id || d.id === editId);
         if (existingIdx >= 0) {
           list[existingIdx] = devObj;
         } else {
