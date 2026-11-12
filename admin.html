@@ -1208,7 +1208,10 @@
               .order('published_at', { ascending: false });
 
             if (!error && data && data.length > 0) {
-              activeDevotions = data;
+              const cloudIds = new Set(data.map(d => d.id));
+              const cloudSlugs = new Set(data.map(d => d.slug || d.title));
+              const unsynced = localList.filter(l => !cloudIds.has(l.id) && !cloudSlugs.has(l.slug || l.title));
+              activeDevotions = [...data, ...unsynced];
             }
           } catch (e) {
             console.warn(e);

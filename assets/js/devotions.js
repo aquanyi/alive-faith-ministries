@@ -54,7 +54,10 @@
           .order('published_at', { ascending: false });
 
         if (!error && data && data.length > 0) {
-          devotionsData = data;
+          const cloudIds = new Set(data.map(d => d.id));
+          const cloudSlugs = new Set(data.map(d => d.slug || d.title));
+          const unsyncedLocal = localList.filter(l => !cloudIds.has(l.id) && !cloudSlugs.has(l.slug || l.title));
+          devotionsData = [...data, ...unsyncedLocal];
         }
       } catch (e) {
         console.info('Using local/cached devotions:', e);
