@@ -15,7 +15,8 @@ Disallow: /includes/
 Disallow: /drafts/
 Disallow: /admin.html
 Disallow: /admin/
-Disallow: /.*
+Disallow: /.git
+Disallow: /.env
 Disallow: /*.sql$
 
 # Host
