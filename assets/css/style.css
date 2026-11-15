@@ -588,63 +588,18 @@ p:last-child { margin-bottom: 0; }
   }
 }
 
-/* Hero section with visible photographic background carousel */
+/* Hero section with clean executive theme background (no photographic slideshow) */
 .hero {
   position: relative;
   background-color: var(--green-darkest);
+  background-image: 
+    radial-gradient(ellipse 80% 60% at 88% 18%, rgba(234, 100, 7, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 85%, rgba(19, 88, 49, 0.25) 0%, transparent 55%),
+    linear-gradient(155deg, #071f11 0%, #0c331c 55%, #05190e 100%);
   color: #ffffff;
   padding: clamp(2.8rem, 4.2vw, 4.2rem) 0 clamp(2.5rem, 3.8vw, 3.8rem) 0;
   overflow: hidden;
-}
-
-.hero-bg-slider {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.hero-slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center 25%;
-  background-repeat: no-repeat;
-  opacity: 0;
-  z-index: 1;
-  transform: scale(1.0);
-  transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: opacity, transform;
-}
-
-.hero-slide.prev {
-  opacity: 1;
-  z-index: 2;
-  transform: scale(1.08);
-}
-
-.hero-slide.active {
-  opacity: 1;
-  z-index: 3;
-  transform: scale(1.08);
-  transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1), transform 12s ease-out;
-}
-
-.hero-vignette-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 20, 11, 0.65) 0%,
-    rgba(5, 20, 11, 0.38) 45%,
-    rgba(5, 20, 11, 0.82) 100%
-  );
-  pointer-events: none;
-  z-index: 4;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.15);
 }
 
 .hero-inner {

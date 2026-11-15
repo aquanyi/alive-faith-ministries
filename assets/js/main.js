@@ -832,27 +832,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   initSpotlightCards();
 
-  /* Active hero photographic background carousel with Ken Burns drift (Flicker-free crossfade) */
-  const heroSlides = document.querySelectorAll('.hero-slide');
-  let currentHeroSlide = 0;
-
-  if (heroSlides.length > 1) {
-    setInterval(() => {
-      const prevSlide = heroSlides[currentHeroSlide];
-      prevSlide.classList.remove('active');
-      prevSlide.classList.add('prev');
-
-      currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
-      const nextSlide = heroSlides[currentHeroSlide];
-      nextSlide.classList.remove('prev');
-      nextSlide.classList.add('active');
-
-      setTimeout(() => {
-        prevSlide.classList.remove('prev');
-      }, 2300);
-    }, 6500);
-  }
-
   /* Continuous serene ambient background crossfader (Flicker-free crossfade) */
   const ambientSlides = document.querySelectorAll('.ambient-slide');
   let currentAmbientIndex = 0;
