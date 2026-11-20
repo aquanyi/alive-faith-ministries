@@ -972,7 +972,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Password</label>
-            <input type="password" class="form-input" id="auth-password" placeholder="••••••••" required value="alivefaith2026">
+            <input type="password" class="form-input" id="auth-password" placeholder="Enter your password" required autocomplete="current-password">
           </div>
           <div class="form-group" style="margin-bottom: 1.5rem;">
             <label style="display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-dark); cursor: pointer; user-select: none;">
@@ -985,8 +985,8 @@
           </button>
         </form>
 
-        <div style="margin-top: 1.6rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; background: #f8fafc; padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid #e2e8f0;">
-          Default master password is <strong><code>alivefaith2026</code></strong>. You can change this to your personal password inside <em>Pastor Account &amp; Password</em> anytime.
+        <div id="auth-login-hint" style="margin-top: 1.6rem; font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; background: #f8fafc; padding: 0.85rem; border-radius: var(--radius-md); border: 1px solid #e2e8f0;">
+          Initial setup password is <strong><code>alivefaith2026</code></strong>. Once changed inside <em>Pastor Account &amp; Password</em>, the old default password is disabled.
         </div>
       </div>
     </div>
@@ -1423,8 +1423,19 @@
           if (userWrap) userWrap.style.display = 'none';
 
           const loginEmailInput = document.getElementById('auth-email');
-          if (loginEmailInput && !loginEmailInput.value) {
+          if (loginEmailInput) {
             loginEmailInput.value = activeEmail;
+          }
+          const loginPassInput = document.getElementById('auth-password');
+          if (loginPassInput) {
+            loginPassInput.value = '';
+          }
+          const loginHint = document.getElementById('auth-login-hint');
+          if (loginHint) {
+            const hasCustomPass = Boolean(localStorage.getItem('afm_admin_custom_password'));
+            loginHint.innerHTML = hasCustomPass
+              ? 'Personal pastoral password is active. Sign in with your updated email and password.'
+              : 'Initial setup password is <strong><code>alivefaith2026</code></strong>. Once changed inside <em>Pastor Account &amp; Password</em>, the old default password is disabled.';
           }
         }
       }
@@ -1440,29 +1451,30 @@
 
         let loggedIn = false;
 
-        // 1. Check custom pastoral credentials if configured
-        if (customPassword && email.toLowerCase() === customEmail && password === customPassword) {
-          loggedIn = true;
-        }
-
-        // 2. Try Supabase Auth if connected
-        if (!loggedIn && supabaseClient) {
-          try {
-            const { data, error } = await supabaseClient.auth.signInWithPassword({
-              email: email,
-              password: password
-            });
-            if (!error && data && data.user) {
-              loggedIn = true;
-            }
-          } catch (err) {
-            console.warn('Supabase auth fallback:', err);
+        if (customPassword) {
+          // Strict mode: once admin changes password, ONLY the new custom password works
+          if (email.toLowerCase() === customEmail && password === customPassword) {
+            loggedIn = true;
           }
-        }
+        } else {
+          // Initial mode before personal password is set: allow Supabase Auth or initial setup password
+          if (supabaseClient) {
+            try {
+              const { data, error } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+              });
+              if (!error && data && data.user) {
+                loggedIn = true;
+              }
+            } catch (err) {
+              console.warn('Supabase auth fallback:', err);
+            }
+          }
 
-        // 3. Fallback to master pastoral default passwords
-        if (!loggedIn && (password === 'alivefaith2026' || password === 'afm2026')) {
-          loggedIn = true;
+          if (!loggedIn && email.toLowerCase() === customEmail && (password === 'alivefaith2026' || password === 'afm2026')) {
+            loggedIn = true;
+          }
         }
 
         if (loggedIn) {
@@ -1471,7 +1483,9 @@
           showToast('Welcome, Pastor! Devotional Desk is unlocked.');
           checkAuth();
         } else {
-          alert('Incorrect credentials. Please verify your email and password, or use the master pastoral password.');
+          alert(customPassword
+            ? 'Incorrect email or password. The old default password is disabled — please use your updated password.'
+            : 'Incorrect credentials. Please verify your pastoral email and password.');
         }
       });
 
@@ -1486,7 +1500,7 @@
             console.warn('SignOut note:', e);
           }
         }
-        window.location.href = 'index.html';
+        window.location.href = '/';
       }
 
       const topLogoutBtn = document.getElementById('admin-logout-btn');
@@ -1556,11 +1570,9 @@
           const confirmPass = document.getElementById('cfg-account-confirm-password').value.trim();
 
           const activeCustomPass = localStorage.getItem('afm_admin_custom_password');
-          const isCurrentPassValid = (
-            (activeCustomPass && currentPass === activeCustomPass) ||
-            currentPass === 'alivefaith2026' ||
-            currentPass === 'afm2026'
-          );
+          const isCurrentPassValid = activeCustomPass
+            ? currentPass === activeCustomPass
+            : (currentPass === 'alivefaith2026' || currentPass === 'afm2026');
 
           if (!isCurrentPassValid) {
             alert('The current password you entered is incorrect. Please verify your existing password.');
@@ -1632,9 +1644,9 @@
             const authEmail = document.getElementById('auth-email');
             const authPass = document.getElementById('auth-password');
             if (authEmail) authEmail.value = 'admin@livefaithministries.org';
-            if (authPass) authPass.value = 'alivefaith2026';
+            if (authPass) authPass.value = '';
             checkAuth();
-            showToast('Default master credentials restored: alivefaith2026');
+            showToast('Default master credentials restored.');
           }
         });
       }
