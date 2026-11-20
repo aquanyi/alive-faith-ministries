@@ -1,11 +1,11 @@
 <?php
 if (!isset($page_title)) {
-    $page_title = "Live Faith Ministries | Alive Faith Ministries (AFM) - Official Portal";
+    $page_title = "Live Faith Ministries | Alive Faith Church Nairobi, Kenya";
 }
 if (!isset($active_tab)) {
     $active_tab = 'tab-home';
 }
-$meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Ministries - AFM) at livefaithministries.org. Experience Faith, Grace and Intimacy with God. Join our Friday & Sunday worship services in Nairobi, Kenya or stream live online. Watch revelatory sermons, give voluntary offerings via M-Pesa, and submit prayer requests.";
+$meta_description_default = "Join Live Faith Ministries (Alive Faith Ministries) in Nairobi, Kenya. Fridays 6:00 PM & Sundays 3:30 PM. Watch live sermons, daily devotions & prayer.";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
@@ -37,8 +37,8 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
   <meta property="og:image" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
   <meta property="og:image:secure_url" content="https://www.livefaithministries.org/assets/images/worship-hero.jpg">
   <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="1064">
   <meta property="og:image:alt" content="Live Faith Ministries - Church Worship and Word Gathering Nairobi">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="en_GB">
@@ -77,7 +77,7 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet (Versioned for Instant Mobile Cache Busting) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=6.0">
+  <link rel="stylesheet" href="assets/css/style.css?v=7.0">
 
   <!-- 100% Google Search Console Validated Rich Results: Church Organization & FAQPage -->
   <script type="application/ld+json">
@@ -195,16 +195,6 @@ $meta_description_default = "Welcome to Live Faith Ministries (Alive Faith Minis
   </script>
 </head>
 <body>
-
-  <!-- Serene Moving Ambient Background (Slow Ken Burns Drift & Seamless Crossfade) -->
-  <div class="serene-ambient-bg" aria-hidden="true" id="serene-ambient-bg">
-    <div class="ambient-slide active" style="background-image: url('assets/images/worship-hero.jpg');"></div>
-    <div class="ambient-slide" style="background-image: url('assets/images/bible-bg.jpg');"></div>
-    <div class="ambient-slide" style="background-image: url('assets/images/community-bg.jpg');"></div>
-    <div class="ambient-slide" style="background-image: url('assets/images/worship-stage.jpg');"></div>
-    <div class="ambient-slide" style="background-image: url('assets/images/giving-bg.jpg');"></div>
-    <div class="ambient-overlay"></div>
-  </div>
 
   <!-- Accessible Skip to Content Link -->
   <a href="#tab-home" class="skip-link">Skip to main content</a>

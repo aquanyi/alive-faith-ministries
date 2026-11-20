@@ -118,9 +118,9 @@
   <!-- Supabase Client & Devotions Engine -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="assets/js/supabase-config.js"></script>
-  <script src="assets/js/devotions.js"></script>
+  <script src="assets/js/devotions.js?v=2.0"></script>
 
   <!-- Main JavaScript File (Versioned for Instant Mobile Cache Busting) -->
-  <script src="assets/js/main.js?v=3.0"></script>
+  <script src="assets/js/main.js?v=4.0"></script>
 </body>
 </html>

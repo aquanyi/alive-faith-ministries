@@ -1,14 +1,20 @@
-# Robots.txt for Alive Faith Ministries
+# Robots.txt for Live Faith Ministries (Alive Faith Ministries)
 # Canonical Domain: https://www.livefaithministries.org
 
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /devotions
+Allow: /faith
+Allow: /giving
+Allow: /watch
+Allow: /contact
+Allow: /privacy.html
+Allow: /terms.html
 Allow: /assets/
 Allow: /assets/images/
 Allow: /assets/css/
 Allow: /assets/js/
-Allow: /privacy.html
-Allow: /terms.html
 
 # Disallow backend includes, admin and system files
 Disallow: /includes/

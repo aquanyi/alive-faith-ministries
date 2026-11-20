@@ -98,7 +98,7 @@
     });
 
     // WhatsApp share message encoding
-    const shareText = `*${d.title}*\n_${d.scripture_ref}_\n\n"${d.scripture_text}"\n\nRead today's full devotion from Alive Faith Ministries:\nhttps://www.livefaithministries.org/#devotion`;
+    const shareText = `*${d.title}*\n_${d.scripture_ref}_\n\n"${d.scripture_text}"\n\nRead today's full devotion from Alive Faith Ministries:\nhttps://www.livefaithministries.org/devotions`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
 
     readerContainer.innerHTML = `
@@ -209,7 +209,7 @@
     const copyBtn = document.getElementById('devotion-copy-btn');
     if (copyBtn) {
       copyBtn.addEventListener('click', () => {
-        const plainText = `${d.title}\n${d.scripture_ref} - "${d.scripture_text}"\n\n${d.prayer ? `Prayer: ${d.prayer}\n\n` : ''}${d.confession ? `Confession: ${d.confession}\n\n` : ''}Alive Faith Ministries: https://www.livefaithministries.org/#devotion`;
+        const plainText = `${d.title}\n${d.scripture_ref} - "${d.scripture_text}"\n\n${d.prayer ? `Prayer: ${d.prayer}\n\n` : ''}${d.confession ? `Confession: ${d.confession}\n\n` : ''}Alive Faith Ministries: https://www.livefaithministries.org/devotions`;
         if (navigator.clipboard) {
           navigator.clipboard.writeText(plainText).then(() => {
             if (window.showToast) {

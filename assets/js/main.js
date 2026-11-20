@@ -130,30 +130,45 @@ document.addEventListener('DOMContentLoaded', function () {
     closeDrawer();
   }
 
-  // Single Unified Click Delegation (Prevents duplicate handler firing & click bouncing)
+  // Clean URL Map for static multi-page site & legacy hash fallback
+  const cleanUrlMap = {
+    '#home': '/',
+    '#about': '/about',
+    '#devotion': '/devotions',
+    '#devotions': '/devotions',
+    '#faith': '/faith',
+    '#statement-of-faith': '/faith',
+    '#giving': '/giving',
+    '#watch': '/watch',
+    '#watch-services': '/watch',
+    '#contact': '/contact',
+    '#privacy': '/privacy.html',
+    '#terms': '/terms.html'
+  };
+
+  // Single Unified Click Delegation (Supports both standalone HTML pages and PHP tab fallback)
   document.addEventListener('click', function (e) {
     const tabLink = e.target.closest('[data-tab], [data-tab-target], a[href^="#"]');
     if (!tabLink) return;
 
-    // If on standalone page (no tab panes exist), navigate back to main index page
-    if (tabPanes.length === 0) {
-      const href = tabLink.getAttribute('href');
-      const target = tabLink.getAttribute('data-tab') || tabLink.getAttribute('data-tab-target');
-      if (href && href.startsWith('#')) {
-        window.location.href = 'index.html' + href;
-      } else if (target) {
+    const targetTab = tabLink.getAttribute('data-tab') || tabLink.getAttribute('data-tab-target');
+    const href = tabLink.getAttribute('href');
+
+    if (tabPanes.length <= 1) {
+      if (href && cleanUrlMap[href.toLowerCase()]) {
+        e.preventDefault();
+        window.location.href = cleanUrlMap[href.toLowerCase()];
+      } else if (targetTab) {
         for (const [hash, id] of Object.entries(tabMap)) {
-          if (id === target) {
-            window.location.href = 'index.html' + hash;
+          if (id === targetTab && cleanUrlMap[hash]) {
+            e.preventDefault();
+            window.location.href = cleanUrlMap[hash];
             break;
           }
         }
       }
       return;
     }
-
-    const targetTab = tabLink.getAttribute('data-tab') || tabLink.getAttribute('data-tab-target');
-    const href = tabLink.getAttribute('href');
 
     if (targetTab) {
       e.preventDefault();
@@ -164,24 +179,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  window.addEventListener('popstate', function () {
-    const currentHash = window.location.hash || '#home';
-    switchTab(tabMap[currentHash] || 'tab-home', false);
-  });
-
-  const initialHash = window.location.hash;
-  const initialTabId = (initialHash && tabMap[initialHash]) ? tabMap[initialHash] : 'tab-home';
-  const initialPane = document.getElementById(initialTabId);
-
-  if (initialTabId !== 'tab-home' && initialPane) {
-    // Only switch if user landed directly on a non-home tab (e.g. #about, #watch)
-    switchTab(initialTabId, false);
-  } else {
-    // User is on Home: ensure nav links are synced without re-animating or flickering
-    document.querySelectorAll('.nav-tab, .mobile-nav-item, .bottom-bar-item').forEach(link => {
-      const isHome = link.getAttribute('data-tab') === 'tab-home' || link.getAttribute('data-tab-target') === 'tab-home';
-      link.classList.toggle('active', isHome);
+  if (tabPanes.length > 1) {
+    window.addEventListener('popstate', function () {
+      const currentHash = window.location.hash || '#home';
+      switchTab(tabMap[currentHash] || 'tab-home', false);
     });
+
+    const initialHash = window.location.hash;
+    const initialTabId = (initialHash && tabMap[initialHash]) ? tabMap[initialHash] : 'tab-home';
+    const initialPane = document.getElementById(initialTabId);
+
+    if (initialTabId !== 'tab-home' && initialPane) {
+      switchTab(initialTabId, false);
+    } else {
+      document.querySelectorAll('.nav-tab, .mobile-nav-item, .bottom-bar-item').forEach(link => {
+        const isHome = link.getAttribute('data-tab') === 'tab-home' || link.getAttribute('data-tab-target') === 'tab-home';
+        link.classList.toggle('active', isHome);
+      });
+    }
+  } else {
+    const initialHash = window.location.hash.toLowerCase();
+    if (initialHash && cleanUrlMap[initialHash]) {
+      if (initialHash === '#home' && (window.location.pathname === '/' || window.location.pathname.endsWith('/index.html'))) {
+        history.replaceState(null, '', '/');
+      } else {
+        window.location.replace(cleanUrlMap[initialHash]);
+      }
+    }
   }
 
   /* Real-Time Live Service Scheduling and Synchronized Broadcast Engine
@@ -208,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (enable === true) {
       localStorage.setItem('afm_force_live', 'true');
       liveOverride = true;
-      showToast("🔴 Live Service Mode Activated! All live badges and consoles are now visible.", true);
+      showToast("Live Service Mode Activated! All live badges and consoles are now visible.", true);
     } else if (enable === false) {
       localStorage.setItem('afm_force_live', 'false');
       liveOverride = false;
@@ -373,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (streamDescDisplay) {
         streamDescDisplay.innerText = 'Join our sanctuary fellowship stream in session right now! Experience worship, fervent prayer, and revelatory teaching of the Word.';
       }
-      if (theaterGlowTitle) theaterGlowTitle.innerText = '🔴 High-Definition Live Stream Active';
+      if (theaterGlowTitle) theaterGlowTitle.innerText = 'High-Definition Live Stream Active';
       if (theaterGlowSub) theaterGlowSub.innerText = 'Streaming live across Facebook Live & Digital Outlets';
 
     } else {
@@ -832,27 +856,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   initSpotlightCards();
 
-  /* Continuous serene ambient background crossfader (Flicker-free crossfade) */
-  const ambientSlides = document.querySelectorAll('.ambient-slide');
-  let currentAmbientIndex = 0;
-
-  if (ambientSlides.length > 1) {
-    setInterval(() => {
-      const prevAmbient = ambientSlides[currentAmbientIndex];
-      prevAmbient.classList.remove('active');
-      prevAmbient.classList.add('prev');
-
-      currentAmbientIndex = (currentAmbientIndex + 1) % ambientSlides.length;
-      const nextAmbient = ambientSlides[currentAmbientIndex];
-      nextAmbient.classList.remove('prev');
-      nextAmbient.classList.add('active');
-
-      setTimeout(() => {
-        prevAmbient.classList.remove('prev');
-      }, 2700);
-    }, 7500);
-  }
-
   /* Statement of Faith real-time search */
   const faithSearchInput = document.getElementById('faith-search-input');
   const faithCountBadge = document.getElementById('faith-count-badge');
@@ -968,54 +971,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* Dedicated Page Fallbacks for legacy hash bookmarks */
-  const initialLegalHash = window.location.hash.toLowerCase();
-  if (initialLegalHash === '#privacy') {
-    window.location.href = 'privacy.html';
-  } else if (initialLegalHash === '#terms') {
-    window.location.href = 'terms.html';
+  if (tabPanes.length > 1) {
+    const initialLegalHash = window.location.hash.toLowerCase();
+    if (initialLegalHash === '#privacy') {
+      window.location.href = '/privacy.html';
+    } else if (initialLegalHash === '#terms') {
+      window.location.href = '/terms.html';
+    }
   }
-
-  /* Non-pinch zoom controls */
-
-  // Block Touchscreen Pinch Zoom (touchscreen laptops and phones)
-  document.addEventListener('touchstart', function (e) {
-    if (e.touches && e.touches.length > 1) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  document.addEventListener('touchmove', function (e) {
-    if (e.touches && e.touches.length > 1) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  // 2. Block Precision Trackpad Pinch Zoom & Ctrl+Wheel (Chrome on Windows/Mac)
-  window.addEventListener('wheel', function (e) {
-    if (e.ctrlKey) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  document.addEventListener('wheel', function (e) {
-    if (e.ctrlKey) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  // 3. Block Keyboard Zoom-in & Zoom-out Shortcuts (Ctrl +, Ctrl -) while allowing Ctrl+0 to reset zoom
-  window.addEventListener('keydown', function (e) {
-    if (e.ctrlKey && (
-      e.key === '+' || e.key === '-' || e.key === '=' ||
-      e.keyCode === 187 || e.keyCode === 189 || e.keyCode === 107 || e.keyCode === 109
-    )) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-
-  // 4. Block WebKit Gestures (Safari / iOS)
-  document.addEventListener('gesturestart', function (e) { e.preventDefault(); }, { passive: false });
-  document.addEventListener('gesturechange', function (e) { e.preventDefault(); }, { passive: false });
-  document.addEventListener('gestureend', function (e) { e.preventDefault(); }, { passive: false });
 });

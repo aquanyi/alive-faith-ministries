@@ -68,7 +68,7 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
     }
 }
 
-$page_title = "Live Faith Ministries | Alive Faith Ministries (AFM) - Official Portal";
+$page_title = "Live Faith Ministries | Alive Faith Church Nairobi, Kenya";
 require_once __DIR__ . '/includes/header.php';
 ?>
 

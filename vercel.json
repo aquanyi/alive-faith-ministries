@@ -1,14 +1,27 @@
 {
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/devotions", "destination": "/devotions.html" },
+    { "source": "/faith", "destination": "/faith.html" },
+    { "source": "/giving", "destination": "/giving.html" },
+    { "source": "/watch", "destination": "/watch.html" },
+    { "source": "/contact", "destination": "/contact.html" }
+  ],
   "redirects": [
     { "source": "/index.php", "destination": "/", "permanent": true },
-    { "source": "/about(.*)", "destination": "/#about", "permanent": true },
-    { "source": "/contact(.*)", "destination": "/#contact", "permanent": true },
-    { "source": "/give(.*)", "destination": "/#giving", "permanent": true },
-    { "source": "/sermons(.*)", "destination": "/#watch", "permanent": true },
-    { "source": "/events(.*)", "destination": "/#home", "permanent": true },
-    { "source": "/ministries(.*)", "destination": "/#about", "permanent": true },
-    { "source": "/devotion(.*)", "destination": "/#devotion", "permanent": true },
-    { "source": "/devotions(.*)", "destination": "/#devotion", "permanent": true },
+    { "source": "/about.php", "destination": "/about", "permanent": true },
+    { "source": "/ministries", "destination": "/about", "permanent": true },
+    { "source": "/ministries.php", "destination": "/about", "permanent": true },
+    { "source": "/devotion", "destination": "/devotions", "permanent": true },
+    { "source": "/statement-of-faith", "destination": "/faith", "permanent": true },
+    { "source": "/give", "destination": "/giving", "permanent": true },
+    { "source": "/give.php", "destination": "/giving", "permanent": true },
+    { "source": "/sermons", "destination": "/watch", "permanent": true },
+    { "source": "/sermons.php", "destination": "/watch", "permanent": true },
+    { "source": "/watch-services", "destination": "/watch", "permanent": true },
+    { "source": "/contact.php", "destination": "/contact", "permanent": true },
+    { "source": "/events", "destination": "/watch", "permanent": true },
+    { "source": "/events.php", "destination": "/watch", "permanent": true },
     { "source": "/admin", "destination": "/admin.html", "permanent": true },
     { "source": "/privacy", "destination": "/privacy.html", "permanent": true },
     { "source": "/terms", "destination": "/terms.html", "permanent": true }
@@ -57,15 +70,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate, max-age=0"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
+          "value": "public, max-age=0, must-revalidate"
         }
       ]
     },
