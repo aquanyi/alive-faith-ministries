@@ -351,7 +351,7 @@ require_once __DIR__ . '/includes/header.php';
           Facebook Live Broadcast
         </a>
         <a href="#watch" class="broadcast-chip" data-tab-target="tab-watch">
-          Website Live Stream Portal
+          Website Live Stream
         </a>
         <a href="#watch" class="broadcast-chip" data-tab-target="tab-watch">
           Audio Message Archive
@@ -1142,7 +1142,7 @@ require_once __DIR__ . '/includes/header.php';
             <p>Are you part of pastoral leadership or the media team? Log in to compose daily devotions with full Word-style formatting.</p>
           </div>
           <a href="admin.html" class="btn btn-secondary" style="border: none; background: rgba(7, 31, 17, 0.08); color: var(--green-darkest); font-weight: 700;">
-            Open Pastoral Portal &rarr;
+            Open Pastoral Desk &rarr;
           </a>
         </div>
       </div>

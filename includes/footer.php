@@ -88,7 +88,7 @@
           <span class="footer-legal-dot">&bull;</span>
           <a href="terms.html" class="footer-legal-link">Terms of Service</a>
           <span class="footer-legal-dot">&bull;</span>
-          <a href="admin.html" class="footer-legal-link" title="Pastoral Devotional Desk Login">Pastoral Portal</a>
+          <a href="admin.html" class="footer-legal-link" title="Pastoral Devotional Desk Login">Pastoral Desk</a>
         </div>
         <p class="motto-pill"><?php echo htmlspecialchars($church_motto); ?></p>
       </div>

@@ -7,7 +7,7 @@
         http://www.google.com/schemas/sitemap-image/1.1
         http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
 
-  <!-- Home Portal -->
+  <!-- Home Page -->
   <url>
     <loc>https://www.livefaithministries.org/</loc>
     <lastmod>2026-11-20</lastmod>
